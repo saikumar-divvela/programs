@@ -1,0 +1,154 @@
+######### HTML Markup tags #####################
+<html>  <head> <link> <meta> <style> <base>
+<address>
+<article> to organize blog, news etc.. it can have <section> , <header>,  <footer> etc
+<header> <footer>
+<hgroup>
+<a> <B> <I>  <u> <big> <center>  <dl>  <dd> <dt> <em>  <strong> <code> <kbd> <tt> <samp>
+<figure> <figcaption>  <hr> <ol> <ul> <li>
+
+######## CSS ##########
+External stylesheet example
+<link rel="stylesheet" type="text/css" href="mystyle.css" />
+Cascading order
+1) Browser default
+2) External style sheet
+3) Internal style sheet
+4) Inline style  (highest priority)
+
+selectors
+    element
+    id
+    class
+group selectors
+    h1,h2,p { color:red;}
+nested selector
+    Possible to apply a style for a selector within selector
+
+background-color
+background-image: url('paper.gif')
+background-repeat: repeat-x | repeat-y | no-repeat
+background-attachment
+background-position
+
+border-style: none | dotted | dashed | solid | double | groove | ridge | inset | outset
+border-width: 10px
+border-color:
+
+text
+    color: #00ff00 | red | rgb (0,255,0)
+text-align: center | right | justify
+text-decoration: none | overline | line-through | underline | blink
+text-transform : uppercase | lowercase | capitalize
+text-indent: 
+letter-spacing:
+word-spacing:
+line-height:
+
+
+
+####### Javascript #######
+
+
+########### Jquery ########
+Basic syntax is: $(selector).action()
+
+$(this).hide() - hides the current element.
+$("p").hide() - hides all <p> elements.
+$(".test").hide() - hides all elements with class="test".
+$("#test").hide() - hides the element with id="test".
+
+====> selectors
+$("*")   // selects all elements
+$(this)  // selects the current Html element
+
+$("div.test")  // selects all div tags having class test
+$("div#test") // selects a div tag with id test
+$("#id123") // selects the tag which has id id123
+$("img")   // selects all the image tags
+$("p:first") // selects first p tag
+$("ul li:first")
+$("ul li:child")  
+
+===> Events
+$(selector).click(function)
+$(selector).dblclick(function)
+$(selector).focus(function)
+$(selector).mouseover(function)
+
+===> effects
+$("p").hide(); $(selector).hide(speed,callback);
+$("p").show(); $(selector).show(speed,callback);
+$("p").toggle();  // toggle between hide and show
+
+$(selector).fadeIn(speed,callback); // fadeIn a hidden element
+$(selector).fadeOut(speed,callback); // fadeOut a visible element
+$(selector).fadeToggle(speed,callback);
+$(selector).fadeTo(speed,opacity,callback); // fading  to a given opacity (0 to 1)
+
+$(selector).slideDown(speed,callback);
+$(selector).slideUp(speed,callback);
+$(selector).slideToggle(speed,callback);
+
+$(selector).animate({params},speed,callback);
+$("div").animate({left:'250px'});
+
+
+===>Get content//attribute
+text()
+html()
+val() sets or gets form field
+attr()
+
+===>Add new elements/contents
+append()
+prepend()
+after()
+before()
+
+===> Remove elements/content
+remove() // removes the selected element and child elements
+empty() // removes the child elements from the selected element
+
+===> Manipulating css
+addClass() -- adds one or more classes to selected elements
+removeClass() -- removes one or more classes from selected elements
+toggleClass() -- toggles between adding/removing classes from the selected elements
+css() -- sets or returns the style attribute
+
+$("h1,h2,p").removeClass("important blue");
+$("h1,h2,p").addClass("important blue");
+$("p").css("background-color");
+$("p").css("background-color","yellow");
+$("p").css({"background-color":"yellow","font-size":"200%"});
+
+===> Jquery Ajax
+$(selector).load(URL,data,callback);
+$("#div1").load("demo_test.txt");
+callback has
+    responseTxt - contains the resulting content if the call succeed
+    statusTXT - contains the status of the call
+    xhr - contains the XMLHttpRequest object
+$.get(URL,callback);
+callback has
+    data
+    status
+$.post(URL,data,callback);
+callback has
+
+
+
+Initialization code
+$(function(){
+     $('img').click ( function() {
+              // handle the click event on any img element in the page
+     });
+});
+
+Following handlers are same
+$(handler)
+$().ready(handler)
+$(document).ready(handler)
+
+Functions prefixed with $. are utility functions
+

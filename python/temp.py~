@@ -1,0 +1,10 @@
+#/usr/bin/py
+
+manifest_xml = "tizen-wearable_20160622.2_emulator-circle.xml"
+html_file = "tizen-wearable_20160622.2_emulator-circle.html"
+
+#print (xml.split(".")[0]+"_fail_repos."+xml.split(".")[1])
+print (manifest_xml.split(".xml")[0]+"_fail_repos.xml")
+
+print (html_file.split(".html")[0]+"_repo_success.html")
+print (html_file.split(".html")[0]+"_repo_fail.html")

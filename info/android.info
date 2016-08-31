@@ -1,0 +1,48 @@
+#test
+Android app is made of activities.
+There are 30 different magnerts to keep on board
+plaintextview, edit view
+Linear layout, horizontal layout, Relative Layout -> layouts can be embedded in each other
+Radio buttons List view  
+Web view Image view  Image button
+number picker Progress bar
+Analog clock Calendar
+
+Widgets are called views
+
+Good principles.
+    Use wireframes, mockup, prototype before starting full application
+    Reduce the amount of text to be typed.
+    Easy to Navigate
+    Nice UI with colors
+
+
+Exercises
+Block 1
+-->Just with buttons  Tic-tac-toe game. Display 9 gray buttons in 3 by 3 grid
+For instance, you can design a tic-tac-toe game: Display 9 gray buttons laid out in a 3x3 grid. The first player clicks a button. You change the color of that button to red and you set a variable to remember that choice. The second player clicks a different button. You turn that button to green and again you remember that decision. The first player picks yet another button and you resume the same action as before until either a player managed to align 3 buttons in a row, a column or diagonally ore each button have been clicked. Then you display a pop-up to announce which player won or an even-game.
+
+Block2
+--> Clickable list in two languages
+    List view
+
+Block3
+--> Layouts to organize components of user interface
+
+Block4
+--> Playing sounds (play, pause, loop etc)
+
+Block5
+--> Saving user preferences, use the same when application is exited and started etc..    
+
+Block6
+--> Images and sliders, filters
+
+Block7
+--> Displaying web view in application (if user granted access to internet)
+
+Block8
+--> Multi Activity and Rating bar
+
+Block9
+--> sending SMS using installed message system in phone

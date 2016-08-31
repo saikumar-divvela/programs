@@ -1,0 +1,182 @@
+#!/home/saikumar/sss/bin/py
+import redis
+import json
+import os
+from datetime import datetime
+
+
+class Entity(object):
+    """
+    Generic dict-like access to any type of
+    entities: repos, mappings, etc.
+
+    Usage example:
+        bdb = BackendDB()
+        repos = bdb.get_repos() # get entitiy object
+        if 'Myrepo' in repos:
+            print repos['Myrepo'], repos['Myrepo']['latest_snapthot']
+            repos.delete('Myrepo')
+        else:
+            repos['Myrepo'] = {'name': 'Myreponame', 'latest_snapshot': '123.4'}
+    """
+
+    def __init__(self, dbobj, prefix, jsoned=None):
+        """__init__
+           Args:
+               dbobj - Redis database object
+               prefix - Uniq prefix for this entity
+               jsoned - list of jsoned keys(for dicts)
+                        or indexes (for iterables) or bool (for strings).
+                        It's used to convert data to json
+                        format when storing in db and convert it back when
+                        it's retrived.
+        """
+        self._db = dbobj
+        self._prefix = prefix
+        self.jsoned = jsoned or []
+
+    def keys(self):
+        """Get set of keys started with the self._prefix."""
+        return set([key.split(self._prefix)[1] \
+                        for key in self._db.keys("%s*" % self._prefix)])
+
+    def __contains__(self, key):
+        return self._db.exists('%s%s' % (self._prefix, key))
+
+    def __getitem__(self, key):
+        key = "%s%s" % (self._prefix, key)
+        #print("Inside entity: Key ##%s"%key)   
+        if self._db.type(key) == 'hash':
+            #print("Inside entity: Key type##hash")
+            value = self._db.hgetall(key)
+            for field in self.jsoned:
+                value[field] = json.loads(value[field])
+                
+        elif self._db.type(key) == 'list':
+            #print("Inside entity: Key type##list")
+            value = self._db.lrange(key, 0, -1)
+            for i in self.jsoned:
+                value[i] = json.loads(value[i])
+        elif self._db.type(key) == 'string':
+            #print("Inside entity: Key type##string")
+            value = self._db.get(key)
+            if self.jsoned:
+                value = json.loads(value)
+        elif self._db.type(key) == 'none':
+            raise EntityError("[Error] key %s don't exist in redis" % key)
+        else:
+            raise EntityError("[Error] don't support \"%s\" data in redis" \
+                                 % self._db.type(key))
+
+        return value
+
+    def __setitem__(self, key, value):
+        key = "%s%s" % (self._prefix, key)
+        if isinstance(value, dict):
+            mvalue = deepcopy(value)
+            for field in self.jsoned:
+                mvalue[field] = json.dumps(value[field])
+            self._db.hmset(key, mvalue)
+        elif isinstance(value, list):
+            mvalue = deepcopy(value)
+            for i in self.jsoned:
+                mvalue[i] = json.dumps(mvalue[i])
+            for item in mvalue:
+                self._db.rpush(key, item)
+        elif isinstance(value, str):
+            self._db.set(key, value)
+        else:
+            raise EntityError("[Error] don't support \"%s\" data in redis" \
+                                 % type(value))
+
+    def delete(self, key):
+        """Remove key starting with the prefix from the db."""
+        self._db.delete("%s%s" % (self._prefix, key))
+
+    def __iter__(self):
+        return iter(self.keys())
+
+    def __len__(self):
+        return len(self.keys())
+
+def find_files(topdir, prefix='', suffix='.rpm'):
+        if not os.path.isdir(topdir):
+                raise ValueError("Invalid directory: " + topdir)	
+                return
+        """Find files in the tree."""
+        for root, _dirs, files in os.walk(topdir):
+                for item in files:
+                        if item.startswith(prefix) and item.endswith(suffix):
+                                yield os.path.join(root, item)
+
+
+redis_host="168.219.209.55"
+redis_port=6379
+project="Tizen:2.4:Mobile"
+live_repo_base="/srv/obs/repos/live"
+base_path="/srv/obs/repos/"
+base_url="http://168.219.209.55"
+
+redisdb=redis.Redis(host=redis_host, port=redis_port)
+
+'''
+for key in redisdb.keys("releaseid:*"):
+        #print("release:",key,"##",json.loads(redisdb.get(key)))
+        print("release:",key)
+'''
+
+#print(redisdb.get("obsrepomap:Tizen:2.4:Mobile"))
+#print(redisdb.hgetall("repo:Tizen-2.4-mobile"))
+#print(redisdb.get("releaseid:Tizen-2.4-mobile"))
+
+
+entity1=Entity(redisdb, "obsrepomap:")   # similar to redisdb.get("obsrepomap:Tizen:2.4:Mobile")
+entity2=Entity(redisdb, "repo:", ["Targets"]) # same as redisdb.hgetall("repo:Tizen-2.4-mobile")
+entity3=Entity(redisdb, "releaseid:") # same as redisdb.get("releaseid:Tizen-2.4-mobile")
+
+repo_name=entity1[project] #This is project name Tizen-2.4-mobile
+repo=entity2[repo_name]
+release_id=entity3[repo_name]
+
+targets=repo['Targets']
+
+sdtime, snum = release_id.split('.')
+cdtime = datetime.now().strftime("%Y%m%d")
+
+build_id=repo['Release']+"_"+release_id
+snapshot_path=base_path+repo['SnapshotDir']+"/"+build_id
+live_repo_path = os.path.join(live_repo_base,project.replace(':', ':/'))
+
+print("\nREPO_NAME##%s"%repo_name)
+print("REPO##%s"%repo)
+print("TARGETS##%s"%targets)
+
+print("\nRELEASE_ID##%s"%release_id)
+print("BUILD_ID##%s"%build_id)
+
+print("\nBASE_PATH##%s"%base_path)
+print("SNAPSHOT_PATH##%s"%snapshot_path)
+print("LIVE_REPO_PATH##%s"%live_repo_path)
+
+ARCH_MAP = {
+        'i686': 'ia32',
+        'i586': 'ia32',
+        }
+for repo in targets:
+        archs = repo['Architectures']
+        print("Repo Name:",repo['Name'],"##Repo archs:",archs)
+        if set(archs).intersection(set(ARCH_MAP.values())):
+            new_archs = [arch for arch in ARCH_MAP
+                            if ARCH_MAP.get(arch) in archs]
+            #print(new_archs)	
+            archs = new_archs + \
+               list(set(archs).difference(set(ARCH_MAP.values())))
+            print(archs)
+for fname in find_files("/home/saikumar/sss/programs/python/emulator"):
+        ftype = fname.split('.')[-2]
+        #print (fname.split('.'))
+        #if ftype not in ("src", "noarch"):
+                #print(ftype)
+        #basename = os.path.basename(fname)
+
+

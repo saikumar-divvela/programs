@@ -1,0 +1,276 @@
+#test
+--------------------------
+linux kernel and internals
+---------------------------
+kernel manages resources of linux os (I/O, process, memory, device, file system)
+the layer is like this hardware <- kernel <- shell/application
+->shell is a command langauge interpreter, takes the commands in english and executes the commands.
+it is not part of system kernel but uses kernel to exeute commands and create files..
+List of installed shells in system /etc/shells.
+->A process is program to perform specific job or an instance of running command with PID
+
+
+--------
+commands
+--------
+vi vim view touch  cal date time who whoami which cat ls mv cp rm sort unique diff tr  "type -p <command_name>"
+grep awk sed wc cut gksu #opens gui run window# env
+echo $SHELL
+
+uname -r (linux kernel version)
+uname -m (architecture)
+cat /proc/version
+lsb_release -a  (ubuntu version)
+dmesg | grep Linux  (all boot messages are stored in dmesg)
+
+/etc/fstab contains all mount points i.e all directories tht are mounted
+/proc/partitions
+
+scp local.txt your_username@remotehost.edu:/some/remote/directory
+scp your_username@remotehost.edu:foobar.txt /some/local/directory 
+
+ssh commands generating keys
+ssh-keygen -t dsa -f <filename>
+ssh-keygen -t ecdsa -f <filename>
+ssh-keygen -t rsa -f <filename>
+
+===> link
+hard link 
+    ln <filename> <hardlink>
+All the links share same inode number. The file is deleted only when all the links are deleted.
+how to find all links -> ls -i  && find / -inum <inode_number> -print
+symbolic link 
+    ln -s <filename> <softlink>
+Each link has different inode number. After the original file is deleted then sym links don't work.
+
+===> Setting system path
+
+===> hardware information
+lscpu - cpu details 
+lshw  - details about cpu, memory, network adapters, disks, usbs 
+lspci - lists all pci buses, and hardware coonnected to those buses. (hw like graphics card,network adapter,usb ports, sata controllers)
+lsusb - list of usbs
+lsblk - list block devices
+df fidk mount
+free -- to check RAM
+dmidecode
+/proc/cpuinfo
+/proc/meminfo
+/proc/partitions
+hdparm
+
+==>environment variables/system path
+To set for all users 
+/etc/environment 
+don't use /etc/profile or /etc/bash.bashrc
+/etc/profile.d -> The scripts under this directory are run during the system start up. create a script, with exported variables, in this directory
+
+To set for current user
+~/.profile  --> best place
+~/.bash_profile or ~./bash_login --> only for bash shells
+~/.bashrc
+
+To apply the changes run
+source ~/.profile
+
+
+==> process related
+"ps -ax -ag" kill killall top pstree
+
+==> package related
+apt-get install/remove  #install/removes the packages
+apt-get update #Gets the latest versions for installed packages but doesn't install anything
+apt-get upgrade <package> #upgrades all/specific packages based on the updated info
+apt-cache search <pkg> #Searches for the package in configured repositories
+
+dpkg --get-selections  #List all softwares installed in system
+dpkg -i <pkg_file> # Installs the package
+dpkg -r <package> # removes the package, doesn't remove configuration files
+dpkg -P <package> # Purge the package, removes everything including configuration files
+
+==>Kernel
+sysctl # configure kernel parameters at runtime
+e2fsck # repairs the file system. doesn't work on mounted file system.
+resize2fs # resizes the file system ext2,3,4.  Enlarges or shrinks the file system located on device.
+
+
+==>Ipaddress / networking commands
+--->ipaddress: 2 ways to set ip address  network-manager and ifconfig
+network-manager and ifconfig are not compatible
+
+#1 ifconfig
+change /etc/network/interfaces to add/modify interface details
+/etc/init.d/networking  start/stop to enable/disable the interfaces defined in the file
+ifup and ifdown uses this configuration for bringing down or up the interfaces. They use ifconfig internally.
+
+#2 NetworkManager 
+    Won't configure interfaces listed in /etc/network/interfaces
+    Configured ip address is available in /etc/NetworkManager/systemconnections
+    Use network settings GUI and set the ip address 
+    Networkmanager is frontend to iproute,dhclient,wpa_suppliant and ppp
+    Start/stop the network manager service to enable/disable the interface 
+    
+    /etc/init.d/networking stop
+
+    sudo start/stop network-manager
+    sudo service network-manager stop/start
+
+ifconfig doesn't use the interfaces info in file /etc/network/interfaces
+
+you can also use ifconfig <interface> up/down to enable/disable the interface
+
+
+Networkmanager and ifconfig are not compatible and doesn't use the interfaces listed in /etc/network/interfaces
+
+/etc/network/interfaces  #Ip address configuration
+sudo ifconfig eth0 up/down #bring up/down port
+ifup eth0 #bring UP port
+ifdown eth0 #bring down port
+route #display routine table
+
+iptables
+netstat -nat # active internet connections
+netstat -tulp # display open ports
+netstat -i # display network interfaces 
+ufw status # shows the firewall status
+nmap -P0 destinationipaddress
+
+--> setting up network bridge
+create a bridge with ipaddress and don't connect real interface to bridge
+
+brctl addbr br0
+brctl addif br0 eth0
+brctl show
+ip link set dev br0 up
+
+ip link set dev br0 down
+brctl delbr br0
+ip addr add dev br0 192.168.66.66/24
+
+iptables -I FORWARD -m physdev --physdev-is-bridged -j ACCEPT
+
+
+==>Commands to check status of xorg server
+xeyes
+Xorg
+X11 -> needs X server and windo manager,client screens
+init 5 # command to start GUI from command prompt
+
+==>Troubleshooting
+Entering grub menu:When os is booting press esc/shift button
+
+==>Setting up new linux system
+#Change the connecting server in software center if apt-get doesn't work
+#Set the proxy url in internet
+#Import the certificate in firefox to avoid the https invalid certificate error
+
+---------------
+Unix concepts
+---------------
+---> wayland
+This is a just display server protocol that is intended to replace X windows system.
+Communication happens between compositor and its clients. A compositing window manager
+gives each application its own memory buffer and then composites all these memory buffer 
+into an image in display memory.  The compositor can be a linux display server, an X applicaton
+or a wayland client.
+Weston is reference implementation of wayland protocol. Weston is fast, small,and runs on mobile and embedded devices. 
+Composite windo manager supports all special effects,2D,3D animations. Ex: Xfwm,Cairo,KWin,Mutter
+
+Histroy
+XFree 86 (X window system or X11 or X)
+Xorg ->Fork of X11.Later the functinality like memory management, command scheduling  and mode setting moved to kernel, but still Xorg is a memory and cpu hog. 
+
+---> crosstalk
+Crosswalk is a HTML5 runtime built on open source. You can deploy the mobile html5 application with its
+own runtime without a dependency on native webview that is on device.
+so application can run in different android versions, also on ios,without differences.
+
+--->X window system or X11 or X
+Uses client-server model. client can be remote. X client may emulate an X server by provding display services to clients. known as x nesting. examples are Xnest and Xephyr
+
+
+------------------
+GIT
+-----------------
+to clone a project
+git clone <source_url>  <target_dir>
+git add <filenames>
+git commit -m <commit_text>
+git rm <file-name> # to remove the file from staging and working dir
+gir rm --cached <file-name> # to remove the file only from staging
+git diff  # to see the changes between modified and staged vesrions
+git diff --staged # to see the changes between staged and repository
+git mv <file_name_old> <file_name_new>
+git log --pretty=oneline --graph
+
+-----------
+User/Group management
+------------
+Creating a new group and adding user to the group
+    addgroup gerrit
+    adduser --system --home /home/gerrit --shell /bin/bash --ingroup gerrit2 gerrit
+
+To add user to existing group
+sudo adduser <user> <group>
+
+removing user
+userdel -r <username>
+deluser –force <username>
+deluser –remove-home/–remove-all-files/–backup-to DIR <username>
+
+
+#remove user from group
+    sudo deluser <user> <group>
+
+#list the groups the user belongs
+    groups <username>  
+#changing the group of file
+    chgrp group_name file/directory_name 
+#changing the owner of file
+    chown <user_name> <file>
+
+--> changing password as root
+passwd <username>
+
+----------------------
+Mysql
+----------------------
+installing mysql
+apt-get remove --purge mysql-server mysql-client mysql-common
+apt-get install mysql-server
+apt-get install mysql-client
+
+create database
+dop database <dbname>
+drop user <name>@<host>
+
+-------------------
+Service management
+-------------------
+service command executes a script which is defined in /etc/init.d/ or an upstart job defined in /etc/init
+service --status-all
+service <servicename> start/stop/status/--full-restart
+start/stop/status <servicename>
+-------------------------
+Important files
+------------------------
+/etc/shells -> contains list of installed shells
+/etc/profile.d -> contains the startup scripts run for all users
+~/.profile -> user profile
+~/.bash_profile -> user shell profile
+~/.bash_login -> executed when login to the shell
+/etc/fstab -> contains all mount points i.e all directories which are mounted
+/proc/partitions -> contains all partitions details
+----------------------------
+Add certificate to root user
+----------------------------
+1) Create a directory for extra CA certificates in /usr/share/ca-certificates:
+    sudo mkdir /usr/share/ca-certificates/extra
+
+2) Copy the CA .crt file to this directory:
+    sudo cp foo.crt /usr/share/ca-certificates/extra/foo.crt
+
+3) Let Ubuntu add the .crt file's path relative to /usr/share/ca-certificates to /etc/ca-certificates.conf:
+    sudo dpkg-reconfigure ca-certificate
+
+
