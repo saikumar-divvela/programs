@@ -1,0 +1,11 @@
+#!/bin/sh
+# test script
+
+
+
+if [ ! -f "/home/saikumar/tizen/qemu-arm/tizen-common.img" ];
+then
+   echo "File $FILE doesn't exist."
+else
+   echo "File $FILE  exists."
+fi

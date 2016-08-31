@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+#This program prints colorful text
+#
+echo "\033[35m hello colorful world"
+echo "\033[0m"
+echo "\033[1m Hello \033[2m World"
+echo "\033[0m"
+echo "\033[5m Flash \033[0m"
+echo "\033[7m Linux OS! Best OS!! \033[0m"

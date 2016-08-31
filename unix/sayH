@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+#Read the name and say greetings
+#
+
+echo "Your first name:"
+read fname
+echo "Hello $fname, how r u "
+

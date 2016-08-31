@@ -1,0 +1,23 @@
+Omsrisairam
+
+Lang Basics
+Exception handling
+OOPS concepts
+Database connectivity
+Data structures
+Networking
+Web
+Graphics
+
+==> Lang Basics
+
+User defined functions
+
+int func -> converts string to int
+str func -> converts int  to string
+float func -> converts string to float
+
+type func -> returns type of variable
+
+List is mutable and can contain different types of data.
+Tuples are similar to list but tuples are immutable and used to define list of constants.. tuple can be converted to list and vice versa

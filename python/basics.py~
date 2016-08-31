@@ -1,0 +1,28 @@
+#!/home/saikumar/sss/bin/py
+
+
+## Initialization. Multiple variables can be initialized in one line
+
+
+##  list and dictionaries
+
+## lists are ordered 
+
+
+
+
+books = ["Head First Python","Head First Programming","Head First Java Script",["programming",["python","genera;","java script"]]]
+'''
+books.insert(1,1991)
+books.insert(3,1995)
+books.append(5,2005)
+print(books)
+print(books[3][1][2])
+'''
+
+for book in books:
+    if isinstance(book,list):
+            for data in book:
+                print(data)
+    else:
+        print(book)
