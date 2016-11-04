@@ -1,0 +1,59 @@
+#! /usr/bin/python
+from nsetools import Nse
+from pprint import pprint
+
+nse = Nse()
+
+#stks = ['3IINFOTECH','TECHM','EMAMILTD','YESBANK','SBIN','INTELLECT']
+#stk_tgt = {'TECHM':400,'3IINFOTECH':3.90,'YESBANK':650,'SBIN':140,'EMAMILTD':900, 'INTELLECT': 200}
+
+stks = ['3IINFOTECH','TECHM','EMAMILTD','YESBANK','SBIN']
+stk_tgt = {'TECHM':400,'3IINFOTECH':3.90,'YESBANK':650,'SBIN':140,'EMAMILTD':900}
+
+
+'''
+TECHM --  400 25K   (< 400)
+3I    --  
+YES   --- 650 50K   (< 700)
+SBI   --  140 50K   (< 170) 
+EMAMI --  900 50K   (< 950)
+'''
+
+'''
+q1 = nse.get_stock_codes()
+pprint(q1)
+
+index_codes = nse.get_index_list()
+pprint(index_codes)
+
+quote = nse.get_index_quote('NIFTY 50')
+pprint(quote)
+
+
+'''
+
+quote = nse.get_index_quote('NIFTY 50')
+pprint(quote)
+
+print ('%10s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8s'%('Name','Price','Pclose','Open','DHigh','DLow','52High','52Low','FV','Target','Action','Diff'))
+
+for stk in stks:
+    print stk
+    q = nse.get_quote(stk)
+    action = '---'
+
+    if (stk_tgt[stk] + stk_tgt[stk] / 50.0 > q['lastPrice']):
+        action = 'BUY'    
+    elif (stk_tgt[stk] + stk_tgt[stk] / 50.0 > q['dayLow']):
+        action ='WATCH'
+    else:    
+        action = '---'
+
+ # buy if within range of target 400  current 440
+    if ( q['lastPrice'] < q['previousClose']):
+        print ('%10s\033[1m%8s\033[0m%8s%8s%8s%8s%8s%8s%8s%8s%8s%8.4s'%(stk,q['lastPrice'],q['previousClose'],q['open'],q['dayHigh'],q['dayLow'],q['high52'],q['low52'],q['faceValue'],stk_tgt[stk],action,(q['lastPrice']-stk_tgt[stk])*100/stk_tgt[stk]))
+    else:
+        print ('%10s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8.4s'%(stk,q['lastPrice'],q['previousClose'],q['open'],q['dayHigh'],q['dayLow'],q['high52'],q['low52'],q['faceValue'],stk_tgt[stk],action,(q['lastPrice']-stk_tgt[stk])*100/stk_tgt[stk]))
+
+
+
