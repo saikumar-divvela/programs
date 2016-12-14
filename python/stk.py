@@ -39,6 +39,13 @@ print ('%10s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8s%8s'%('Name','Price','Pclose','Open','
 
 for stk in stks:
     print stk
+    '''    
+    try:
+        q = nse.get_quote(stk)
+    except Exception,e:
+        print e
+        continue
+    '''
     q = nse.get_quote(stk)
     action = '---'
 

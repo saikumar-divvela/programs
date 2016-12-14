@@ -9,7 +9,6 @@ import sys
 sys.stdout.write('.')
 
 ### Basics
- 
 x,y,z,first,second = 15,2,3,'second','first'
 print(x,y,z,first,second)
 
@@ -22,25 +21,24 @@ if x<5 or (x>10 and x<25):
 if x<5 or 10<x<20:
 	print ("the value is ok")
 
-### conditional operator
+###Conditional operator
 a='FAIL'
-value = ['red', 'green'][a == 'SUCCESS']
+value = ['red', 'green'][a != 'SUCCESS']
 print (value)
 
 ### Loops:iterative logic
-
 for i in [25,34,56,12,7]:
-	print(i),
+    print(i),            # , in  the end prints next statement in same line
 
 print ''
 x=4
 while x>=0:
-	print(x),
-	x=x-1
+    print(x)
+    x=x-1
 
 print ''
 for value in range (2,5):
-	print (value),
+    print (value),
 
 print ''
 
@@ -66,14 +64,16 @@ print (veg[1::2]) # starting from 2nd element, every 2nd element
 print (veg[::3])  # starting from 1st element, every 3rd element
 
 
-#str = input("enter some number:")
-#s=int(str)  # convert string to int
-#print ("the square of the number is:",s*s)
+"""
+str1 = input("enter some number:")
+s=int(str1)  # convert string to int
+print ("the square of the number is:",s*s)
+"""
+
 
 ### LIST Examples
 
 # Lists are ordered, mutable
-
 print '\n###List Example'
 new_list = [x for x in range(5)]
 new_dict = {key: str(key) for key in range(5)}
@@ -118,7 +118,14 @@ for book in books:
 myTuple = (1,2,3)
 myList = list(myTuple)
 myList.append(4)
-    
+
+
+# tuples are similar to list but tuples are immutable and used to define list of constants.. tuple can be converted to list and vice versa
+
+myTuple = (1,2,3)
+myList = list(myTuple)
+myList.append(4)
+
 
 ### Dictionary examples
 
@@ -149,7 +156,6 @@ for key,value in phone_dict.items():  # get key,value pairs
     print(key,value),
 
 ### Type conversions
-
 print '\n\n###Type conversion examples###'
 a="0"
 b=2
@@ -164,11 +170,9 @@ f=5
 g=10.3
 print(float(e)+f) #converts string to float
 print(e+str(f))
-
 print(type(e),type(f),type(g))
 
 ###Formatting strings/floats
-
 x = 21.453
 y = 32.567
 
@@ -184,7 +188,7 @@ print ("%.4s"%str)
 
 ### Mutable/Immutable examples
 
-# Immutable -- string, integer,float and tuples  
+#Immutable -- string, integer,float and tuples
 a= 3
 print "\n\nImmutable example: a = %i, id(a)=%i"%(a,id(a))
 a=a+1
@@ -197,10 +201,10 @@ b.append(23)
 b.append(56)
 print "After adding values to list: b = %s, id(b)=%i \n\n"%(b,id(b))
 print(sys.maxsize)
-print(sys.maxsize+1)
+print(sys.maxsize*sys.maxsize)
+
 
 ### functions
-
 def bar(*args):
     print args
 
@@ -212,4 +216,10 @@ bar([1,2], 2, 3)
 d = {'a':5, 'b':6, 'c':7}
 foo(**d)
 
-print list(range(1,100))
+print list(range(1,10))
+
+print "Bitwise operators"
+i = 5
+i = i&4
+print i
+
