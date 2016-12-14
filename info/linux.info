@@ -206,31 +206,37 @@ git log --pretty=oneline --graph
 -----------
 User/Group management
 ------------
-Creating a new group and adding user to the group
+#List all users/groups in system
+cut -d: -f1 /etc/passwd
+cut -d: -f1 /etc/group
+
+# Creating a new group and adding user to the group
     addgroup gerrit
     adduser --system --home /home/gerrit --shell /bin/bash --ingroup gerrit2 gerrit
 
 To add user to existing group
-sudo adduser <user> <group>
+    sudo adduser <user> <group>
 
-removing user
-userdel -r <username>
-deluser –force <username>
-deluser –remove-home/–remove-all-files/–backup-to DIR <username>
+To modify username of a user
+    usermod -l new_username old_username
 
+# removing user
+    deluser –force <username>
+    deluser –remove-home/–remove-all-files/–backup-to DIR <username>
 
-#remove user from group
-    sudo deluser <user> <group>
+remove user from group
+    sudo deluser/userdel <user> <group>
 
 #list the groups the user belongs
     groups <username>  
+
 #changing the group of file
     chgrp group_name file/directory_name 
 #changing the owner of file
     chown <user_name> <file>
 
---> changing password as root
-passwd <username>
+#changing password as root
+sudo passwd <username>
 
 ----------------------
 Mysql
