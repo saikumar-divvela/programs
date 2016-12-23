@@ -1,5 +1,5 @@
 import sys
-import traceback    
+import traceback
 
 
 def test():
@@ -15,10 +15,11 @@ def test():
 test()
 
 class TestException(Exception):
+    """ Test Exception """
     pass
 
 try:
-    raise TestException("this is raised test expression")
+    raise TestException("this is raised test exception")
 except Exception as e:
     print sys.exc_info()
     print e.args
@@ -56,7 +57,7 @@ try:
 except Exception as exp:
     print type(exp),exp
     traceback.print_exc()
- 
+
 
 #Example 3
 try:
@@ -97,14 +98,14 @@ finally:
 try:
     raise ValueError('Test error')
 except ValueError as e:
-    print e    
+    print e
     traceback.print_exc()
-  
+
 #Example 7  Reraise the exception
 try:
     raise ValueError('Test error1')
 except ValueError as e:
-    print e    
+    print e
 #    raise   # This will keep track of stack trace for exception
 
 

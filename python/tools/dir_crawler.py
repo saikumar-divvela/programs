@@ -23,15 +23,15 @@ def genhtml(filelist):
     print filelist
     o_html = "<html><head></head><body><font size='3'>"
     for key in filelist.keys():
-        for fn in  filelist[key]: 
+        for fn in  filelist[key]:
             o_html = o_html+ "<p><a type='text/plain' target='_blank' href='file:///"+fn+"'>"+os.path.basename(fn)+"</a></p>"
     o_html = o_html+"</font></body></html>"
-    return o_html    
+    return o_html
 
 
-path='/home/sai/'
+path='/home/sai/sss/'
 extensions = ['info']
-o_file= 'test_info.html'
+o_file= '/home/sai/sss/test_info.html'
 
 
 filelist = getfiles(path,extensions)
