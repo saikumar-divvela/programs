@@ -23,7 +23,7 @@ for x in range(1,2):
     print "#Total %s #Noshares %s #Start price %s #Avgprice %s %.2f %.2f #currentprice %s"%(t_amount,t_shares,p1,avg_price,(avg_price-p1)*100/p1,(c_price-avg_price)*100/avg_price,c_price)
 '''
 
-stks = {"YESBAN":{"tgt":1100,"max_inv":100000},"HAVIND":{"tgt":350,"max_inv":100000},"BAJFI":{"tgt":800,"max_inv":100000},"DEWHOU":{"tgt":250,"max_inv":100000},"CANHOM":  {"tgt":1600,"max_inv":60000},"INTDES":{"tgt":150,"max_inv":60000},"MANAFI":{"tgt":60,"max_inv":60000},"GRANUL":{"tgt":100,"max_inv":60000}}
+stks = {"YESBAN":{"tgt":1100,"max_inv":100000},"HAVIND":{"tgt":350,"max_inv":100000},"BAJFI":{"tgt":800,"max_inv":100000},"DEWHOU":{"tgt":250,"max_inv":100000},"CANHOM":  {"tgt":1600,"max_inv":60000},"INTDES":{"tgt":150,"max_inv":70000},"MANAFI":{"tgt":60,"max_inv":60000},"GRANUL":{"tgt":100,"max_inv":60000}}
 
 
 data = {}
@@ -33,7 +33,7 @@ with open("/home/sai/Downloads/8500610131_PortFolioEqt.csv","rb") as csvfile:
         if row['Stock Symbol'] in stks.keys():
             data[row['Stock Symbol']] = {"qty":row['Qty'],"avg_price":row['Average Cost Price'],"curr_price":row["Current Market Price"]}
 
-x2 = 15000
+x2 = 6000
 print "inv: %s"%(x2)
 for stk in stks.keys():
      n1 = float(data[stk]["qty"])
