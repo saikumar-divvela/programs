@@ -1,0 +1,155 @@
+Current
+Suwon-si, Gyeonggi-do, South Korea (443-370)
+saikumar.divvela@gmail.com
+Cell:  +82 10 6650 4486	Saikumar Divvela	
+Permanent
+H No 20-5-9 Kasulamara Street, Chirala, India -523155
+Phone no: +82 10 6650 4486
+
+________________________________________
+Passionate, dedicated senior software engineer with over 10 years of experience in designing and developing applications in Java, JEE and Python. Proficient in full stack development, software development life cycle management, web services development and  service oriented architecture.  
+
+WORK EXPERIENCE
+________________________________________
+Senior Engineer, Samsung Electronics, Suwon, South Korea (Oct 2014 - present) 
+Software Engineer IV, Cisco Technologies, Bangalore, India (Oct 2010- Jun 2014)
+Senior Software Engineer, Symbol Technologies (A Motorola company), Bangalore (Apr 2005- Sept 2010)
+Software Engineer, Infosys Technologies, Bangalore (Apr 2003 – Mar 2005)
+
+
+EDUCATION
+________________________________________
+•	2001 -2003  M.Tech Information Technology, IIT Roorkee 
+•	1997 -2001  B.Tech. Electronics and Communication, Nagarjuna University 
+
+
+TECHINCAL SKILLS
+________________________________________
+Languages and Technologies	Java, JEE , Python , PL/SQL, Unix shell scripting, Spring, Struts, Hibernate, AWS, Web services, Django, HTML, CSS, Ajax, Java script, JQuery and  Bootstrap
+Databases	Oracle, MySQL, Redis and Denodo
+Servers	Apache, Tomcat, JBOSS and IBM Web Sphere
+Tools	Jenkins, Gerrit, Jmeter, Jprobe, MySQL workbench, TestNG , Junit, Maven and Ant
+Operating Systems	Linux, Tizen, Windows 7 and Mac OS X10.8
+Other	Docker, Git, Perforce, Open Build Service (OBS)
+
+PROFESSIONAL SUMMARY
+________________________________________
+•	Over 10 years of experience in application and product development in Java, JEE and open source technologies
+•	Over 4 years of experience in tools and GUI development using Python 
+•	Over 5 years of experience in Spring, Hibernate , SOAP and RESTful  Web services 
+•	3 years of experience in Unix shell scripting, build tools development and automation , database design and development
+•	Strong team leader  and mentoring junior members
+•	Strong background in architecture, design and development tools
+•	Able to quickly learn new concepts and technologies
+•	Self motivated with good analytical and problem solving skills
+
+CERTIFICATIONS and AWARDS________________________________________
+•	Sun Certified Java Professional (SCJP)
+•	Sun Certified Web Component Developer (SCWCD)
+•	Individual excellence award in Cisco Technologies Ltd
+•	Cisco Star award
+•	Best software project award in Cisco Technologies Ltd
+
+
+PROJECTS
+________________________________________
+Project Name: Tizen Platform and Infrastructure (Oct 2014-present)
+Company:  Samsung Electronics, South Korea
+Description: Tizen is an open source platform for different kind of devices like smart phones, tablets , smart tv and in-vehicle infotainment  devices etc. Tizen platform  team  creates and maintains the infrastructure, build tools required for Tizen OS. The team designs and develops various build tools which are used across the  company for Tizen based products. The team automates the complete build process and provides seamless experience to Tizen developer teams.
+Roles & Responsibilities:
+•	Enhanced design and development of  build process for Tizen projects
+•	Developed various Jenkin jobs, scripts and tools using Python, Unix shell scripting and Docker for automating the build process
+•	Developed tool for synchronizing Tizen code between Gerrit and Github/Perforce
+•	Automated the process of testing different Tizen versions on hypervisor QEMU 
+
+Project Name: Smart Net Total Care, Sept 2011 – Jun 2014
+Company: Cisco Technologies Ltd 
+Description:  SNTC 2.x is a Cisco product for inventory, alerts and contracts management of customers and to replace legacy Cisco products. Its architecture enables to scale the system horizontally to address increasing needs of customers and to solve the customer issues in efficient way.  The product provides unified interface to all users of the legacy products. The architecture enables to plug in reusable software services developed by Cisco and data virtualization platform Denodo and reduces the down time of application. Based on contracts and access privileges customers will use the features of SNTC. 
+Roles & Responsibilities:
+ Involved in design and development of framework and services
+•	Designed and developed reporting framework
+•	Developed email notification service based on RESTful web services
+•	Load testing of application and  performance analysis using Jmeter and Jprobe
+•	Developed PL/SQL procedures for generating offline reports
+•	Analyzed explain plan statements and optimized performance of  database queries 
+•	Mentored a team of  4 members
+
+Project Title: Inventory & Reporting (IR) (Oct 2010 – Aug 2011)
+Company: Cisco Technologies Ltd 
+Description: The project deals with monitoring and managing of inventory and contracts of customers. Inventory data is collected using collectors deployed in customer sites and processed data is persisted in database and used for providing consolidated network view in reports and charts to better identify and manage the issues.
+Roles & Responsibilities:
+•	Contributed to enhancements of application to support various Cisco devices
+•	SQL queries optimization and code tuning to improve the performance.
+•	Solving production issues.
+
+
+Project Title: Motorola Work Flow Management (Dec 2009-Sep 2010)
+Company: Symbol Technologies Ltd (Motorola)
+Description: Motorola Work Flow Management (MWFM) solution is an enterprise application using wireless LAN infrastructure and is targeted at retail industry. MWFM enables task management, task scheduling and task monitoring. Tasks are created and assigned to employees and monitored till completion. MWFM helps to calculate metrics of system and improve productivity of employees by reducing employee idle time through effective task assignment and management.
+Roles & Responsibilities:
+•	Designed and developed the database and business logic
+•	Designed and developed web console using Java, Struts, Spring and JavaScript
+•	Creating high level design and functional specification documents
+
+Project Title: Enterprise Mobility Platform (Apr 2009 – Oct 2009)
+Company: Symbol Technology Ltd
+Description: The Enterprise Mobility Platform (EMP) provides reliable messaging solution using the existing wireless LAN infrastructure across mobile devices. EMP is targeted to all verticals wherever the real time messaging and response tracking is necessary. EMP is the interface between the message sender and message receiver. Sender makes web service calls to EMP and sends the message to devices. Using EMP senders can send text, audio, video messages and receive message responses.
+Roles & Responsibilities: 
+•	Developed application using Java,Spring and SOAP web services
+•	Contributed to  design and development of GUI using JSP, Struts and JavaScript
+•	Contributed to design and development of database using MySQL
+
+Project Title: Portable Shopping System (Jul 2007- Mar 2009)
+Company: Symbol Technology Ltd
+Description: The Portable Shopping System (PSS) is a complete solution for giving customers in retail operations a better shopping experience. PSS allows a shopper the convenience of self-scanning items to be purchased while in the aisle, eliminating the need for shoppers to wait in check out lines. Shoppers pick up a hand-held scanner when entering the store and use it to scan the items barcodes and tally their purchases while shopping. When shoppers are done they simply pay for their purchases and they’re on their way. Using wireless technology, PSS can suggest purchases when the customer is in specific area of the store.	
+Roles & Responsibilities: 
+•	Involved in all phases of  software development life cycle of the product
+•	Developed the SOAP  web services  using Java and Spring
+•	Contributed to design and development of GUI using JavaScript, JSP and Struts
+
+Project Title: Mobility Services Platform (Oct 2005- Jun2007)
+Company: Symbol Technology Ltd
+Description: Mobility Services Platform (MSP) is a Symbol product, which provides a platform to manage both network devices and mobile devices from remote system. MSP provides different kinds of services like discovery of devices in different networks, configuring devices, provisioning devices, data collection, backup and restore, purging service, staging of mobile devices, SNMP traps and patching service. Each service performs specific tasks. MSP has different kind of roles with different permissions for executing tasks.  Based on these permissions a customer can turn on, turn off services and perform the tasks. User can chose type of information to retrieve from these devices and different kind of reports/charts can be generated based on the received information. Software can be upgraded in number of devices simultaneously and devices can be removed from networks dynamically.  Based on the received data and traps from devices, administrator monitors the device’s health.
+Roles & Responsibilities: 
+•	Involved in all phases of software development life cycle for two releases of the product
+•	Developed framework  for registering and communicating with devices from application using Java, Python and Jython
+•	Designed and Developed patching service in Java, which enables to apply patches for the product without going for complete product release
+•	Contributed to development of GUI using Portlets
+•	Developed Unix scripts for installation of product on IBM server
+
+Project Title: Symbol Enterprise Mobility Manager (SEMM) (Apr –Sept 2005)
+Company: Symbol Technology Ltd
+Description: SEMM is a Symbol product to manage network devices like access points, access ports, wireless switches and wireless bridges from remote location. Using SEMM the devices in a network can be discovered, configured and firmware in the devices can be downgraded/upgraded. The SEMM polls information from the devices at regular intervals of time and also receives different kinds of traps from the devices. This will help in finding the status of devices. 
+
+Roles & Responsibilities: 
+•	Contributed to GUI development of product using Python
+•	Developed a tool in Python to configure and invoke windows applications from UI
+•	Supporting new  Symbol wireless devices in product
+
+Project Title: SLRBTOB  (Jul 2004 – Mar 2005)
+Company: Infosys Technologies Ltd
+Description: Solectron is an electronic manufacturing services (EMS) provider. Solectron uses the web services provided by the company salesforce.com for maintaining its sales information. Solectron has different applications hosted in salesforce.com site.  Solectron gets data from different ERP systems. This data is stored in salesforce.com server. Project deals with developing the applications to use web services provided by salesforce.com and monitoring the data loads between Solectron and ERP systems.
+Roles & Responsibilities: 
+•	Enhanced and maintained  an application developed in Java and SOAP web services for retrieving the sales information for creating  quotations using web services provided by the salesforce.com.  
+•	Maintaining and fixing bugs in the application using Unix shell scripting for 
+data transfer loads between Solectron and ERP systems.
+
+Project Title: Boeing Repository for Integrated Data Gathering and Exchange (Aug 2003 – Jun 2004)
+Description: BOEING is an airplane manufacturing company. It has different production units. Project deals with integrating data of BOEING, which belongs to its production units and implementing the web services to access this information. Customers can use these web services to get the information of airplanes like parts, drawing and its zones etc. 
+Roles & Responsibilities: 
+•	Actively involved in complete software development life cycle.
+•	Creating high level design and functional specification documents for application.
+•	Developed SOAP web services in Java for accessing data in Oracle DB
+•	Developed PL/SQL functions, procedures and triggers for integration of data.
+	
+Minor Project in M.Tech
+Title: Implementation of Digital signature using ESIGN Algorithm                    
+Description:  Project deals with providing security features like authentication and integrity to messages by enabling creator of message to attach a secret code known as digital signature. Software is created for generating 128 bit unique hash code for variable length message using hash function MD5 and for generating digital signature which is obtained by encrypting hash code using ESIGN algorithm.  At the receiving side the digital signature is decrypted and verified with the hash code of message. If they match message is not tampered and receiver is certain of sender. If they don’t match message is tampered by intruder and is invalid.
+Platform: Java, Windows
+	
+Dissertation in M.Tech
+Title: A Watermarking Algorithm for Ownership Verification of Digital Images
+Description: Project deals with implementation of wavelet-based watermarking algorithm for inserting watermark into images and detecting watermark in the image, for ownership verification of digital images. Copyright information, which is unique to an organization or owner of digital images, is inserted into images. Copyright information acts as the watermark for the image.  Owner of the images will have private control on the watermark with the help of secret keys. A set of filters bank, which acts as a secret key for image, is generated from spectral factorization of polynomial. The owner searches for counterfeiters of his images and applies detection procedure on his images to find watermark. If the owner finds watermark the counterfeiter can be charged for illegal use of images.
+Platform: C, Windows
+
+ 

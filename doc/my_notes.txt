@@ -1,0 +1,3460 @@
+Table of Contents
+1.	JAVA & J2EE	3
+Core java	3
+XML	21
+Struts	22
+2.	WEB COMPONENTS	25
+Servlets	25
+JSPS	37
+Hibernate	45
+SOAP and REST web services	46
+Spring	47
+Patterns	49
+3.	LINUX	56
+Master Boot Record	56
+Lilo vs grub	58
+Compiling an ubuntu kernel	58
+Applying a patch to ubuntu kernel	60
+Commands	60
+4.	ALGORITHMS	61
+Fibonacci	61
+Prime number	61
+Linear Search	61
+Binary Search	61
+String Search	61
+Phonetic algorithm	61
+Sorting algorithms	61
+5.	DATA STRUCTURES	62
+6.	LOAD BALANCING, CLUSTERING, PERFORMANCE TUNING, SECURITY AND CACHING	66
+Load balancing	66
+Clustering	66
+Performance tuning	66
+Security	66
+Caching	67
+7.	PROJECTS	69
+8.	PROBLEMS TO SOLVE/ FAQ	70
+
+1.	JAVA & J2EE
+Core java
+Java compiler compiles the java code(.java) into byte code(.class). This byte code is not native to the processor. It is machine language  of java virtual machine (JVM). The java launcher tool then runs the application with the instance of JVM.
+
+Java code -> (compiler)-> class -> (JVM) -> program
+
+A platform is the software or hardware environment in which program runs. Most platforms are combination of hardware and OS. Java platform is software only platform that runs on the top of the hardware platform.
+
+Java platform has two components
+->	JVM
+->	Java application programming interface(API)
+
+A software object is a collection of state and behaviour. Data encapsulation is basic feature of software objects.  It is a mechanism in which object data (state) is hidden and interaction with object happens through object methods.
+Adavantages of software objects
+->	Code re-use
+->	Modularity
+->	Information hiding
+->	Pluggability & debugging
+
+A class is a blueprint or prototype for objects.
+
+Inheritance is a mechanism in which classes can inherit commonly used  state and behaviour of  other classes. In JAVA a class is allowed to have one direct super class. A super class can have any number of sub classes.
+An interface is a contract between a class and outside world. When a class implements an interface it provides the behaviour published by the interface.
+
+A primitive data type is a predefined data type and is reserved key word. Java has 8 primitive data types. byte,short,int,long,char,float,double,boolean.
+String objects are immutable, means once created their values can't be changed. 
+Default values are assigned to fields , where as local variables are not given default values.
+null may be assigned to any variable other than variables of primitive types.
+
+for statement has another form to iterate through collections and arrays. This feature is added in jdk 1.5
+Ex:
+	class EnhancedForDemo {
+		public static void main(String args[]){
+			int[]  numbers = {1,2,3,4,5,6,7,8,9};
+			for(int item : numbers)
+			System.out.println(“Count is: ”+item);
+		}
+	}
+
+	A method declaration consists of method's return type, name , parameters and the body between the 	braces {}.
+	Ex: double  calculateSpeed(float accelaration, int time){
+		}
+	A method signature consists of method name and parameter types.
+		Ex: calculateSpeed(float,int)
+
+	Overloading methods can have different method signatures.
+
+Constructor -> Constructor are used to create objects from  class blueprint.
+It is a method with menthod name equal to class name.
+A class may not have any constructor. A compiler automatically provides a no argument default constructor for a class without constructor. This default constructor will call the no argument constructor of super class.If the super class doesn't has any constructor then compiler will throw an error. If the class has no explicit superclass, then it has an implicit super class Object, which does have a no-argument constructor.
+A constructor can have access modifiers, to control which other classes can call this constructor.
+
+RULE: when u are providing constructors in a class, write a no argument constructor also.
+Example 1: 
+
+/* Here constructor is provided by compiler since the class doesn't has any constructor */ 
+// any public class should be declared in a file with name as class name or a text file can have any number of classes  without public modifier
+class SuperClass {  
+		private int index =0 ;
+		public void setIndex(int value) {
+			this.index = value;
+		}
+		public int getIndex() {
+			return this.index;
+		}
+}
+/* Here  default constructor is provided by compiler since the class doesn't has any constructor */
+class ClassDemo extends SuperClass {
+		private int subindex = 0;
+		public static void main(String[] args) {
+			ClassDemo temp = new ClassDemo();
+			temp.setIndex(10);
+			System.out.println("index is:"+temp.getIndex());
+		}
+}
+	Output: index is :10
+Example 2:
+/* Here default constructor is provide by the compiler since the class doesn't has any constructor */
+class SuperClass {
+		private int index =0 ;
+		public void setIndex(int value) {
+			this.index = value;
+		}
+		public int getIndex() {
+			return this.index;
+		}
+}
+
+/* Here no default constructor is provided since the class has constructor
+class ClassDemo extends SuperClass {
+		private int subIndex = 0;
+		public ClassDemo(int subIndex) {
+			this.subIndex = subIndex;
+		}
+		public static void main(String[] args) {
+			ClassDemo temp = new ClassDemo();
+			temp.setIndex(10);
+			System.out.println("index is:"+temp.getIndex());
+		}
+}
+
+Output: compilation error ->  ClassDemo(int) in ClassDemo cannot be applied to ()
+By adding the no argument constructor to class ClassDemo will solve this error.
+
+Arbitrary number of arguments
+	Using the construct varargs arbitary number of arguments can be passed to methods or constructors. Always varargs should be used for the last parameter.
+Syntax :  format(String pattern,Objects... values)
+This can be called with one string pattern and then with any number of objects (none,array of objects, sequence of objects etc).
+Method using varargs should not be overloaded.
+
+
+Always arguments(primitive data types and reference data types) are passed by value to methods.  For primitive data types the changes done to the parameters with in the method are lost when method execution is over.  For reference data types the values of fields can be changed inside the methods. But when the method returns the passed -in -reference still references the same object as before.
+
+Example:
+class Point {
+		private int x=10,y=20;
+
+		public void setX(int x){
+			this.x =x;
+		}
+		public void setY(int y){
+			this.y =y;
+		}
+		public int getX(){
+			return x;
+		}
+		public int getY(){
+			return y;
+		}
+		public void printDetails(){
+			System.out.println("location (x,y) -> ("+x+","+y+")");
+		}
+}
+class ParameterDemo {
+		public void movePoint(Point myPoint,int x,int y){
+			myPoint.setX(x);
+			myPoint.setY(y);
+			myPoint = new Point(); // This effect is not permanent
+		}
+		public static void main(String args[]){
+			ParameterDemo pdemo = new ParameterDemo();
+			Point myPoint = new Point();
+			myPoint.printDetails();
+			pdemo.movePoint(myPoint,20,30); // after the function returns myPoint still references the same object as before.
+			myPoint.printDetails();
+		}
+}
+
+Output:
+location (x,y) -> (10,20)
+location (x,y) -> (20,30)
+
+covariant return types
+In java we can't have two methods which differ only in return type. This restriction is relaxed little bit with jdk1.5.
+Now a method in subclass ,which returns the object of subclass ,can have the same method name as in superclass,which returns superclass object.
+
+Ex:
+	class SuperClass {
+		public SuperClass getObject() {
+			....
+			return new SuperClass
+}
+	}
+
+class subclass extends SuperClass {
+	public subclass getObject(){
+		....
+		return new SubClass
+	}
+}
+
+If a method has return type a Class then object of the same class or object of subclass can be returned. If a method has interface then the return value should be object which implements the interface. 
+
+Access levels
+
+At top level a class can have either public or no modifier (package level modifier)
+A member can have  public , private, protected, no modifier
+
+If a class doesn't has any modifier then it is visible in its package only.
+
+The  following matrix shows the access to members permitted by each modifier.
+
+	Class	Package	Subclass	World
+Public	Y	Y	Y	Y
+Protected	Y	Y	Y	N
+No modifier	Y	Y	N	N
+Private	Y	N	N	N
+
+
+Initializing class variables:
+	class variables can be initialized in static blocks in addition to constructor where error handling can be provided. 
+
+Syntax :
+	
+    static {
+		// initialization code
+    }
+
+A class can have any number of static initialization blocks. They are executed in sequential order. Another form of initializing static fields is
+
+class  JUNK {
+	public static varType varname =  initializeClassVariable();
+	private static varType initializeClassVariable() {
+		// initialization code
+}
+}
+
+The advantage of private static methods is static variables can be reinitialized whenever required.
+Example:
+	class StaticSectionDemo {
+		private static int dummy = initializeDummy();
+		static {
+			dummy =20;
+		}
+		private static int initializeDummy() {
+			dummy = 50;
+			return dummy;
+		}
+		public void printData() {
+			System.out.println("dummy:"+dummy);
+		}
+		public static void main(String[] args) {
+			StaticSectionDemo staticDemo = new StaticSectionDemo();
+			staticDemo.printData();
+			staticDemo.initializeDummy();
+			staticDemo.printData();
+		}
+}
+
+Output: 
+dummy:20
+dummy:50
+
+Initializing instance variables:
+	Similar to static variables instance variables can be initialized in initialization blocks which are copied to all the constructors. This is useful if some code is to be shared by all the constructors.
+syntax: {
+}
+
+Alternative way is  writing final methods to initialize variables. Advantage of this approach is sub class can use the method to reinitialize  the variable.
+
+Example:
+class InstanceVariableDemo {
+		private int dummy1,dummy2;
+		private int junk;
+		{
+			dummy2 = 100;
+		}
+		InstanceVariableDemo(int bigjunk) {
+			System.out.println("Inside constructor");
+			System.out.println("Dummy1 :"+dummy1);
+			System.out.println("Dummy2 :"+dummy2);
+			this.junk = bigjunk;
+		}
+		private void printData() {
+			System.out.println("Dummy1 :"+dummy1);
+			System.out.println("Dummy2 :"+dummy2);
+			System.out.println("Junk :"+junk);
+		}
+		{
+			dummy1 = 10;
+		}
+		public static void main(String[] args){
+		InstanceVariableDemo InstanceDemo = new InstanceVariableDemo(500);
+			InstanceDemo.printData();
+		}
+}
+
+Output:
+Inside constructor
+Dummy1 :10
+Dummy2 :100
+Dummy1 :10
+Dummy2 :100
+Junk :500
+	
+
+Nested Class:
+
+We can define a class inside another class. These are called nested classes.
+Nested classes are of two types  static nested class and  non static nested class (inner class).
+
+We use nested classes for logical grouping of classes, for increased encapsulation
+
+A static nested class can't access directly methods defined in the enclosing class. A static nested class interacts with the instance members of its outer class just like any other top level class. Static inner class can access static members of parent class.
+
+Static classes are accessed using enclosing class name
+OuterClass.StaticNestedClass 
+to create a object 
+OuterClass.StaticNestedClass  staticNestedObject = new OuterClass. StaticNestedClass 
+
+Syntax:
+class OuterClass {
+	...
+class StaticNestedClass {
+		...
+}
+}
+
+Example:
+class OuterClass{
+		int var1;
+		public OuterClass(int var){
+			var1 = var;
+		}
+		public OuterClass(){
+			var1 = 0;
+		}
+		public void printDetails() {
+			System.out.println("var1 :"+var1);
+		}
+		public static class StaticNestedClass {
+			int innerVar1;
+			public StaticNestedClass(int var) {
+				innerVar1 = var;
+			}
+			public StaticNestedClass() {
+				innerVar1 = 0;
+			}
+
+			public void printDetails() {
+				System.out.println("innervar1 :"+innerVar1);
+			}
+		}
+}
+
+class StaticInnerClassDemo{
+		public static void main(String[] args) {
+			OuterClass outerObject = new OuterClass(20);
+			outerObject.printDetails();
+OuterClass.StaticNestedClass  staticObject =new  outerClass.StaticNestedClass(30);
+		staticObject.printDetails();
+		}
+}
+
+Output:
+var1 :20
+innervar1 :30
+
+Inner Class:
+An inner class is associated with an instance of its enclosing class and can access that object's methods and fields. Objects that are instances of inner class exist within the instance of outer class. 
+An inner class can be instantiated as given below
+
+OuterClass.InnerClass innerClassObject = outerObject.new InnerClass()
+
+Syntax:
+	class  OuterClass {
+		...
+		class InnerClass {
+			...
+}
+}
+
+Example:
+class OuterClass{
+		int var1;
+	public OuterClass(int var){
+		var1 = var;
+	}
+	public OuterClass(){
+		var1 = 0;
+	}
+	public void printDetails() {
+		System.out.println("var1 :"+var1);
+	}
+	public class InnerClass {  // non static inner class
+		int innerVar1;
+		public InnerClass(int var) {
+			innerVar1 = var;
+		}
+		public InnerClass() {
+			innerVar1 = 0;
+		}
+		public void printDetails() {
+			System.out.println("innervar1 :"+innerVar1);
+			System.out.println("var1 :"+var1);
+		}
+	}
+}
+
+class InnerClassDemo{
+	public static void main(String[] args) {
+		OuterClass outerObject = new OuterClass(20);
+		outerObject.printDetails();
+		OuterClass.InnerClass innerClassObject = outerObject.new InnerClass(40);
+		innerClassObject.printDetails();
+	}
+}
+Output:
+var1 :20
+innervar1 :40
+var1 :20
+Example 2:
+/* This program implements the Stack operations using array and iterates the contents of stack using a inner class. The push operation places the integer in the first available free location of array and the pop operation removes the last element */
+
+class StackOfInts {
+	private int[] stack;
+	public int next = 0;
+	public StackOfInts(int[] values){
+		stack = new int[values.length];
+		stack = values;
+	}
+	public StackOfInts(int length){
+		stack = new int[length];
+	}
+	public StackOfInts() {
+		stack = new int[1];
+	}
+	public void push(int var){
+		if(next < stack.length){
+			stack[next++] = var;
+		}
+	}
+	public int pop() {
+		if(!isEmpty()){
+			return stack[--next];
+		}
+		return 0;
+	}
+	private boolean isEmpty(){
+		if (next == 0) {
+			return true;
+		}
+		return false;
+	}
+	private int getStackSize(){
+		return next;
+	}
+	public StepThrough getStepThroughObject(){
+		return new StepThrough();
+	}
+	public class StackIterator {
+		public boolean isLast(){
+			return (getStackSize() == 0 );
+		}
+	}
+
+	public class StepThrough {
+		private int i = 0;
+		public void increment() {
+			if ( i < stack.length) {
+				i++;
+			}
+		}
+		public int current(){
+			return stack[i];
+		}
+		public boolean isLast() {
+			if ( i == getStackSize() ){
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		int length = 6;
+		StackOfInts stackIntObject = new StackOfInts(length);
+		for(int i=0;i<length;i++) {
+			stackIntObject.push(i*2);
+		}
+
+StackOfInts.StackIterator stackIteratorObject  = stackIntObject.new StackIterator();
+		while (!stackIteratorObject.isLast()) {
+			System.out.print(stackIntObject.pop()+" ");
+		}
+		for(int i=0;i<length;i++) {
+			stackIntObject.push(i*i);
+		}
+		System.out.println();
+		StepThrough stepThroughObject = stackIntObject.getStepThroughObject();
+		while(!stepThroughObject.isLast()) {
+			System.out.print(" "+stepThroughObject.current());
+			stepThroughObject.increment();
+		}
+	}
+}
+
+Local Inner class is a inner class which is defined inside a method body. If this doesn't has any name then it is called anonymous inner class.
+
+All the modifiers public,private and package are applied to inner classes also.
+
+Types of nested classes are shown below.
+
+Type	Scope	Inner
+Static  nested class	member	no
+inner (non static) class	member	yes
+local inner class	local	yes
+anonymous class	only the  place where it is defined	yes
+
+
+
+Enum type:
+
+An enum type is a type whose fields consists of fixed constants. enum is a java keyword , which is added in java 5.0. enum type is a class type which can have methods and other fields other than constants.  enum type implicitly extends  the class java.lang.Enum and hence it can't extend any other class. Enum is thread safe.
+
+
+A simple enum class is shown below
+
+Example:
+enum Day {
+	SUNDAY,
+	MONDAY,
+	TUESDAY,
+	WEDNESDAY,
+	THURSDAY,
+	FRIDAY,
+	SATURDAY;
+		}
+public class EnumTest {
+	Day day;
+	EnumTest(Day day){
+		this.day  = day;
+	}
+	void setDay(Day day){
+		this.day = day;
+	}
+	void printDay(){
+		switch(day){
+			case SATURDAY:
+			case SUNDAY:
+					System.out.println("Today is holiday");
+					break;
+			case MONDAY:
+			case TUESDAY:
+			case WEDNESDAY:
+			case THURSDAY:
+			case FRIDAY:
+					System.out.println("Today is a week day");
+					break;
+			/* default:
+					System.out.println("invalid day");*/
+		}
+	}
+	public static void main(String[] args) {
+		EnumTest today = new EnumTest(Day.SUNDAY);
+		today.printDay();
+		today.setDay(Day.WEDNESDAY);
+		today.printDay();
+		System.out.println("All the Days");
+		for(Day day : Day.values()){
+			System.out.println(day);
+		}
+	}
+}
+
+enum class can have private constructors (can't be called explicitly)these constructors are used to assign values to enum constants.  Following example shows the use of enum constructors.
+Example:
+enum Month {
+	JAN,
+	FEB,
+	MAR,
+	APR,
+	MAY,
+	JUN,
+	JUL,
+	AUG,
+	SEP,
+	OCT,
+	NOV,
+	DEC;
+	int noOfDays;
+	Month(int days){
+		noOfDays = days;
+	}
+}
+
+public class EnumConstructorDemo {
+	public static void main(String[] args){
+		for (Month m : Month.values()){
+			System.out.println(m);
+		}
+	}
+}
+
+Output: compilation error
+error: cannot find symbol
+symbol  : constructor Month()
+location: class Month
+1 error
+Here constructor is defined without assigning any values to the constants
+The solution is given in the following example
+
+Example:
+enum Month {
+	JAN(30),
+	FEB(28),
+	MAR(31),
+	APR(30),
+	MAY(31),
+	JUN(30),
+	JUL(31),
+	AUG(31),
+	SEP(30),
+	OCT(31),
+	NOV(30),
+	DEC(31);
+	int noOfDays;
+	Month(int days){
+		noOfDays = days;
+	}
+}
+
+public class EnumConstructorDemo {
+	public static void main(String[] args){
+		for (Month m : Month.values()){
+			System.out.print(“ “+m);
+		}
+	}
+}
+
+Output:
+JAN  FEB MAR  APR  MAY JUN  JUL AUG SEP OCT NOV DEC
+
+The following example defines a method in enum class and uses default function name() provided by java.lang.Enum class.
+
+Example:
+
+enum Month {
+	JAN(30), // here it looks for the constructor Month(int) format
+	FEB(28),
+	MAR(31),
+	APR(30),
+	MAY(31),
+	JUN(30),
+	JUL(31),
+	AUG(31),
+	SEP(30),
+	OCT(31),
+	NOV(30),
+	DEC(31);
+	public int noOfDays;
+	Month(int days){
+		noOfDays = days;
+	}
+	public void printDays() {
+		System.out.println(" The month "+this.name()+" has "+noOfDays+ "days");
+	} // name is an API function
+}
+
+public class EnumConstructorDemo {
+	public static void main(String[] args){
+		for (Month m : Month.values()){
+			m.printDays();
+		}
+	}
+}
+
+Output:
+The month JAN has 30days
+The month FEB has 28days
+The month MAR has 31days
+The month APR has 30days
+The month MAY has 31days
+The month JUN has 30days
+The month JUL has 31days
+The month AUG has 31days
+The month SEP has 30days
+The month OCT has 31days
+The month NOV has 30days
+The month DEC has 31days
+
+
+
+
+
+Format and printf (of printstream) are used in addition to print and println. All the converters and flags are specified in java.util.Formatter
+
+
+
+
+Number & Strings
+
+java.lang.Number 
+derived classes -> Byte,Integer,Long,Short,Double,Float 
+BigInteger, BigDecimal,AtomicInteger and AtomicLong
+
+Wrapper classes  are developed for primitive data types. Advantages of wrapper classes are a) to use the constants provided by them . useful in boundary checkings.
+b) to pass them as arguments  to method which accept objects
+c) using methods to  convert one value to value of different primitive types and for conversion between different number systems
+
+format and printf (of printstream) are used  in addition to print and println
+All the converters and flags are specified in java.util.Formatter
+
+difference between Math.random() and java.util.Random
+if  we need one random number Math.random can be used. It generates a random number 0.0>= number <1.0.
+If you want to generate a series of random number we have to use java.util.Random
+
+Strings are immutable objects. Once the object is created its state can't be changed.
+String class has a static function called format which can be used  to reuse the format
+Example:
+String  fs =  String.format(“ The float value is %f and the string is %s”,floatVar,strVar);
+System.out.println(fs);
+
+Java has two classes StringBuffer and StringBuilder for variable strings. Both the classes are exactly same except that all the methods in StringBuffer are thread safe.
+
+A anagram is a word  or a phase made by using the letters of another word or phrase. White spaces and punctuation is ignored. 
+
+Packages
+
+A package a name space which contains related types like classes,interfaces,annotations, enumerations.
+A file can have more than one type(class) but only one type should be public.
+A type which is not declared as public is a package private type. It is only accessible within the class. 
+By default JVM or compiler loads the members from the following packages.
+a)	types which don't have any package
+b)	members of java.lang 
+c)	members of current package
+
+
+
+package members are accessed in the following ways
+a)	by using fully qualified name
+b)	by importing the type 
+ex: import  com.example.test
+c)	by importing the all the members of the package 
+ex: import  com.example.*;
+
+-> the static  members of package can be accessed without the type name if the type is imported using static.  
+Ex: import static com.example.test
+Now u can access the static members of the class directly
+
+-> to import all the nested classes of a file
+Import com.example.test.*;
+But this won't import the class test
+import  com.example.test.*;
+import  com.example.test;
+will import both the class test and all nested classes.
+
+The packages are not hierarchical. The  packages  java.awt.colour and java.awt.graphics are different from java.awt.   The prefix java.awt is to show the relationship between packages. When u say import java.awt.* , it doesn't include the members of java.awt.colour and java.awt.graphics etc.
+
+Normally source code is maintained in the path according to the package structure but this is not compulsory.
+classpath contains the path of the classes. Jvm adds the package path to classpath and executes the class file
+
+ex: 
+java\com\example\ test.java
+pwd
+java\com\example\
+javac  test.java
+the output file name is com.example.test.class
+to run the file
+pwd
+java\
+java com.example.test
+another way is  move the classes to classes directory and set the classpath to this directory.
+
+
+->Difference between Math.random() and java.util.Random
+If we need one random number Math.random can be used. It generates a random number 0.0>= number <1.0. If you want to generate a series of random number we have to use java.util.Random
+
+Jvm adds the package path to classpath and executes the class file.
+Struts action classes and jsp variables are not thread safe
+Resources like database or file should be closed properly. Otherwise it will lead to performance and memory issues.
+
+->Difference between compare to and comparator
+Comparable interface -> over ride compare to-> used for natural sorting-> used on lists and arrays for sorting
+Comparator interface -> over ride compare -> used to compare objects by different attributes -> tree set, tree map.
+Both methods should be consistent with equals' method	
+collections.sort(list) collections.sort(list,comparator)) arrays.sort(list)
+
+->Difference between string vs ,stringbuffer vs string builder
+Strings literal are stored in string pool and never garbage collected.
+String objects are stored in string pool; references are kept in heap and eligible for garbage collection. For string literals it is not good to use new operator. For sub strings etc good to use new operator.stringbuffer is thread safe and string builder is not thread safe
+
+->When to use thread vs runnable
+We can use thread when want to modify the functionality. Runnable is task, which can be executed by thread or executor
+
+-> Deep cloning vs shall cloning
+By default object.clone performs shallow cloning. First of all cloning is error prone. Better to copy object manually. Serialization can be used but very expensive.
+
+Why clonig is required
+Suppose we want to modify an object and not sure who else is referencing then clone the object and modify it.
+Suppose we have public method, which returns an object returning class internal state. Return clone so that changes applied on cloned object don't impact actual object.
+
+-> How do we create daemon threads, what methods are there to create daemon threads?
+Daemon is threads, which run in the background. By calling Thread.setDemon you can make a thread daemon.  When all non-threads are completed, jvm will kill demon threads also.
+	---->
+
+
+
+
+
+XML
+XML is a markup language and used for  information exchange between applications
+?  used to store information, where as html is used to present data
+? language and os independent 
+? new tags can be created 
+? has tree structure , useful to express complex data in simple way
+
+Parsers are used to  validate and modify the xml data. Many parsers are avaialble.
+Mainly DOM and SAX
+DOM parser 
+	? tree structured based DOM API
+	? creates DOM tree in memory
+? used for manipulation of document , to traverse back and forth
+? used for small xml files
+SAX parser
+	? event based api , startelement, endelement etc
+	? no structural modification
+? huge xml files
+Validating parser validates XML against DTD or XML Schema
+
+Follow this link for ex: http://www.totheriver.com/learn/xml/xmltutorial.html
+
+Struts
+
+Struts framework  is a standard to develop well architected web designs. It  is based on MVC model. 
+
+Architecture Overview
+ 
+
+All incoming  requests are handled by the struts servlet controller. It stores the application routing information and request mapping in a single core file struts-config.xml. The controller uses the struts-config.xml
+
+
+
+
+ 
+
+
+
+Each form has an action form to store the data. When a request is sent to Action class ,  it can access the form data using action form getter/setter methods.
+This Action form / form relationship is maintained in struts-config.xml. Action form help us to validate the form data and rise error if required  before sending the request to Action Class. 
+
+Advantages:
+a)	centralized file based configuration
+Many struts values are stored in xml or property file. This loose coupling allows users to do many changes without recompiling the java code and all the changes can be done in one single file (struts-config.xml), Developers can focus on business logic and other services without needing to know about the overall system layout.
+b)	Form Beans
+JSP has properties like jsp:setProperty to automatically populate a java bean component based on the incoming request parameters.. Where as servlet api doesn't has support for this. Form beans allow servlets to access the forms data.
+c)	Bean tags
+Struts provide a set of custom jsp tags that allows to ouput the values of bean components. They are more powerful vaiations of jsp:useBean jsp:getProperty etc.
+d)	HTML tags
+Struts provides jsp tags to associate form with beans. This form/bean association is useful for
+1)To get initial form field values from java objects
+2)To send the values to java objects when form is submitted
+3) it lets you to redisplay forms with some or all previously entered values
+e)	Form field validation
+Struts has builtin capability to check whether the form values are in required format or not. In case of mismatch, the form is redisplayed with error message while displaying the remaining values as entered previously.
+This validation can be performed on server side (java) or both on server and  client side (java script). Struts uses validation xml for each form for clien side validation
+f)	Struts allows consistence maintenance of MVC framework.
+
+
+2.	Web Components
+For client -server communication  the server process creates a socket and client socket access the server through client socket techniques. A socket is an end point of communication. 
+
+Servlets
+Servlets are server side java programs used to handled requests from web clients. Servlets are improved version of CGI. Following are the problems with CGI and are the factors  for developing the servelt technology 
+a)	CGI can be very slow as it is written using perl language. Perl scripts must be recompiled every time they run
+b)	CGI hits server performance for each request a separate process is created. For n requests n process run and performance is effected.
+c)	CGI has no persistance, state can't be maintained , since each invocation of CGI routine results in a new process,it is difficult to maintain the context between the invocations. This means a  call to CGI routine can't pass information to another call to a CGI routine.
+d)	CGI routines are not protable, as it is dependant on perl. The drawbacks of perl,like difficult debugging, diffirent applicable configurations, security problems due to script execution, make cgi routines less portable
+
+All these problems are overcomed by servlet technology. Servlets have following features
+a)	Servlet is fast, as it is written using java program and compiled only once
+b)	Servlets improve server performance, servlets run in the process space of servlet/web container and for each client request a new thread is created instead of creating new process
+c)	Servlets has persistance, state can be maintained in session and is accessible between calls.
+d)	Servlets are easily portable, as java programs are portable to any system.
+
+Servlet container maintains the life cycle of servlet. When web server starts servlet container intializes the servlet and calls the service (doget, doPost)method of servlet based on the type of client request and finally destroys the servlet when the web server is shutting down.
+
+-->container provides following things
+
+?	communication support 
+
+?	lifecycle management 
+
+?	multithreading support 
+
+?	declarative security 
+
+?	jsp support 
+
+
+-->typical request response mechanism
+
+?  user clicks a link that has a URL    to a servlet intead of static page
+
+?  container see request is for a servlet so the container creates two objects
+
+HttpServletRequest	HttpServletResponse
+
+?	the container finds the correct servlet based on the url and creates a thread to handle the request and passes request response objects to servlets thread 
+
+?	container call servlet's service method , depending on type of request service method calls GET or POST 
+
+?	the service method process the request and send back the response 
+
+?	the thread completes , container using web server converts the response to HTTP response and sends the response to client and delete the request and response objects 
+
+--> servlets life cycle
+
+?	loads class 
+
+?	instantiates the servlet by calling no arg constructor 
+
+?	call init() only once. the execution should complete before service method is called 
+
+?	call service() method for each thread 
+
+?	destory() 
+
+
+Web server has deployment desciptor called web.xml , which contains the information of the servlets and jsps. The servlets specific initialization parameters and deployment descriptor controls the behaviour of servlet/jsp. These init parameters are accessed using ServletConfig class.  Now is the time to discuss what is ServletContext and how it is different from ServletConfig.
+
+ServletContext vs ServletConfig
+ServletContext  defines a set of methods that a servlet uses to communicate with its servlet container. ServletConfig is a servlet configuration object used by the servlet container to pass the initialization parameters to servlet. ServletConfig parameters are specific to servlet,unknow to other servlets and ServletContext parameters are applicable to entire application i.e common for all the sevlets.
+ServletContext object is contained within ServletConfig object, which the webserver provides the servelet when the servlet is initialized.
+
+ServletContext ? Application Scope
+ServletConfig  ? Page Scope
+
+
+
+ServletContext parameters are discussed as given below.
+		<context-param>
+			<param-name>Developer</param-name>
+			<param-value>saikumar.divvela@gmail.com</param-value>
+		</context-param>
+ServletConfig parameters are defined as shown below.
+<servlet>
+		<init-param>
+			<param-name>ServletType</param-name>
+			<param-value>TestingServlet</param-value>
+		</init-param>	
+</servlet>
+
+Following code snippet shows how the initialization parameters are retrieved in init() method.
+public void init(ServletConfig config) throws ServletException 
+{
+super.init(config); // every servlet's init() must do this to access ServletConfig
+	String xyz = config.getInitParameter(“ServletType”);
+	// String xyz = getInitParameter(“ServletType”); // useful outside init method
+	ServletContext context  = config.getServletContext();
+String emailid = context.getInitParameter(“Developer”);
+// getServletContext().getInitParameter(“Developer”);
+}
+
+One interesting question here. Why servlet has init() method instead of constructor.
+Servlets were originally written for jdk 1.0 which doesn't support constructors with arguments for dynamically loaded java classes (servlets). So in order to  provide a new servlet any information about it or environment , a server had to call a servlet's init() method. Also java doesn't allow interfaces to have constructors as they are not instantiated. So the Servlet class has a method init() with parameter ServletConfig. A servlet still have constructors but they can't take arguments and no access to ServletConfig object and can't throw ServletException.
+
+Deployment descriptor (web.xml) structure
+
+	<web-app>
+		<servlet>
+			<servlet-name> </servlet-name>
+<servlet-class> </servlet-class>
+<init-param>
+				<param-name> </param-name>
+				<param-value> </param-value>
+			</init-param>	
+<init-param>
+				<param-name> </param-name>
+				<param-value> </param-value>
+			</init-param>
+</servlet>
+<servlet>
+	...
+...
+...
+</servlet>
+<context-param>
+	<param-name> </param-name>
+	<param-value> </param-value>
+</context-param>
+<context-param>
+	<param-name> </param-name>
+	<param-value> </param-value>
+</context-param>
+<servlet-mapping>
+	<servlet-name></servlet-name>
+	<url-pattern></url-pattern>
+</servlet-mapping>
+<servlet-mapping>
+	<servlet-name></servlet-name>
+	<url-pattern></url-pattern>
+</servlet-mapping>
+
+	</web-app>
+
+A servlet can save data in three places for processing - in the request , in the session and in the servlet context.
+Request ?  request-scope data is lost when the request is completed
+req.setAttribute(name,value); // this method is most often used with RequestDispatcher
+req.getAttribute(name);
+RequestDispatcher rd = req.getRequestDispatcher(url);
+rd.forward(req,res);
+req.getParameter() is used to retrieve the information from html page.
+Session ? session-scope, data is lost when the session is expired
+	
+	HttpSession session = req.getSession(false);
+	session.setAttribute(name,value);
+	session.getAttribute(name);
+
+ServletContext ? application scope , data lost when the servle context is destroyed
+	getServletContext.setAttribute(name,value);
+	getServletContext.getAttribute(name);
+
+getInitParam() is used to retrieve  initialization parameters of web.xml using ServletConfig or ServletContext object.
+
+A servlet can handle explicit data ( user form data) and implicit data (HTTP info)
+
+-->HTTPServletRequest has the methods that are not there in servletrequest
+
+?	getMethod 
+
+?	getHeader 
+
+?	getCookies 
+
+?	getSession 
+
+-->HTTP methods
+
+?	doGET -> to get a resource 
+
+?	doPOST -> to submit a form 
+
+?	doHEAD -> asks for header part of whatever GET request returns no body 
+
+?	doTRACE -> client can see what is being received on the other end , for testing or troubleshooting 
+
+?	doDELETE --> deletes the resource at requested url 
+
+?	doPUT --> puts the enclosed info( body) at requested url 
+
+?	doOPTIONS -->asks for list of HTTP methods to which requested URL can respond 
+
+?	doConnect 
+
+
+Refreshing a page
+
+To refresh a page set the response header
+
+res.setHeader(“Refresh”,”5:URL=http://www.google.com”);
+this will load the page http://www.google.com  after 5 seconds	
+The command will add following line to the html page in the header
+
+<META HTTP-EQUIV="Refresh" CONTENT="5; URL= http://www.google.com ">
+
+-->to download a jar file
+
+InputStream is = servletcontext.getResourceAsStream("/test.jar"); OutputStream = response.getOutputStream();
+
+
+Difference between sendRedirect vs forward:
+Both the sendRedirect and forward are used for loading a new page/url. 
+In case of forward 
+•	Control can be forward to resources available within the server from where the call is made
+
+?	a requestdispatcher works on the server side. Client doesn't about this and sees same old url getRequestDispatcher(string) is defined in ServletContext and ServletRequest 
+?	for ServletRequest.getRequestDispatcher() path can be absolute and relative. if path is relative(with out /) it can't go beyond context root and path is calculated w.r.t location where request is in 
+?	for ServeltContext.getRequestDispatcher() path should be absoulte (starts with /) and calculated w.r.t. application context root 
+?	both the request and response objects are avaiable to the new page.
+?	The forwarding happens in webserver and client doesn't know about this and will see the same old url.
+?	pages which are present in the same context can be loaded.
+?	We can't call forward after flushing the output
+
+
+In case of sendRedirect
+•	Control can be redirect to resources to different servers or domains.
+?	The server sends the url to client and generates a new request to the url
+?	Request and Response objects are not passed to to new page. All the values in original request are lost. To preserve the state request parameter,values should be added as query string to new URL.
+?	Pages which are in different contexts can be loaded.
+?	it can't be called after sending the response to client otherwise IllegalStateException comes using relative urls in sendRedirect() 
+Original request http://localhost:8080/myapp/foo/bar.do
+Without slash sendRedirect(" test/temp.do"); 	http://localhost:8080/myapp/foo/test/temp.do
+With slash   sendRedirect("/test/temp.do");  http://localhost:8080/myapp/test/temp.do
+
+
+	What are cookies:
+	A Cookie is a small piece of information sent by a web server to store on web browser, later this information 	can be read by web server. Useful for storing userids, passwords ,user preferences and site tracking.
+
+
+Example:
+		Cookie[] cookies = (Cookie[]) res.getCookies();
+		for(int i=0;i<cookies.length;i++){
+			cookieName = cookies[i].getName();
+			cookieValue = cookies[i].getValue();			
+		}
+	// creating new cookie
+	Cookie cookie = new Cookie(“company,”dreams”);
+Res.addCookie(cookie);
+
+
+-->session
+
+?	server creates a session id and sends it as cookie(jsessionid) to client. the client has to send the cookie back to server with every request. 
+
+?	server will maintian list of session ids and looks for the session id in the cookie. 
+
+?	if cookies are disabled by client then client won't accept the session id and each request starts a new session 
+
+?	Urlrewriting comes into picture. with url rewriting sessionid is added to each request (url+sessionid). Urlrewriting cicks only if cookies fail. we have to encode all urls in server code and jsp 
+
+ex: response.encodeURL("");-> Do not append the session information to URL if cookies are set. This is used for forward and includes mechanism.
+ex:response.encodeRedirectURL("");(""); -> This has the logic to determine whether the session information has to be appended to  url or not when we are redirecting the request to different context.
+
+?	With first request container tries both cookies and url rewriting then examines next request and decides whether cookies are not working or not 
+
+?	Url rewriting is not applicable to static pages 
+
+?	A session whose timeout is set to -1 will never expire 
+
+Session timeout in web.xml is in minutes and in program mentioned as seconds 
+
+-->filters
+
+?	Filters are used to process request and response. This is called intercepting filter pattern 
+
+?	FilterConfig (similar to ServletConfig) 
+
+FilterChain has method doFilter(ServletRequest,ServletResponse) Filter has methods
+init(FilterConfig)
+doFilter(ServletRequest,ServletResponse,FilterChain)
+destroy()
+
+?	The order in which filters are invoked is decided  according to  filter-mapping 
+
+declarations in web.xml that match with the requested URI based on <url-pattern> <servlet-name>
+
+o	First filters with matching url-patterns are added to filter chain 
+
+o	Filters with matching servlet-name are then added to filter chain 
+
+o	the last item in the chain is always the requested resource 
+
+?     some applications of filters 
+
+?	Authentication Filters 
+
+?	Logging and Auditing Filters 
+
+?	Image conversion Filters 
+
+?	Data compression Filters 
+
+?	Encryption Filters 
+-->key points
+it is valid for a filter to forward request
+it is valid for a filter not to call filterChain.doFilter
+
+filters may be used to create request or response wrappers and call other filters / servlets using this warppers
+
+servlet wrapper classes can be used even whenthe application doesn't support http package filter;
+
+import javax.servlet.*; import javax.servlet.http.*; import java.io.IOException;
+
+public class welcomeFilter implements Filter
+
+{
+
+FilterConfig fg;
+
+public void init(FilterConfig filterConfig){ System.out.println("welcomeFilter initializing......."); fg = filterConfig;
+
+System.out.println("filter name:"+fg.getFilterName() ); System.out.println("filter initialization parameters"); System.out.println("value:"+fg.getInitParameter("greeting"));
+
+}
+
+public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain) throws IOException,ServletException
+{
+
+System.out.println("welcomeFilter in action.......");
+
+chain.doFilter(req,res);
+
+System.out.println("welcomeFilter after chaining ......");
+
+}
+
+public void destroy(){
+ 
+System.out.println("welcomeFilter going to die.......");
+
+}
+
+}
+
+web.xml entry
+
+<filter>
+
+<filter-name>welcomeFilter</filter-name> <filter-class>filter.welcomeFilter</filter-class> <init-param>
+
+<param-name>greeting</param-name> <param-value>Hello World</param-value>
+</init-param>
+
+</filter> <filter-mapping>
+
+<filter-name>welcomeFilter</filter-name> <url-pattern> /test</url-pattern>
+
+</filter-mapping>
+
+
+-->listeners
+
+Listeners are used to capture events. All Listeners are declared in web.xml except HTTPSessionBindingListener
+
+ServletRequestListener (servletRequestEvent --> getServletContext() , getServletRequest() ) requestInitialized (before calling first servlet or filter)
+requestDestroyed (after exits last servlet or first filter)
+
+servletRequestAttributeListener (servletRequestAttributeEvent --> getName() , getValue()) attributeAdded
+attributeReplaced attributeRemoved (after op)
+
+ServletContextListener (ServletContextEvent --> getServletContext() ) contextInitiated (before intialization servlets & filters) contextDestroyed (after destroying servlets & filters)
+
+ServletContextAttributeListener (ServletContextAttributeEvent --> getName() , getValue()) attributeAdded
+attributeReplaced attributeRemoved (after op)
+
+HttpSessionListener (HttpSessionEvent --> getSession() ) sessionCreated (afterop)
+sessionDestroyed (before op)
+
+HttpSessionAttributeListener(HttpSessionBindingEvent --> getName() , getSession() ,getValue())
+
+attributeAdded	(after op)
+
+attributeReplaced
+attributeRemoved
+
+HttpSessionActivationListener	(HttpSessionEvent)
+
+sessionDidActivate (after session activated but before application starts using session) sessionWillPassivate (before session passivated)
+
+HttpSessionBindinngListener (HttpSessionBindingEvent) valueBound (before boundding to session)
+valueUnbound - (after unbounding from session)-> for objects no web.xml entry
+<error-page>
+<exception-type> </exception-type>	<!--	class name of Java exception type --> 
+<location> </location>
+</error-page>
+	
+<error-page>
+<error-code> </error-code>  <!-- HTTP error code -->
+	<location> </location>
+</error-page>
+
+--> security
+?	authenticating	->securing the pages
+?	authorization  ->which user can access what
+?	data integrity	->data is not tampered between source and receiver
+?	confidentiality	->data is not visible to third party while transmitting between source
+	and receiver	
+of all these features authorization is complex and takes more time for implementing. Except authroization all other ways effect transport layerusing methods
+
+In HttpServletRequest authentication (getRemoteUser) and authroization (isUserinRole) can be performed
+
+4 types of authentication
+
+?	BASIC 
+
+?	DIGEST 
+
+?	CLIENT-CERT 
+
+?	FORM 
+
+All FORM based is weakest one and DIGEST is stronger one. Except FORM authentication other methods use standard pop up forusername and password. FORM authentication is recommended only if session tracking or cookies are in place otherwise will be difficlut to implement.
+
+<login-config>
+
+<auth-method> </auth-method> </login-config>
+
+FORM based authentication action should be j_security_check user name should be j_username 
+password name should be j_password 
+<auth-contsraint> rules
+o	if value is * then all roles are applicable
+o	if the tag is missing then all roles are applicable 
+o	if value is empty no roles are applicable
+
+
+
+--> sample web.xml <web-app>
+
+<description> </description> <distributable> </distributable> <display-name> </display-name> <icon> </icon>
+
+<servlet>
+
+<servlet-name> </servlet-name> <servlet-class> </servlet-class> <init-param>
+
+<param-name></param-name> <param-value> </param-value>
+
+</init-param>
+
+<display-name> </display-name> <description> </description> <load-on-startup> </load-on-startup> <!-- <run-as></run-as>--> <security-role-ref>
+
+<role-name> </role-name> <role-link> </role-link>
+
+</security-role-ref> </servlet>
+
+<servlet>
+
+<servlet-name> </servlet-name> <jsp-file> </jsp-file> <init-param>
+
+<param-name></param-name> <param-value> </param-value>
+
+</init-param> </servlet> <servlet-mapping>
+
+<servlet-class> </servlet-class> <url-pattern> </url-pattern>
+
+</servlet-mapping> <context-param>
+
+
+<param-name></param-name> <param-value> </param-value>
+</context-param> <jsp-property-group>
+
+<url-pattern> </url-pattern> </jsp-property-group>
+
+<security-constraint> <web-resource-collection>
+<web-resource-name> </web-resource-name> <url-pattern></url-pattern> <url-pattern></url-pattern>
+
+<http-method> </http-method> <http-method> </http-method> </web-resource-collection>
+
+<auth-constraint></auth-constraint>
+
+<user-data-constraint>
+
+<transport-guarantee> </transport-guarantee> // Integral or Confidential </user-data-constraint>
+
+</security-constraint>
+
+<login-config>
+
+<auth-method> </auth-method> // BASIC , FORM,CLIENT-CERT <realm-name> </realm-name>
+
+<form-login-config> // use only if auth method is form <form-login-page> </form-login-page> <form-error-page> </form-error-page>
+
+</form-login-config> </login-config>
+
+<security-role>
+
+<role-name> </role-name> </security-role>
+
+<filter>
+
+<display-name> </display-name> <description> </description> <filter-name> </filter-name> <filter-class> </filter-class> <init-param>
+
+<param-name></param-name> <param-value> </param-value>
+
+</init-param></filter> <filter-mapping>
+<filter-name> </filter-name> <url-pattern> </url-pattern> <servlet-name> </servlet-name>
+
+</filter-mapping>
+
+<listener>
+
+<listener-class> </listener-class> </listener>
+
+<session-config>
+
+<session-timeout> </session-timeout> <!--- timeout in minutes -1 session do not timeout -->
+
+</session-config>
+
+<mime-mapping>
+
+<extension> </extension> <mime-type> </mime-type>
+
+</mime-mapping>
+
+<welcome-file-list>
+
+<welcome-file> </welcome-file> </welcome-file-list>
+
+<error-page>
+
+<exception-type> </exception-type> <!-- class name of Java exception type --> <location> </location>
+
+</error-page>
+
+<error-page>
+
+<error-code> </error-code> <!-- HTTP error code --> <location> </location>
+
+</error-page>
+
+<taglib>
+
+<taglib-location> </taglib-location> <taglib-uri> </taglib-uri>
+
+</taglib>
+
+<env-entry>
+
+<env-entry-name>	</env-entry-name>
+
+<env-entry-value>	</env-entry-value>
+
+<env-entry-type>	</env-entry-type> // type can be one of the values
+
+Integer, Double,Float,String or Boolean </env-entry>
+
+<ejb-ref> 
+	<ejb-ref-name> </ejb-ref-name>
+	<ejb-ref-type> </ejb-ref-type> 
+	<home> </home> 
+	<remote> </remote>
+	<ejb-link> </ejb-link>
+	<run-as> </run-as>
+</ejb-ref>
+
+<ejb-local-ref>
+
+<ejb-ref-name> </ejb-ref-name> <ejb-ref-type> </ejb-ref-type> <local-home> </local-home>
+
+<local> </local> <ejb-link> </ejb-link>
+
+</ejb-local-ref>
+
+<jsp-config> <jsp-property-group>
+<url-pattern> *.jsp</url-pattern> <scripting-invalid>true </scripting-invalid> <el-ignored>true</el-ignored>
+
+</jsp-property-group> </jsp-config>
+
+</web-app> 
+JSPS
+MyJsp.jsp --> MyJsp_Jsp.java --> MyJsp_Jsp.class --> MyJsp_jsp servlet (loaded and initialized)
+
+all scriptlet and expression code lands in a service method
+
+In an expression if the method doesn't return anything exception is thrown ex: <%= Count.getCount()%>
+
+<%= xyz%> xyz can be any primitive type or object that can be printed. it can't be assignment
+
+JSP API methods 
+jspInit() 
+jspDestroy()
+
+_jspService() -> can't override others we can override
+
+--> implicit objects
+
+All implicit objects can be accessed from pageContext. Except pageContext all are beans.
+Request, response, session, out, pageContext, application, config, page and exception
+
+Pagecontext has access to all implicit objects and can get attributes from all scopes. JspWriter is used in tag handlers. PrintWriter is used in servlets.
+JspContext is for tag handlers pageContext is for jsp pages. ServletContext is for servlets.
+-->Jsp elements
+<%!	%>	--> declarations
+<%	%>	--> scriptlets
+<%= %> --> expression
+<%@	%> --> directive
+Jsp Comment <%-- --%>
+Html Comment <!-- -->
+expression implicit object initParam can be used to get application initialized
+	parameters that are declared in web.xml
+${initParam.} --> always string
+
+${param .} is used to access parameters that are sent as part of request --> always string
+
+${requestScope.} is used to access attributes that are set in request scope --> always object
+
+-->jsp directives
+
+page	<%@ page import %>  <%@ page extends %>  <%@ page language
+
+%>  <%@ page session%>
+
+<%@ page contentType="text/plain; charset=utf-8" %>
+
+<%@ page errorPage="path" %>
+
+<%@ page buffer=sizekb %>
+
+<%@ page autoFlush="true" %>
+
+<%@ page isErrorPage="true" %>
+
+<%@ page isThreadSafe="true" %>
+
+<%@ page isELIgnored="true" %>
+
+include <%@ include file="" %>
+
+taglib	<%@ taglib prefix="" uri="" %>
+
+<%@ taglib prefix="" tagdir="" %>
+
+--> Templates
+Static include of another file <%@ include file=""%>
+
+the include directive happens at translation time so it can be used for static pages <%@ include file="" %>
+
+an included page can not change the response code or set headers
+
+we can't pass parameters to a include directive. Only one servlet is executed at run time.
+
+The included page does not need to able to be compiled as a standalone JSP Scriptlet variables declared in the parent page can be accessed in the included page (remember, they are the same page).
+The included page can also have any extension
+
+Dynamic include of another file  <jsp:include page="" />
+
+<jsp:include> happens at runtime <jsp:include page="">
+
+Each included page is executed as a separate servlet at run time. binary files can't be included
+
+Pages can conditionally be included at run time.
+
+The values of scriptlet variables need to be explicitly passed to the include page. The included page must be able to be run on its own. This is useful when the single jsp size exceeds the limit and then we can split it into multiple small jsps
+
+we can't include the contents of binary file ex: <jsp:include page= "test.png"> won't work
+
+parameters can be using  <jsp:param name="" value=""/>
+
+<jsp:forward page=""/>
+
+the buffer is cleared before the forward. anything written to the response before the forward happens is thrown out
+
+if we commit the response using out.flush() then IllegalStateException is thrown in the backend and jsp processing stops
+
+so don't do flush and forward=
+
+--> using beans <jsp:useBean id="ID" class="" scope="" />
+
+if object doesn't exist then it is created (if class exists) and put in the scope accessing the property <jsp:getProperty name="ID" property=""/> setting the property <jsp:setProperty name="ID" property="" value=""/> <jsp:setProperty name="ID" property="*" />
+
+ex:
+
+<jsp:useBean id="ID" class="" scope="" > <jsp:setProperty name="ID" property="*" />
+
+</jsp:useBean>
+
+the properties are set only if the bean doesn't exist and created newly. using type <jsp:useBean id="person" type="person" class="employee" scope="" />
+
+type is referece type --> it can be interface or abstract class or concrete class class is object type --> concrete object and can't be interface or abstract class should have public no arg constructor
+
+person is a bean of type person and pointing to employee implementation If type is used without class then bean must be there in the given scope
+
+sending request parameter to bean property <jsp:useBean id="ID" class="" scope="" >
+
+<jsp:setProperty name="ID" property="name" param="userName"/> </jsp:useBean>
+
+if the request parameter name matches with bean property we don't need to specify name
+
+<jsp:useBean id="ID" class="" scope="" > <jsp:setProperty name="ID" property="name" />
+
+</jsp:useBean>
+
+value can't be scripting ex: <%= request.getParameter("name")%> won't work bean tags convert primitive properties automatically
+
+these bean tags won't work for nested properties expression language saves us
+
+You can specify both type and class, and if you DO, the class must be compatible with the type. In other words, you must be able to
+
+assign an object of type 'class' to a reference of type 'type'.
+
+If you specify ONLY 'type', without 'class', then the bean must already exist. Remember, 'class' is used to instantiate a bean if one
+
+does not exist. The 'type' will never be used as an object type.
+
+If you specify ONLY 'type', then you can set properties only for those properties that exist in 'type', as opposed to those that exist
+
+in 'class'. If you specify both 'type' AND 'class', then you may be allowed to set properties that exist only in class and not type,
+
+but don't count on it
+
+--> EL
+
+${person.dog.name}
+
+<form action="test.jsp">
+
+the request goes straignt to jsp instead of going through servlet
+
+${firstThing.secondThing}
+
+firstThing can be attribute in one of the scopes page, request,session,application or one of the implicit object pageScope requestScope sessionScope applicationScope param paramValues header headerValues cookie
+
+initParam pageContext
+except pageContext all other are maps. pageContext is a reference to actual pageContext object and javaBean object
+
+[] operator same as . operator only better [] can be used for arrays and lists
+
+a string index is coerced to an int for arrays and lists ex: ${musicMap["thematrix"]}
+
+if the index is not string lateral and left side is map or bean then it is evaluated ex: ${musicMap[thematrix]} looks for the attribute thematrix in the scopes
+
+with beans and maps the name after dot operator should be valid java name ex: ${foo.1} is not valid as 1 is not valid java name
+
+${movie.thematrix} can be ${movie[matrix]} but ${movieList[1]} can't be ${movieList.1}
+
+nested expression ${musicMap[MusicType[0]]}
+
+implicit object header can be used to retreive header values ${header["host"]}
+
+${header.host}
+
+requestScope is not same request object. It is only for retrieving attributes in that scope
+
+to call request method(property) ${pageContext.request.method}
+
+attribute name may not be proper java name it can be foo.person then we can't use dot operator
+
+we have to use ${requestScope["foo.person"].name} cookie use
+
+${cookie.cookiename.value}
+
+--> EL functions
+
+1)	write a java class with public static method 
+
+2)	write a tld file (mapping between java function and jsp) 
+
+3)	put a taglib directive in jsp 
+
+4)	use EL to invoke that function 
+
+${prefix:name()}
+
+<function>
+
+<name>rollit</name> <function-class>tags.DiceRoller</function-class> <function-signature>int rollDice(java.util.Map)</function-signature>
+
+</function>
+
+tld file can be anywhere under WEB-INF directory
+
+-->EL operators
+
+/ and div dividing by 0 gives infinity not error
+% and mod with 0 gives exception logical
+
+&& (and)
+
+|| (or)
+
+! (not)
+
+relational
+
+== (eq)
+
+!= (ne)
+
+<  (lt)
+
+> (gt)
+
+<= (le)
+
+<=(ge)
+
+EL handles null values gracefully
+
+-->jsp directive declarations
+
+<jsp.directive.page>
+
+<jsp:element name="${content.headerName}"
+
+xmlns:jsp="http://java.sun.com/JSP/Page">
+
+<jsp:attribute name="lang">${content.lang}</jsp:attribute>
+
+<jsp:body>${content.body}</jsp:body>
+
+</jsp:element>
+
+output is <h1 lang="fr">Heading in French</h1>
+
+---------------------->jstl tags
+
+<c:forEach var= items= varStatus=     begin=   end=  step="">  // step can't
+
+be < 0
+
+<c:out value='' default> // doesn't parse the html tags prints as it is
+
+<c:if test="${xyz eq 'guest'}" var=  scope="">  // var contains result and puts in
+
+the given scope
+
+if else
+
+<c:choose>
+
+<c:when test="${xyz eq 'guest'}">
+
+</c:when>
+
+<c:when test="${xyz eq 'member'}">
+
+</c:when>
+
+<c:otherwise>
+
+</c:otherwise>
+
+</c:choose>
+
+-->to set bean properties or map keys
+
+<c:set target="<bean object or map >" property="<bean-property-name>?"
+
+value=""`> // target must not be nul and this works for beans and maps only
+
+<c:set var="" scope= "" value=""> // value can be object if value is null then object is removed from scope
+
+<c:remove var="" scope="" >   // removes the variable from the scope
+
+
+<c:import url=""> // works like <jsp:include> but more powerful , can access outside container
+
+<c:url value="" var=""> // url rewriting happens but not encoding and var is used to expose the url to page
+
+<c:param name="" value= "" /> // used to pass parameters to <c:import> <c:url>
+
+you can use <c:param for both import and url
+
+<c:catch var="myException"> </c:catch>
+
+<c:if test="${myException!=null}" ${myException.message}
+
+</c:if>
+
+in error page
+
+<%@ page isErrorPage="true"%> // if declared then only exception implicit object is available
+
+in jsp  <%@ page errorPage="" %> // applicable to only this jsp
+
+------------------------->Custom tags
+
+Custom tags can be developed in 3 ways. --> tag files
+
+--> using simpletag --> classic tag
+
+--> tag files
+
+tag files are for non java developers. simple tags and classic tags are for java developers.
+
+we can use jsp:include wherever we can use tag files but it is not clean approach The files which are included using jsp:include can be in any directory.
+
+The input parameters that are passed to the included file are part of request and sent along with form submission.
+
+we can't have meaning ful names like <myTag:greeting>
+
+The attributes used for tag file has only tag scope
+
+if we deploy tag file in jar file then we should have corresponding tld file in the same jar file..
+
+If we put tag file in /WEB-INF/tags then no tld file is required. Tag file has access to jsp context instead of servlet context.
+
+web container looks for tag files in 4 directories -> in /WEB-INF/tags/
+
+-> any subdirectory of /WEB-INF/tags/ -> in /META-INF/tags/ of a jar file
+
+-> in subdirectory of /META-INF/tags
+
+jsp tag file declaration
+
+<%@ taglib prefix="" tagdir="/WEB-INF/tags"%> //if tag file has associated tld then we should use "uri" instead of tagdir
+
+following things can be used only in tag files <%@ attribute name"" type="" rtexprvalue="" %>
+
+<%@ tag body-content="" dynamic-attributes="" %> // body-content can be empty, scriptless (means we can use anything except scriptlets)
+
+<%@ variable name-given="" scope="" variable-class=""%> // this variable can be used in main jsp file
+
+<jsp:invoke fragment=”frag2” var=”resultString” scope=”session”/>
+
+// tld file for a tag file
+
+<taglib>
+
+<tlib-version> </tlib-version> <uri> </uri>
+
+<tag-file>
+
+<name> </name> <path> </path>
+
+</tag-file> </taglib>
+
+-->Simple tags
+
+simple tag handler sample tld file <taglib>
+
+<tlib-version> </tlib-version> <uri> </uri>
+
+<tag>
+
+<name> </name> <tag-class> </tag-class>
+
+<body-content></body-content> // can be empty, scriptless or tagdependent
+
+</tag>
+
+<attribute>
+
+<name> </name> <type></type> <required> </required>
+
+<rtexprvalue> </rtexprvalue> // this is not only for epression language but also scripting expressions and <jsp:attribute>
+
+</attribute>
+
+<dynamic-attributes> </dynamic-attributes>
+
+</taglib>
+
+<jsp:attribute> can be used to pass attributes to custom tags JspTag <---- SimpleTag <------SimpleTagSupport
+
+
+simpletag life cycle
+
+for each tag invocation in jsp new instance is created
+
+1)	load the class 
+
+2)	instantiate the class ( call the no arg constructor) 
+
+3)	call setJspContext method 
+
+4)	if tag is nested then call setParent 
+
+5)	call attribute setters 
+
+6)	if body is not empty then call setJspBody() 
+
+7)	call doTag()method 
+
+when SkipPageException is thrown by taghandler class then page evaluation is stopped.
+
+If included page throws the exception then included page processing stops and called page continues evaluation.
+
+-->Classic tags
+
+Classic tags are used before jsp 2.0 and now not used. simple tags and tag files are enough.
+
+web container don't create separate instance for each tag invocation. so we have to take care of class variables
+
+JspTag <--IterationTag <--BodyTag <-----BodyTagSupport
+
+IterationTag<---- TagSupport
+
+BodyTagSupport has additional methods setBodyContent()
+
+doInitBody()
+
+doStartTag() SKIP_BODY
+
+EVAL_BODY_INCLUDE
+
+EVAL_BODY_BUFFERED is called only when body-content is not empty and taghandler implements BodyTagSupport
+
+doAfterBody() SKIP_BODY
+
+EVAL_BODY_AGAIN doEndTag()
+
+EVAL_PAGE
+
+SKIP_PAGE
+ 
+life cycle of TagSupport handler
+
+1)	load the class 
+
+2)	instantiate the class ( call the no arg constructor) 
+
+3)	call setJspContext method 
+
+4)	if tag is nested then call setParent 
+
+5)	call attribute setters 
+
+6)	call doStartTag() 
+
+7)	if body content is not set to empty and tag is not invoked with empty body and if doStartTag returns EVAL_BODY_INCLUDE 
+
+then call doAfterBody() 
+
+8)	call the doEndTag() 
+
+for classic tags body-content can be JSP.
+
+classic tags can have only classic parents. simpletags can have simple tags and classic tags as parents.
+
+to get arbitary parent or some grand parent the method findAncestorWithClass(tagType,TagClass) is useful
+
+
+
+Hibernate
+      
+Configuration is first hibernate object (only one object for application) to hold database connection (hibernate properties and hibernate.cfg.xml) and class to db mappings. Configuration object is used to create a session factory object, as this is heavy weight.  SF is singleton and thread safe. Session is not thread safe. Session is created from Session factory.
+
+Core hibernate interfaces
+Configuration , SessionFactory, Session, Transaction, Query and Criteria
+
+--> jdbc template
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mkyongjava" />
+		<property name="username" value="root" />
+		<property name="password" value="password" />
+	</bean>
+	
+	
+	<bean id="customerDAO" class="com.mkyong.customer.dao.impl.JdbcCustomerDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+	
+	<bean id="customerSimpleDAO" class="com.mkyong.customer.dao.impl.SimpleJdbcCustomerDAO">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+--> get vs load
+Get will always hit database, if no row found returns null
+Load will return proxy with given identifier value, if no object found in db returns exception
+
+--> Jpa configuration
+Persistent unit name has all hibernate properties, which includes cache details.
+entityManagerFactory bean -> data source + persistent Unit name+ Jpa vendor	
+transactionmanager bean -> entityManagerFactory
+
+
+SOAP and REST web services
+REST provides simple, effective web api that can scale from a few users to millions. REST ful service should not have any application logic
+REST methods GET - to get data, PUT - to create something new POST - to update something already existing DELETE - delete something present
+JAX RS is a specification for rest services. Jersey is implementation. Spring 3.1 comes with its implementation of rest services and uses dispatcher servlet, controller
+By adding required json jars, spring will convert object to json automatically while sending response.
+
+RequestMapping -> used to map the incoming url to appropriate controller. 
+Pathparam -> the value in URL can be used as parameter
+RequestBody-> maps the incoming json or xml to object
+RequestParam -> to access the query parameter and form parameters in request
+ResponseBody -> Used to return data directly instead of jsp page
+CookieValue -> to access cookies
+RequestHeader -> to access request headers
+ResponseStatus-> to set the response code
+ExceptionHandler -> a controller method to handle exceptions
+Produces-> it tells to client what is the response content type
+Consumes -> the method accepts the media types mentioned in consumes.
+While sending request from client it is good to set headers ACCEPT and Content-Type. Content-Type header is used by @RequestBody to determine what format the data being sent from the client in the request is. The accept header is used by @ResponseBody to determine what format to sent the data back to the client in the response.
+
+
+HTTP 406 - if client is accepting in one format but the server can't send response in that format. If the response generated by method is not matching with accept header of request
+HTTP 415 - Unsupported media type. The client sends the request in one format but server doesn't have method to handle that format.
+
+Spring uses HTTPMessageConverter for converting request data to object. We can use Jackson httpmessageconverter for jsons.
+
+<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" >
+    <property name="messageConverters" ref="marshallingConverter"/>
+</bean>
+<bean id="marshallingConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+    <constructor-arg ref="jaxb2Marshaller"/>
+    <property name="supportedMediaTypes" value="application/vnd.stocks+xml"/>
+</bean>
+<oxm:jaxb2-marshaller id="jaxb2Marshaller"/>
+
+<mvc:annotation-driven /> takes care of above configuration. That will register a converter for reading and writing XML if JAXB is on the classpath and a converter for reading and writing JSON if Jackson is on the classpath.
+
+-->Jersey integration with spring
+
+<servlet>
+    <servlet-name>Jersey Web Application</servlet-name>
+    <servlet-class>
+        com.sun.jersey.spi.spring.container.servlet.SpringServlet
+    </servlet-class>
+</servlet>
+
+Jax-RS/ Jersey annotations
+@Path - Declares a object as root JAX-RS resource.Root resource(/accounts)is created by jax-rs runtime and root resource it self creates sub resource (/accounts/portfolia)and delegates the request
+@Context - requests injection of request specific Uriinfo object
+@GET, @PUT, @POST, @DELETE
+@QyeryParam, @FormParam, @CookieParam
+JAX-RS uses MessageBodyReader and MessageBodyWriter for converting object to xml and vice versa
+We can build Response and return
+
+Spring
+
+->Difference between DispatcherServlet vs ContextLoaderListener
+
+DispatcherServlet loads its configuration file using <servlet_name>-servlet.xml. You can configure a custom config file using 
+contextConfigLocation param inside <init-param> tag of DispatcherServlet. 
+
+This file should have scanning of @Controller annotate beans, view resolvers, theme resolvers. Basically this file contains web tier components.
+
+ContextLoaderListener
+ContextLoaderListener loads its configuration file using contextConfigLocation param. 
+<context-param>
+        <param-name>contextConfigLocation</param-name>
+ <param-value>classpath*:META-INF/spring/spring-context.xml</param-value>
+</context-param>
+<listener>
+ <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+</listener>
+
+This file should have information about middle tier and data tier components like services, dao, models etc.
+
+Spring will merge all these components into applicationcontext and middle tier components are accessible from web tier.
+
+--> Difference between @Component, @Controller, @Service, @Repository
+
+Basically the core purpose is same. They are used for classification of layers. Based on annotation type spring may use to apply different post processors. In case of Repository annotation, persistent exception translations are applied.
+They are also used as point cuts in AOP.
+Spring automatically scans and identifies all the classes annotated and registers the beans with application context.
+
+--> By default bean reference name is created based on Class name. If class name is XyzAbc then bean name is xyzAbc. If you provide name with annotation then it takes priority.
+
+--> Spring life cycle
+
+IOC containers create beans, wires, configures and destroy them. We can provide init method and destroy method for each bean to do some process after bean is instantiated and before bean is removed
+We can hook to JVM and when JVM is about to shutdown then destroy methods can be called.
+RegistershutdownHook
+BeanPostProcessors are applied on bean before initializing the bean and after initializing the bean
+
+Scope can be singleton, prototype, request, session, and global-session
+
+Spring provides two containers
+Bean factory -> simplest container. Basic support for DI
+Application context -> Bean factory + resource handlers + localization + internationalization and adds enterprise functionality
+Spring annotation
+Controller -> acts as front controller. In spring this is always singleton.
+
+
+Patterns
+--> Decorative pattern  
+ Also known as wrapper to enhance/add behavior to individual objects either statically or dynamically. This is an alternative to sub classing.
+	
+1) Subclass the original "Component" class into a "Decorator" class
+2) In the Decorator class, add a Component pointer as a field;
+3) Pass a Component to the Decorator constructor to initialize the Component pointer;
+4) In the Decorator class, redirect all "Component" methods to the "Component" pointer; and
+5) In the ConcreteDecorator class, override any Component method(s) whose behavior needs to be modified
+
+Example: 1) Java IO classes  
+BufferedReader adds behavior to FileReader/InputStreamReader. InputStreamReader is bridge between byte stream and character stream.
+FileReader/FileInputStream to read file as raw bytes
+InputStreamReader/ByteArrayInputStream/BufferedInputStream	
+2) Scrolling windows (horizontal and vertical scroll bars)
+	
+--> Proxy pattern
+Controls access to an object and a placeholder for an object. A proxy is class functioning as an interface to something else. It can interface to anything. 
+Ex network connection, large object in memory, a file or some other resource that is expensive or impossible to duplicate.
+Real class and Proxy implement the same interface. The operation on proxy class is delivered to actual class. When we need multiple copies of complex object, one complex object is created and multiple proxy objects are created. All of them point to original object.
+Example:
+Remote proxy -> local proxy represents remote object  (Web service Stub or rest resources)
+Virtual proxy -> lightweight version of remote object. Creates expensive object on demand. Object is not created until the need comes. (Hibernate proxy, AOP proxy)
+Protection proxy-> controls access to original object. Proxy server for Internet to restrict access to some sites
+
+JDK	supports proxy directly using java.lang.reflect package, Proxy, Method and InvocationHandler.	
+
+-->Factory
+Encapsulating creation of objects. This enables replacement of objects with new versions without any change in client layer. We can use static factory methods to get different objects by making constructor private. Typically factory class is singleton.	
+Object creation is delegated to subclasses that implement the factory method to create objects. All classes implement the interface that has factory method.
+When this is required->
+The creation of an object is complex and makes reuse impossible without significant duplication of code. The creation of an object requires access to information or resources that should not be contained within the composing class
+The lifetime management of the generated objects must be centralized to ensure a consistent behavior within the application.
+Example:
+Toolkits, Frameworks, GUI API	
+
+--> Abstract factory	 Factory of factories
+
+--> Observer pattern
+Actual subject/object maintains a list of dependencies (observers). Each observer registers with Subject. Object calls a method on each observer whenever there is state change
+Examples:
+	Used in MVC architecture
+	Used almost in every GUI tookit
+
+--> Singleton pattern  
+Used for maintaining one instance of expensive object. 
+Examples: 
+Java.lang.Runtime getRuntime() 
+Java.awt.Toolkit with getDefaultToolkit()
+SessionFactory, EntityManagerFactory
+Lazy loading using getInstance -> uses double checks
+Early loading uses static final -> loaded during class loading
+Enum singletons are better than Java based singletons
+
+--> Adapter
+Alternative to wrapper class or decorative pattern
+When this is needed
+This pattern allows two different interfaces work together. Interfaces may be incompatible but the inner functionality should suit the need.
+How this is implemented. Using inheritance or using composition.
+Example:
+American socket/plug are different from British socket/adapter. We can use adapter to work with American plug.
+Java api example:
+		java.io.InputStreamReader(InputStream)
+		java.io.OutputStreamWriter(OutputStream)
+		Card reader, connecting memory card in laptop
+
+--> Commander
+This pattern is used to encapsulate a request as an object and pass to invoker. The invoker doesn't know how to service the request but uses encapsulated command to perform action.
+When needed->
+Used for call back methods	
+When history of command needs to be maintained. When we have to undo/ redo operations
+How implemented
+Command is an interface with execute method
+Receiver is the actual object that knows the actual steps to perform the action
+Client creates an instance of command implementation and associated with receiver
+An invoker instructs the command to perform an action
+Command implementation is the binding between receiver and action
+Example:
+Java API, runnable and swing action follows command design pattern
+Used for progress bars
+Used for menu actions
+
+------------->business delegate
+This is the client-side abstraction for a Session Façade. The Business Delegate proxies or adapts the client request to a Session Façade that provides the requested service.
+
+This enables loose coupling between client tier and business tier. Hide clients from the complexity of remote communication with business service component.
+
+Manages the complexity of distributed component lookup and exception handling. Hides the underlying implementation details of the business service, such as lookup and access details of EJB architecture.
+Reduces the network traffic between client and business services
+
+
+?	manages the complexity of distributed component lookup and exception handling 
+
+?	to reduce coupling between presentation layer and business service 
+
+?	hides the underlying implementation details of the business service , such as lookup and access details of EJB architecture 
+
+?	reduces the network traffic between client and business services 
+ 
+----------->service locator
+Transparently locate business components and services in a uniform manner.
+Abstracts all JNDI usage. Hide the complexity of initial context creation, EJB home object lookup and EJB object re creation
+Multiple clients can reuse the same Service locator to reduce code complexity
+Service locator for generic look-ups and EJB home lookups. Business delegate for ejb-specific operations
+
+
+?  abstracts all JNDI usage
+hide the complexity of initial context creation, EJB home object lookup and EJB object re creation 
+
+?	Multiple clients can reuse the same Service locator to reduce code complexity 
+
+?	Service locator for generic look ups and EJB home lookups. Business delegate for ejb-specific operations 
+
+?	Business delegate may use service locator for jndi look ups. Normally struts action classes(presentation layer) invoke business delegate . Session facade , business delegate and service locator are used together. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+?
+
+
+
+
+----------->transfer object
+Use a transfer object to carry multiple data elements over a tier. A single method call is used to send and retrieve the Transfer object.
+Reduces network traffic
+ Transfers more data in fewer remote calls 
+Introduces stale transfer objects 
+Increases complexity due to synchronization and version control.
+
+
+?	to encapsulate business data. A single method call is used to send and retrieve the Transfer object. 
+
+?	when client requests EJB for business data, EJB will create transfer object ,populates values and pass it by value to client 
+
+?	synchronization is an issue. the data received may not be consistent with the remote data. 
+
+?	improved network traffic as the number of calls are reduced 
+
+
+-----------> mvc
+
+?	seperate core business functionality from the presentation and control logic. 
+
+?	allows multiple views to share same enterprise data model which makes supporting multiple clients easier 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------> frontcontroller
+
+?	initial point of contact for handling a request. manages the handling of request, invoking security services, delegating business 
+
+?	processing, error handling,managing appropriate view 
+
+?	instead of duplicating logic in multiple places it can be handled in once centralized place. ex: authentication 
+
+?	multiple views are used to respond to differnt requests 
+
+struts is a mvc framework and strus-config.xml acts as a front controller.
+
+
+
+
+
+----------->intercepting filter
+
+?	for preprocessing and postprocessing of request and response. ex: compress and uncompress data. 
+?	to process common services in a standard manner without changing core request processing code 
+
+?	ex: logging & authentication 
+
+?	transformation of output for a specific client 
+
+?	checking data encoding scheme 
+
+?	to verify whether client's Ip is from trusted network 
+
+?	to verify support of browser 
+
+?	filters can be added or removed unobtrusively without changing the existing code 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------>sessionfacade
+Exposes business components and services to remote clients.
+Avoids giving clients direct access to business tier components.
+To encapsulate the interaction between the business objects in a workflow and provide only required interfaces.
+Used for session beans and provides coarse-grained service methods.
+Reduces the number of business objects that are exposed to client across service layer over the network
+The Session Façade can use a Service Locator to look up other business components, such as entity beans and session beans.
+
+
+?	to encapsulate the interaction between the business objects in a workflow and provide only required interfaces 
+
+?	used for session beans and provides coarse-grained service methods 
+
+?	reduces the number of business objects that are exposed to client across service layer over the network 
+ 
+-------------->view helper
+
+?	a view contains formatting code, delegating its processing capabilities to its helper classes. Helper class can be java beans 
+
+?	or custom tags. 
+
+?	Helpers also store the view's intermediate data model and serve as business data adapters 
+
+?	the scripting logic(business logic) in jsp should be moved to helper class i.e java beans or custom tags 
+
+?	Improves Application Partitioning, Reuse, and Maintainability 
+
+
+
+
+
+
+------------>dispatcher view
+
+?	describes the combination of the Front Controller and View Helper patterns with a dispatcher component 
+
+?	a dispatcher is responsible for view management and navigation and can be encapsulated either in controller or view 
+
+?	or separate component 
+
+
+
+
+
+
+
+
+
+
+
+
+------------->composite view
+
+?	A composite view is a view that is an aggregate of multiple subviews. 
+
+?	Each component of the template may be included dynamically into the whole and the layout of the page may be 
+
+?	managed independently of the content 
+ 
+3.	Linux
+Trap is a unix built in command , which executes commands on receiving some signals.
+
+Ex:  trap  ‘ handleSignal ‘ 0 1 2
+Calls the handleSignal function on receiving the signals 0 1 and 2
+
+trap ‘‘  0 1 2
+ignores the signals 0 , 1, 2
+
+trap ‘ rm -rf /tmp ‘  EXIT
+removes the folder /tmp before exiting
+
+Master Boot Record
+
+At the end of ROM BIOS bootstrap routine, the BIOS reads and executes the first physical sector of the floppy drive or hard disk. This  first sector(512 bytes) of a hard disk is called master boot record (MBR). A MBR is a small program executed when  the computer starts to load the OS. MBR contains the partition table and other information required by BIOS to access hard drive. Partition table is a 64 byte data structure which contains the information of each partition like where the partition starts and ends and file system type. The partition information, partition table,  is stored at the end of the sector.
+The program (boot code), which finds the active partition and passes the control to partition boot sector (usually first primary DOS partition), is stored in the beginning of the sector.
+
+An MBR has 3 parts
+a)	The boot code which is 446 bytes long
+b)	The partition table which is 64 bits long
+c)	The boot signature 0X55AA 2 bytes  goes at end
+
+fdisk /mbr writes the MBR without altering the partition information.
+
+An active partition is a partition which has the OS that is loaded  directly when the computer starts. Only primary  partition can be marked as active partition. A hard disk can have maximum of 3 primary partitions and 4th partition is called extended partitions (contains the logical partitions).In case of Linux it is possible to boot into other than active partition i.e logical partition as the control of booting process is handed over to  the boot loader (LILO or GRUB). fdisk can be used for changing the active partition on linux. 
+
+
+BIOS -> MBR -> boot sector of active partition -> OS kernel
+
+
+Install-MBR vs LILO
+
+Install-mbr only installs a master boot record, whose function is 
+a)	to determine which partition to boot from
+b)	call the boot code located in the first sector of the chosen boot partition,which is actually responsible for loading the OS
+
+Install-mbr installs the dos compatible mbr with additional features like interactive partition selection and floppy boot
+
+BIOS -> Install-Mbr in MBR -> partition boot code -> Load the OS Kernel 
+
+In case of Linux , the first sector of  partition is LILO. Install-mbr itself can't boot the linux kernel. Lilo is required to boot the linux kernel. For win9x,win2x they have their own specific boot code which they install in the partitions boot sector.
+
+With LILO we have two choices
+a)  install it into MBR (boot=/dev/hdx). Then it overrides the normal  active partition selection and lilo.conf says which boot options you have.
+b) Install it in some partition ( partition boot record ?boot=/dev/hdxx). Then it requires something else to load this like install-mbr. The partition can be marked as active to be loaded by the install-mbr
+
+If LILO is installed in MBR then 
+BIOS -> something in MBR -> LILO -> Lilo menu choice
+
+Once u get LILO there are two ways to load an OS.
+a)	Directly boot a linux kernel as mentioned in the image
+,,,, Lilo -> Linux Kernel
+b)	Call the partition boot sector code as mentioned in Other 
+.... Lilo -> partition boot code -> OS kernel
+
+LILO  can be removed from the MBR using the command /sbin/lilo -u. This will replace the MBR with the earlier saved version of MBR.
+
+In DOS,Windows fdisk /mbr writes new MBR to only boot the primary partition.
+
+? 
+If we are  installing mutiple OS it is better to install first Windows and then linux because if linux is already installed then while installing windows it will overwrite the LILO. This may not allow to boot into linux. We need a boot floppy to boot into linux and then lilo.conf should be loaded again as a root user
+/sbin/lilo -v
+
+Windows expects to be installed on the first drive. When it is installed on the second hard disk along with linux on first hard disk then windows may not be booted properly.
+To solve this change the lilo.conf as given below.
+other=/dev/hdb1
+        label=dos
+        table=/dev/hdb
+        map-drive = 0x80
+        to = 0x81
+        map-drive = 0x81
+        to = 0x80
+This will make windows think as it is installed on the first hard disk.
+
+
+Lilo vs grub
+
+Compiling an ubuntu kernel
+
+1)	su passwd root
+2)	login to root using su
+3)	remove the link /bin/sh -> dash as this may create problems.
+rm -f /bin/sh
+ln -s /bin/bash /bin/sh
+4)	update the package database apt-get update 
+5)	Install all needed packages for compilation
+      apt-get install kernel-package libncurses5-dev fakeroot wget bzip2
+6)	download  the required kernel source
+cd /usr/src
+wget http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.18.1.tar.bz2
+7)	Unpack the kernel sources and create a symbolic link linux to the kernel sources
+
+tar xjf linux-2.6.18.1.tar.bz2
+ln -s linux-2.6.18.1 linux
+cd /usr/src/linux
+
+configure the kernel
+use the old configuration as a basis for new kernel
+8)	cp /boot/config-`uname -r` ./.config
+9)	make menuconfig
+Go to Load an Alternate Configuration File and choose .config
+	Save the changes and exit
+
+Building the kernel     
+
+10)	Run the following commands
+make-kpkg clean
+fakeroot make-kpkg --initrd --append-to-version=-custom kernel_image kernel_headers
+
+This command may take hours depending the kernel configuration and processor speed
+
+Installing the kernel
+11)	  cd /usr/src
+ls -l 
+	two debian files are created
+linux-headers-2.6.18.1-sai_2.6.18.1-custom-10.00.Custom_i386.deb
+linux-image-2.6.18.1-sai_2.6.18.1-custom-10.00.Custom_i386.deb
+These debian files can be moved to any other system and install there without compilation 
+
+12)	 Install the above packages
+dpkg -i linux-image-2.6.18.1-custom_2.6.18.1-custom-10.00.Custom_i386.deb
+dpkg -i linux-headers-2.6.18.1-custom_2.6.18.1-custom-10.00.Custom_i386.deb
+13)	After installation is over check /boot/grub/menu.lst.
+This should have two entries for the new kernel
+
+title           Ubuntu, kernel 2.6.18.1-custom
+root            (hd0,1)
+kernel          /vmlinuz-2.6.18.1-custom root=/dev/sda5 ro quiet splash
+initrd          /initrd.img-2.6.18.1-custom
+quiet
+savedefault
+boot
+
+title           Ubuntu, kernel 2.6.18.1-custom (recovery mode)
+root            (hd0,1)
+kernel          /vmlinuz-2.6.18.1-custom root=/dev/sda5 ro single
+initrd          /initrd.img-2.6.18.1-custom
+boot
+
+14)	Rebooting the system
+shutdown  -r now
+
+15)	 If everything goes well system should come up with new kernel . 
+check this using “uname -r “
+This should display “2.6.18.1-custom”
+
+16)	 If the system doesn't come up restart it and if u see following screen
+GRUB loading. Please wait
+Press ESC to enter the menu ......1
+17)	 Press ESC and select the old kernel from the menu
+18)	Try again compiling. Before doing this remove the entries for non working kernel from  /boot/grub/menu.lst
+
+
+Applying a patch to ubuntu kernel
+
+1)	Go to /usr/src
+2)	Download the required patch for ex: patch.bz2
+wget http://www.kernel.org/pub/linux/kernel/v2.6/testing/patch.bz2
+3)	Run these commands
+bzip2 -dc /usr/src/patch.bz2 | patch -p1 --dry-run
+bzip2 -dc /usr/src/patch.bz2 | patch -p1
+First command doesn't install the patch but tests for errors.
+If no errors occur then only run the second command
+4)	We can apply pre patches also to kernel sources
+5)	Suppose a  patch-2.6.19-rc4.bz2 is available. You can apply that patch to the 2.6.18 kernel sources, but not to kernel 2.6.18.1 or 2.6.18.2, etc
+6)	To apply the patch in step 4 u need to have source of 2.6.18 kernel not 2.6.18.2 etc
+
+Commands
+
+lsb_release -a -> To know the version  of ubuntu
+cat /etc/debian_version -> to know the version of debian used by ubuntu
+uname -r  -> to know the version of kernel
+lspci -> displays list of PCI (Peripheral Component Interconnect)buses and devices connected to these buses
+modprobe -> used to add or remove modules/drivers
+insmod -> similar tools as modprobe
+lsmod -> to show the status of modules loaded in the  kernel
+dpkg -> a tool to install,build and manage debian packages
+wget -> a utility to download files from internet. It supports HTTP,HTTPS and FTP protocols
+scp -> used for secure copying of files  between hosts in same network. Uses ssh protocol
+mke2fs  -> to create ext2/ext3 file system on partition
+mkswap -> to create swap partition
+
+4.	Algorithms
+Fibonacci
+Prime number 
+Linear Search
+Binary Search
+String Search
+Phonetic algorithm
+
+Boyre moore algorithm
+Sorting algorithms
+Pigeonhole sorting:
+PIGEONHOLE sorting is a very old unconventional algorithm for sorting of numbers. Its complexity is O(n+N) where n is input size and N is the number of pigeon holes. It complexity grows linearly. If the input numbers are not denser then algorithm efficiency decreases. BUCKET sort is improved version of this algorithm.
+Algortithm:
+	1) Find the range of inputs (max - min +1)
+	2) Place the input numbers in appropriate holes
+		for each x in  a[]
+			set holes[num-min]
+	3) Move back the non-empty holes to array
+		i=0
+for  count =0 to range
+			if holes[count] is set 
+				a[i++] = count + min; 
+
+Quick sort: 
+
+
+
+
+5.	Data structures
+Sorting needs to consider main things runtime, space, and stability. stable sort or unstable sort	
+
+Merge sort best/average/worst O(nlogn)  auxiliary space O(n) best case can be made O(n).. Stable sort. Can use caching/parallel computing.
+
+Quick sort best/average O(nlogn) worst case O(n*n) auxiliary space O(n) can use caching/parallel not a stable sort
+
+
+?Heap sort
+
+Heap is a complete binary tree where root node has maximum value of left sub tree and right sub tree this is maintained in all levels.
+
+Construct a heap
+Add each item to it(maintain heap property)
+When all items added remove one by one starting from largest element first etc (maintain heap property) 
+
+Insertion/deletion - O(logn) ,lookup - O(n),  sort time best/average/worst -O(nlogn) 
+space O(n), auxiliary space O(1) in place algorithm
+
+
+Extract max value from heap
+Remove the root node
+Rightmost leaf becomes root node
+If root is less than left node swap root and left node. 
+Continue above step as necessary in left branch
+Adding element to heap
+Add the new element as next leaf
+Swap this upwards as need to maintain the heap property
+
+?Trees
+Tree is used for xmls, file storage system	
+In binary tree left node < parent < right node. Binary tree is preferable over sorted array as adding an element is simple in binary tree
+Binary search tree is sorted data structure
+
+Binary search tree insertion/deletion O(logn). Average search time O(logn), look up worst case O(n) in case of linked list. Printing in sorted order O(n)
+By making a tree balanced tree we can make sure look up time O(logn).
+A balanced tree has height (leftsubtree)-height(rightsubtree) 1
+Complete tree is a balanced tree in which the distance from the root to any leaf is either h or h-1. 
+
+preorder visits root, then left and right. 
+Inorder visits left,root and then right
+postorder  visits left,right and then root
+
+?Lists, queues, stacks
+
+Queues are used for breadth first search (BFS), shortest path or least number of moves
+Stacks are used for depth first search (DFS), for backtracking, function calling other function etc.
+
+?Priority queue uses heap property and use array/heap implementation. in heap highest priority item is sitting in the root.
+
+?Hash table	
+Hash tables are useful for implementing divide and conquer approach to knapsack-type problems. Hash table is unordered data structure.
+
+Hash collisions
+Maintain a linked list for objects having same hash code using adjacent, unused locations in table
+Re hashing the hash value to obtain a new value
+
+?bitwise operators
+In twos compliment there is only one 0  (00000000). Negating a number is done by inverting all the bits and adding 1
+
+Left arithmetic shift by n bits is equivalent to multiplying by 2 pow n
+Right arithmetic shift by n of a two's complement value is equivalent to dividing by 2 pow n and rounding toward negative infinity
+
+Right shift will replace the left most bits with  with msb value
+
+?Searching a tree, which is not binary, or heap. 
+
+BFS start with root, move left and right at 2nd level then search at 3rd level O (n) requires lot of memory to keep track of child nodes while searching at a level.
+
+DFS is similar to preorder. Follows one branch of the tree down as many levels as possible until the target node is found or the end is reached. When the search can't go down any farther, it is continued at the nearest ancestor with unexplored children.  This has low memory requirements
+
+
+?Graph
+DFS, BFS can be used to create spanning trees.
+DFS is same as preorder
+ preorder(node v)
+{
+visit(v);
+for each child w of v
+preorder(w);
+}
+    
+dfs(vertex v)
+ {
+visit(v);
+for each neighbor w of v
+if w is unvisited
+{
+dfs(w);
+add edge vw to tree T
+}
+}
+
+BFS start with root, move left and right at 2nd level then search at 3rd level O(n) requires lot of memory to keep track of child nodes while searching at a level.
+
+bfs(G)
+{
+list L = empty
+tree T = empty
+choose a starting vertex x
+ search(x)
+while(L nonempty)
+ remove edge (v,w) from start of L // queue
+ if w not yet visited
+{
+add (v,w) to T
+ search(w)
+}
+}
+
+
+dfs(G)
+{
+
+    	list L = empty
+tree T = empty
+choose a starting vertex x
+ search(x)
+ while(L nonempty)
+remove edge (v,w) from end of L //stack. get child from end of list
+if w not yet visited
+{
+add (v,w) to T
+search(w)
+}
+}
+
+ search(vertex v)
+{
+visit(v);
+for each edge (v,w) // add all children of v to list
+add edge (v,w) to end of L
+}
+
+
+
+
+
+
+
+
+6.	Load balancing, clustering, performance tuning, security and Caching
+
+Load balancing
+Clustering
+Performance tuning
+Security
+•	Authenticating   securing the pages
+•	Authorization     which user can access what
+•	Data integrity     data is not tampered between source and receiver
+•	Confidentiality   data is not visible to third party while transmitting between source and receiver
+
+Of all these features authorization is complex and takes more time for implementing. Except authorization all other ways affect transport layer using methods 
+In HttpServletRequest authentication (getRemoteUser) and authorization (isUserinRole) can be performed 
+4 types of authentication  
+?	BASIC 
+?DIGEST 
+?CLIENT-CERT
+?FORM
+
+All FORM based is weakest one and DIGEST is stronger one. Except FORM authentication other methods use standard pop up for username and password. FORM authentication is recommended only if session tracking or cookies are in place otherwise will be difficult to implement.
+<login-config>
+<auth-method> </auth-method>
+</login-config>	 
+
+FORM based authentication
+Action should be j_security_check
+User name should be j_username
+Password name should be j_password
+ <auth-contsraint> rules
+ If value is * then all roles are applicable
+ If the tag is missing then all roles are applicable
+ If value is empty no roles are applicable
+
+	<security-constraint>
+		<web-resource-collection>  
+		<web-resource-name> </web-resource-name>
+		<url-pattern></url-pattern>
+		<url-pattern></url-pattern>
+		<http-method> </http-method>
+		<http-method> </http-method>
+		</web-resource-collection>
+
+		<auth-constraint></auth-constraint>
+
+	<user-data-constraint>
+<transport-guarantee>  </transport-guarantee>  // Integral or Confidential
+	</user-data-constraint>
+</security-constraint>
+
+<login-config>
+	<auth-method> </auth-method>  //  BASIC , FORM,CLIENT-CERT
+	<realm-name>  </realm-name>
+	<form-login-config>  // use only if auth method is form
+		<form-login-page> 	</form-login-page>
+		<form-error-page>	</form-error-page>
+	</form-login-config>
+</login-config>
+
+<security-role>
+	<role-name> </role-name>
+</security-role>
+
+Caching
+
+Heap dump Indicates collection of objects that are in java heap memory. Used to analyze OOM error.
+Thread dump -> shows what each thread is doing at a given point of time and stack trace is also printed. Use to analyze why application is running slow. This is Useful to detect dead locks.
+Core dump -> OS level dump file, which has OS info along with heap dump. Used when the JVM crashes abruptly and provides native calls info.
+This is generated automatically if the app is crashed due to segmentation fault or some other reason.
+Memory leak -> some objects are not used by application any more, but GC fails to recognize them as unused.
+-->Creating memory leaks
+All memory leaks lead to OOM. How fast it happens is the thing.
+Static field holding reference to large Object
+Unclosed file streams
+Unclosed connections
+Areas that are not reachable for Garbage collector like native methods
+In web applications object stored in application scope, the objects are there till app is restarted 
+Use hash set with incorrect hash code and equals methods. So the references are never garbage collected even the thread dies. map.put(new String("key"),value)
+
+
+7.	Projects
+
+
+
+SEMM
+
+MSP
+
+PSS 
+
+ROHS
+
+
+
+
+
+
+
+
+
+To learn
+? algorithms			
+? threads
+? msp architecture
+? pss architecture
+
+8.	Problems to solve/ FAQ
+
+1Design an algorithm to display top 10 searches
+2) How middle tier caching works
+3) How connection pooling is implemented
+4) We have stream of numbers, how to get random number from them without storing.
+5) Design connection pool
+6) Design a distributed cache
+7) Write a algorithm for lift
+8) Designing browser for blind people
+9) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S. Find the minimum number of coins the sum of which is S
+10) Convert tree to double linked list
+11) Check if tree is mirror image.
+12) Array has 0 and 1 make all the row and column of cell that has 1
+	
+Typical issues in application
+Performance issue (application is slow)
+Memory issue (memory leaks)
+Thread issues (concurrent)
+Transactional issues
+
+scalability
+secuiry
+
+things to take while coding
+	don't hard code the values
+	using the design pattern
+	applying the oops principles like inheritance, polymorphism and encapsulation
+	using the collection api and better exception handling
+	handling threads properly
+	closing the resources like db/file properly
+	remove the unused code
+--> java 
+Hotspot is implementation of java virtual machine
+Finalize method is called just before garbage collector reclaims memory occupied by objects. Avoid using finalise to clean resource as we don't know when GC is started.
+
+
+The Process
+1.       The unit processes in client-server interaction are described below
+a.       A client (browser) launches a request (example: User hits a button in UI)
+b.      Server receives Request (could be HTTPRequest, SOAPRequest or on a plain socket)
+c.       Server opens and analyzes the request
+d.      Server hits a data source for required information to successfully service the request
+e.      Server packages the response
+f.        Server Response is sent to Browser
+g.       Browser Renders the response appropriately
+ 
+The Analysis
+Debugging/Questions that need to be answered before even we arrive at a solution:
+ 
+1.       Analyze the Client request in browser (Ctrl+Shift+J in Chrome, Firebug in Mozilla). Analyze the redirects, js, css, images, cookies that gets downloaded and the time taken for each.
+2.       Answer the below questions (Server and JVM Analysis)
+a.       Is the server spending time in servicing the requests or it is doing something else ? Hint: We may be surprised to know that after GC analysis, the time spent in GC is more than  time spent for servicing. Full GCs might have been spawned for 2 hrs in some cases during which period JVM did nothing except collecting the garbage. The application during this period might just have been frozen.
+b.      Are the servicing threads in contention ? Hint: Do a thread dump analysis.
+c.       Is my server hit with max capacity ? Hint:Understand if there are more than expected client requests. Your server capacity might have been planned for much lesser load than this.
+3.       Data source analysis
+a.       Is my query taking longer than expected time to fetch the required information ?
+b.      Is my query optimized or is there a better way ? Are too many queries hitting data source to service one request ?
+c.       Are the indices applied properly ?
+d.      Is my database hit with maximum connections ?
+4.       System Analysis
+a.       How is my VM or the BOX (not JVM) performing
+                                                              i.      CPU Speed and Availability
+                                                            ii.      System Memory
+                                                          iii.      Disk and Network I/O
+The Tooling
+ 
+Tools that can be used, but not limited to,  to debug the above issues:
+ 
+1.       Browser debug tools - Firebug, Chrome built in debugger
+2.       Server and JVM Analysis -
+a.       Enable the GC logs (in LT/Performance Engineering Labs) - -Xloggc:<pathtogclog> -verbose:gc -XX:+PrintGCDateStamps
+Use tools like gcviewer (http://www.tagtraum.com/gcviewer.html)  to understand full gc, the time spent in gc during test cycles
+b.      Thread dump analysis tools
+jstack (shipped with JDK1.6 or higher) is good tool to do threaddump
+The thread dump file can be analyzed with Lockness plugin for Eclipse
+Jconsole provides max visibility if the application code is instrumented - otherwise provides basic metrics
+c.       Visit the application server/web server thread pool configuration document - analyze further what concurrency this current server configuration can handle
+d.      VMWare's Hyperic community edition (http://www.hyperic.com/) is helpful in understanding many metrics - good tool which I used recently
+3.       Data source Analysis tools
+a.       Query plans gives some insight into how does this perform for a given dataset.
+b.      Slow queries could be identified via Database logs (the slow query logging switch need to be on in most of the databases)
+4.       System Analysis tools
+a.       nmon (http://www.ibm.com/developerworks/aix/library/au-analyze_aix/)  is good tool for Linux for system monitoring
+b.      SAR reports in Linux provide visibility to many metrics
+5.       Memory profiling tools
+a.       JProfiler
+ 
+The Solutions
+•         Many a times, the solutions are obvious if we understand the root cause of the problem
+•         Evaluate and Consider Caching data for better performance - Hazelcast, ehcache in opensource world and Oracle Coherence are some of the caching frameworks.
+•         UI Improvements
+o   Reducing the number of HTTP requests has the biggest impact on reducing response time and is often the easiest performance improvement to make
+o   Eliminate unnecessary cookies. Keep cookie sizes as low as possible to minimize the impact on the user response time.
+o   Increase parallel downloads
+ 
+
+
+Cloud computing
+
+
+multiprocessor
+
+cloud computing
+providing network based services using the virtual hardware simulated by software running on one more more real machines. so that the cloud can be scaled by and 
+down. Offers on-demand computing services from application to data centers.
+
+distributed computing
+A system of networked computers which communicate and co ordinate their actions by passing messages (rpc-like,  message queues)
+A problem is divided into many tasks, each of which is solved by one or more computers which communicate with each other by message passing
+each computer has its own storage and memory. 
+This is loosed coupled form of parallel computing
+
+soa architecture
+multi player online games
+
+concurrent computing / parallel computing
+all processors may have access to shared memory to exchange information between processors. this is kind of tightly coupled form of distributed computing.
+
+Grid computing
+Consists of heterogeneous resources and integrates storage, networking and computational resources
+Resources enter and leave the pool.Dynamic by nature, offers increased scalability.
+Solves the issues of clustered computing like physical proximity and network latency.
+The grid tend to be loosely coupled, heterogenous and geographically dispersed
+
+Clustering 
+Clustering is the connecting two or more computers in a way they behave like single computer.
+They are used for parallel processing (distributed computing), load balancing, fault tolerance.
+Provides more computing power and better reliability by adding number of low cost computers
+Usually clusters are located in same complex in a single location. Physical proximity and network latency limit the ability of clusters to scale out.
+Ex: Super computer, SNTC 2.x
+
+load balancing
+A system for distributing work loads to minimize response time,  maximize throughput. Load balancer (hardware or software) receives the request from client
+and send it to one of backend server.
+
+
+INFO
+
+
+
+Spring has
+application context -> used for middle and dao tiers and for contextloaderlistener
+web context -> used for presentation tier and for dispatcher servlet
+
+The properties set in each context are applicable to the beans defined in the same context.
+
+util:properties will create a bean for properties so that you can access/assign properties to fields in class using
+Value annotation. Also you can inject this to Property field in Class.
+
+PropertyPlaceholderConfigurer reads the property files specified in the location and we can access these properties in
+spring configuration using ${variable}. This is beanfactorypostprocessor. 
+
+
+<context:annotation-config> is used to activate annotations in beans already registered in the application context 
+(no matter if they were defined with XML or by package scanning).
+For examples annotations like AutoWired, Required any other annotation defined in class.
+
+<context:component-scan> also scans packages to find and register beans within the application context.
+
+<context:component-scan> is superset of <context:annotation-config>
+
+
+JpaTransactionManager is implementation of JPA for transaction management. 
+This is appropriate for application single JPA EntityManagerFactory for transactional data access.
+
+JtaTransactionManager is necessary for accessing multiple transactional resources within the same transaction
+like writing to multiple databases etc.
+
+Persistence (JPA bootstrap class) -> EMF ->  EM -> EntityTransaction
+
+EntityManagerFactory is created for a specific database and manages instances of EntityManager for that database
+EntityManager -> represents a connection to remote database, manages entities, allows queries to be run on entities
+EntityTransaction ->  Required to perform operations that affect the state of database (Create,Delete,Update)
+Persistent context -> Logical collection of entities, Defines the scope under which entity instances are created, updated
+or deleted.
+Persistence Unit -> Defines a set of entity classes managed by entity manager. They are defined in persistence.xml
+
+EntityManager holds a single attached EntityTransaction and is associated with a persistent context.
+EntityManagerFactory is thread safe and EntityManager is not thread safe.
+
+Injecting a persistent context to EM > it is created, propagated and closed automatically by container
+Injecting a persistent unit to EMF -> we have to perform all above operations programmatically
+
+Container managed persistent context entity manager
+
+Application managed persistence context/ entity manager
+EMF is used. 
+
+--> JMS is used for 
+Asynchronous communication, but also allows Synchronous communication
+Reliability -> send once and only once message delivery
+Loose coupling -> sender need not have information about the receivers
+
+Point to Point-> Message queues -> implement reliable load balancer 
+Publish and Subscribe (Topic)
+High performance reliable load balancing	
+
+Distributed systems use SOAP,JMS,Java RMI
+
+JMS configuration
+use either JMSTemplate or DefaultMessageListenerContainer
+destinationname
+messagelistener
+concurrentusers
+maximumconcurrentusers
+connectionfactory
+SingleConnectFactory is thread safe
+
+----------------------------------------------------------------->
+quartz scheduler
+
+create a job
+create a trigger -> two types simple and cron
+create the scheduler with job and trigger
+
+
+RmfInputRequestBean
+RmfInputRequest
+RmfSchedules
+------------------------------------------------------------------
+
+Transaction has 3 things
+propagation mode -> default required -> supports a current transaction, creates one if none exists
+other values 
+	requires_new -> create new transaction, suspend the current transaction if one exists
+	mandatory -> supports a current transaction, throws an exception if none exists
+	never -> execute non transactionally, throw an error if one exists
+	supports -> supports a current transaction, execute non transactionally if none exists
+	not supported -> execute non transactionally, suspend the current transaction if exists
+	
+read only flag  default false this is considered only when transaction is started
+isolation level  default database
+
+only for runtime exceptions transaction rollback occurs
+for checked exception no transaction rollback occurs , you can overcome this using rollbackfor
+
+different isolation levels
+
+TRANSACTION_READ_UNCOMMITTED: Allows dirty reads, non-repeatable reads, and phantom reads to occur.
+TRANSACTION_READ_COMMITTED: Prevents dirty reads, but non-repeatable reads and phantom reads may occur.
+TRANSACTION_REPEATABLE_READ: Prevents dirty and non-repeatable reads, but phantom reads may occur.
+TRANSACTION_SERIALIZABLE: Prevent everything - phantom reads may not occur.
+------------------------------------------>
+to configure the https , ssl has to be setup on server and also public key certificate has to be setup
+
+-------------------------------> how https works
+type1 -> both parties share the same secret key and use it for encryption or decryption
+public key encryption -> 
+SSL or TSL uses public key encryption.
+Each party has public and private key. They are linked mathematically.
+A message encrypted using public key can only be decrypted using the corresponding private key.
+So it is ok to reveal the public key but not private key.
+Both the parties agree to a shared secret key.
+
+Following are steps involved in making a server HTTPS and communicating with HTTPS server
+1) The server has to obtain a SSL certificate from trusted third party.
+2) The third party provided public key certificate and private key to organization
+3) The organisation installs the certificate in their web servers
+
+1) A client makes connection to secure web server (https at port 443)
+2) Server sends back the public key to client.
+3) Client decides whether to proceed or not. The client must have the public key of 3rd party.
+   Typically the browser has root certificats standard 3rd parties.
+4) if the customer trusts the certificate then client will send its public key to server
+5) Server will send a unique hash and encrypt it with client public and server's private key
+6) Client browser decrypts the hash using its private key.
+7) This hash code acts as secret key and used for the entire session.	
+
+Asymmetric encryption algorithm --> based on pair of keys, one public and one private. typically used for one way encryption,
+digital signing and key exchange operations
+
+Symmetric algorithm --> based on one secret key shared between parties
+------------------------------> types of indexes
+clustered index -> the ordering of physical data rows is in accordance to index ordering. this can be created only on primary key
+non clustered index -> index tree contains index keys in sorted order. physical order of rows is not same as index order.applied on non primary key column
+function based index -> index can be created on function applied on a column. similar to non clustered index
+bitmap index -> this index stores data in bit arrays (bitmap) and answers most queries by doing bitwise logical operations on these bitmaps.
+this index is suitable if the column data is repeating frequently. for example gender columns, city etc.
+dense index -> this is a file with pair of keys and pointers for every record in the data file. each key is associated with a particular pointer to a record
+in sorted file.
+sparse index ->this is a file with pair of keys and pointers for every block of data in data file. every key in the file is associated with a particular pointer
+to the block of sorted data file.
+
+indexes can be implemented using balanced tree, b tree and hashes
+
+transaction properties
+atomicity -> either commit all or commit none.
+consistency -> this ensures that transaction will bring database from one valid state to other. data written to db should be valid according to db rules
+constraints, cascades, triggers etc.
+isolation -> concurrent execution of transactions results in a system state that would be obtained if transactions were executed serially.
+durability -> once the transaction is committed , it will remain so even in case of db crashes, errors, power failures etc.
+
+for isolation we can use locking vs multi versioning
+
+-->distributed transaction
+transaction manager is responsible for creating and managing a global transaction across multiple resources like DB, queues
+transaction manager uses XA resource instances to prepare and coordinate each transaction branch
+resource manager (JDBC, JMS) allows transaction manager to co ordinate distributed transaction between its own and other resource managers
+Each resource manager must implement the javax.transaction.xa.XAResource interface in order to be managed by Transaction manager.
+
+two phase commit protocol is used for atomicity in distributed transaction
+in first phase, one node (co ordinator) interrogates other nodes (participants) and only when all reply that they are prepared
+then in second phase co ordinator commits the transaction
+EJB and microsoft transaction server fully support distributed transaction standards
+
+--> DB normal forms
+The purpose of DB normal forms to remove duplicate data
+1 NF
+a table is in 1 NF if the column has atomic values and each row has a unique key
+
+Not 1NF
+student firstname  lastname     phonenumbers
+1          sai      divvela     123 456
+
+1NF
+student firstname lastname
+1          sai      divvela
+
+1NF
+student phonenumber
+1          123
+1          456
+
+Not in 1NF issue no unique key
+student name subject
+1        sai  maths
+1        sai  physics
+2       neeru maths
+2       neeru physics
+
+In 1NF
+student name 
+1        sai
+2        neeru
+
+in 1NF
+subjectid student subject
+1           1      Maths
+2           1      Physics
+1           2      Maths
+2           2      Physics
+
+2NF
+Every column that is not part of primary key must depend upon the entire primary key. If the column depends only on part of primary key then 2NF fails
+
+Not in 2NF  primary key is subjectid, student, subject depends on subjectid
+subjectid student subject
+1           1      Maths
+2           1      Physics
+1           2      Maths
+2           2      Physics
+ 
+in 2NF
+subjectid student
+1           1
+2           1 
+1           2 
+2           2
+
+subjectid  subject
+1           MATHS
+2           PHYSICS
+
+not in 2NF  primary key customerid, orderid issues customername dependant on customer id, order details dependant on order id only
+
+customerid customername  orderid  ordername saledetails
+
+in 2NF
+customerid customername
+
+orderid ordername
+
+orderid customerid saldetails
+
+3NF
+Avoid transitive functional dependancy. Every non prime attribute must be dependant on primary key
+non key data depends on the keys and nothing but the keys
+
+not in 3NF  issue street city depend on zip not on student id
+studentid studentname DOB street city zip
+
+in 3NF
+studentid studentname DOB zip
+
+zip street city
+
+BCNF (3.5 NF)
+data(key or non key) depends on keys and nothing but keys
+any table which has only one candidate key and is in 3NF is already in BCNF because there is no column or key that is functionally dependant
+on anything besides key
+the issues comes when table has multiple candidate keys
+partial key depends on non candidate key
+
+example
+Pizza    Topping    Topping Type
+-------- ---------- -------------
+1        mozarella  cheese
+1        pepperoni  meat
+1        olives     vegetable
+2        mozarella  meat
+2        sausage    cheese
+2        peppers    vegetable
+
+candidate keys pizza + topping type, pizza + topping
+here topping can't have different topping types for different pizzas. topping depends on topping type or topping type depends on topping
+
+solution
+Pizza    Topping
+-------- ----------
+1        mozarella
+1        pepperoni
+1        olives
+2        mozarella 
+2        sausage
+2        peppers
+
+Topping    Topping Type
+---------- -------------
+mozarella  cheese
+pepperoni  meat
+olives     vegetable
+sausage    meat
+peppers    vegetable
+
+-------------------> UML diagrams
+two types -> 
+structural diagrams -> shows different objects in system
+behaviour diagrams  -> displays what should happen in system
+class diagram -> displays objects with attributes, methods and relationship between objects
+component diagrams ->
+deployment diagrams-> displays hardware and software in the hardware system
+objectdiagram
+package diagram
+
+usecase diagram -> displays over view of the actors in the system, different functions needed by those actors and how these
+functions interact. these are good for project discussion because you can easily identify main actors and process in the system
+sequence diagram -> for a particular scenario , shows interaction between objects and order of these interactions
+
+----> serialization
+
+Notserializableexception -If the class doesn't implement serializable interface and if we try to serialize we get this
+Also if the class has a Object which is not serializable then also we get this exception
+   
+ClassCastException - if we try to cast deserialized object to different class
+   
+InvalidClassException - if the deserialized class serialversionid doesn't match with local class serialversionid
+Even if we remove/add attributes to local class we don't get exception
+   
+All subtypes of serialized class are by default serializable
+   
+Subtypes of non serialized classes can be serialized only if the base class has no arg public or protected constructor
+otherwise run time error comes when we try to serialize sub class.
+It is responsibility of sub type for saving and restoring public, protected, package fields of base class
+   
+writeObject and readObject are used to save/restore the state. using this we can serialize transient, static fields and 
+also super class fields.
+   
+Externalizable can be used to control the format and serialization. class has to do everything needed to save and restore state.
+
+---->
+
+reader -> buffered reader        buffered writer
+		  char array reader		 char array writer	
+		  filter reader          filter writer 
+		  inputstream reader     outputstream writer
+		  		file reader 			file writer
+		  piped reader			 piped writer
+		  string reader          string writer
+		  						 print writer	
+
+Input stream -> ByteArrayInput Stream			ByteArrayOutputStream
+				Filter input stream				FilterOutputStream
+					BufferredInputStream			BufferredOutputStream	
+				ObjectInputStream				ObjectOutputstream
+				File input stream				FileOutputStream
+				Piped input stream				PipedOutputStream
+				Stringbuffer input stream 
+				
+				
+Inputstreamreader is bride between byte stream and characters.  It reads bytes and decodes them to characters using a specified characterset.		  
+
+BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+BufferedWriter out = new BufferedWriter(new OutputStreamWriter(System.out));
+
+
+BufferedReader in = new BufferedReader(new FileReader(file));
+BufferedWriter out = new BufferedWriter(new FileWriter(file));
+
+BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
+BufferedOutputStream out = new BufferedOutputStream( new FileOutputStream(file));
+
+BufferedInputStream in = new BufferedInputStream(System.in);
+BufferedOutputStream out = new BufferedOutputStream(System.out);
+
+PrintWriter is used to print formatted object to file, text output stream etc.
+
+
+--> Thread
+join -> this method puts the current thread on wait until the thread on which the method is called is dead.
+for example if you start two threads t1, t2 by calling t1.join, t2.join main program will wait for both the threads to die
+static sleep -> sleeps for specified number of milliseconds
+static yield -> currently executing thread temporarily pauses and allows other threads to run
+Thread states -> New Runnable Running Wait Blocked Dead
+
+Thread scheduler -> OS service that allocates CPU time to Runnable threads
+Time slicing -> Process to divide available CPU time to runnable threads
+ContextSwitching ->  process to store and restore cpu state so that thread execution can be resumed at same point later
+
+Every object has monitor and wait notify methods are used for communication between threads. The methods are defined as they are required for all objects.
+
+wait, notify, notifyAll should be called only from synchronized block otherwise we get IllegalMonitorstate exception
+
+The methods sleep and yield are static because they are applied on current executing thread. there is no point apply these methods on threads which are in wait state.
+
+Thread safety -> implement concurrent lock interface, thread safe class, volatile variables
+
+volatile -> all threads read the volatile variable from memory only and don't cache it
+
+Threadlocal variable -> if the variable is not thread safe we can use synchronization but thread local can be used as alternative to synchronization
+Every thread has its own thread local variable and use get or set to change the value local to the thread
+
+Threaddump -> list of all active threads in the JVM.  useful to analyze deadlock situations
+for generating thread dump  -> use profiler, kill -3 command , jstack tool
+
+Threadpool -> a thread pool manages group of worker threads. contains queue that maintains tasks waiting to be executed
+manages collection of Runnable threads and work threads execute the runnable from queue
+
+java.util.concurrent.Executor 
+java.util.concurrent.ExecutorService
+java.util.concurrent.Callable
+java.util.concurrent.Future
+
+java.util.concurrent.FutureTask
+java.util.concurrent.Executors (Factory class)
+java.util.concurrent.ThreadPoolExecutor
+java.util.concurrent.ScheduledThreadPoolExecutor 
+
+java.util.concurrent.atomic provides atomic classes like AtomicInteger, AtomicLong, AtomicBoolean etc
+
+-------------> collections
+
+how hashmap is implemented
+initial capacity,  load factor, threshold, resize
+calculate hashcode, find array index, insert
+null key value is kept at 0 index
+
+enumeration is faster than iterator and takes less memory. iterator is much safer and throws exception when collection is modified.
+iterator allows to remove the element from the collection
+
+listiterator can traverse in both the directions , previous , next can be applied. element also can be added
+
+linkedlist consumes more memory than array list because each node has to maintain next and previous node links
+
+Vector, Hashtable, Properties and Stack are thread safe
+
+Collections.unmodifiableCollection(Collection c)  will return read only collection so we can make sure that the collection is not changed
+
+Collections.synchronizedCollection(Collection c) gives synchronized collection
+
+-->concurrent collection classes
+java collection classes are fail fast means while iterating collection if underlying collection is modified then we get concurrentModification exception
+
+Concurrent collection classes support full concurrency of retrievals and adjustable expected concurrency for updates
+
+main classes
+ConcurrentHashMap -> allows parallel reads without synchronization, allows concurrent modification of map by different threads without blocking
+use this if multiple threads insert into map and reads are more frequent
+how is this different from Collections.synchronizedmap(map) , only one thread can access map at a time, so this is blocking, but assures data consistency
+use this if data consistency is important for all threads and performance is not important
+hashmap can have null key or null values but hashtable and concurrenthashmap can't have null key or values
+it uses concurrencylevel. concurrenthashmap is divided into segments equal to concurrencylevel. same number of threads are created to protect segments
+this value should be equal to the number of concurrent threads writing to map
+CopyOnWriteArrayList
+CopyOnWriteArraySet
+
+concurrentmodificationexception
+how iterator checks list is modified.
+
+iteration implementation is available in abstractList. It maintains a variable modCount which indicates number of times list size is modified.
+before next call iterator checks modcount and if there is change in listsize it will throw an error.
+
+if we change the collection but size is not modified then we don't get this exception ex: hash map
+
+how to avoid concurrentmodificationexception
+-> convert list to array and iterate over array. this affects performance if the list is very large
+-> lock the list in synchronized block while iterating through it. affects performance
+-> use concurrent collections like concurrenthashmap, copyonwrirearraylist etc
+-> you can use iterator.remove function to remove element from underlying collection safely in a single thread environment
+
+---->java.util.concurrent.BlockingQueue
+doesn't accept null values and throws null pointer exception
+while retrieving element waits for the queue to be non empty
+while add element waits for the queue to have space
+blocking queue implementations are thread safe. primarily used for producer/consumer problem. operations are atomic and uses internal locks for this.
+
+---> java 5 vs 6 vs 7 vs8
+java 5
+enhanced for loop
+enumeration
+generics, string builder , scanner class
+auto boxing
+annotations
+varargs
+Executor framework is introduced Callable interface
+
+java 6
+integrated web services
+integrated jaxb
+scripting language support
+performance improvement of platform and swing
+api to choose compiler programatically
+
+
+java 7
+nio2 package
+multiple exceptions can be handled in single catch block
+string in switch statement
+JVM support for non java langauages
+try with resources
+
+java 8
+lambda expresssions
+compact profile
+small vm
+remove the permanent generation
+launch java fx applications
+parallel array sorting
+using balanced tree in hashmap instead of linked list
+
+
+---------------> web services
+SOAP vs REST
+
+SOAP is a protocol. REST is architecture style
+
+SOAP tightly couples client and server. Everything breaks if client or server changes.
+
+SOAP client is like desktop application. REST client is like browser
+
+REST is protocol independent . it is completely stateless.
+
+SOAP is xml based messaging protocol. REST supports any message types.
+
+SOAP requires less plumbing like transaction ,security etc
+
+REST message should be self contained and should help consumer to decide next course of action
+
+when you are publishing complex application program interface to the outside world SOAP is suitable.
+but when something with lower learning curve, light weight and faster results , simple transaction then REST is suitable
+ 
+ SOAP envelop, SO
+
