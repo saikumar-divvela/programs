@@ -1,3 +1,10 @@
+##### TOC #####
+# HTML
+# CSS
+# Javascript
+# Jquery
+
+#### HTML
 ######### HTML Markup tags #####################
 <html>  <head> <link> <meta> <style> <base>
 <address>
@@ -7,7 +14,7 @@
 <a> <B> <I>  <u> <big> <center>  <dl>  <dd> <dt> <em>  <strong> <code> <kbd> <tt> <samp>
 <figure> <figcaption>  <hr> <ol> <ul> <li>
 
-######## CSS ##########
+#### CSS
 External stylesheet example
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 Cascading order
@@ -40,17 +47,16 @@ text
 text-align: center | right | justify
 text-decoration: none | overline | line-through | underline | blink
 text-transform : uppercase | lowercase | capitalize
-text-indent: 
+text-indent:
 letter-spacing:
 word-spacing:
 line-height:
 
 
+#### Javascript
 
-####### Javascript #######
 
-
-########### Jquery ########
+#### Jquery
 Basic syntax is: $(selector).action()
 
 $(this).hide() - hides the current element.
@@ -68,7 +74,7 @@ $("#id123") // selects the tag which has id id123
 $("img")   // selects all the image tags
 $("p:first") // selects first p tag
 $("ul li:first")
-$("ul li:child")  
+$("ul li:child")
 
 ===> Events
 $(selector).click(function)
