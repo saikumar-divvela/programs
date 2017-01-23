@@ -1,8 +1,8 @@
 #!/usr/bin/python
 
 '''
-This program covers some basic stuff to learn python.
-This message is part of multi line comments
+### This program covers some basic stuff to learn python.
+### This message is part of multi line comments
 '''
 
 import sys

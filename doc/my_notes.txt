@@ -1,3 +1,4 @@
+Line 2434
 Table of Contents
 1.	JAVA & J2EE	3
 Core java	3
@@ -216,11 +217,11 @@ If a class doesn't has any modifier then it is visible in its package only.
 
 The  following matrix shows the access to members permitted by each modifier.
 
-	Class	Package	Subclass	World
-Public	Y	Y	Y	Y
+    	Class	Package	Subclass	World
+Public	    Y	Y	Y	Y
 Protected	Y	Y	Y	N
 No modifier	Y	Y	N	N
-Private	Y	N	N	N
+Private	    Y	N	N	N
 
 
 Initializing class variables:
@@ -518,16 +519,14 @@ All the modifiers public,private and package are applied to inner classes also.
 
 Types of nested classes are shown below.
 
-Type	Scope	Inner
-Static  nested class	member	no
-inner (non static) class	member	yes
-local inner class	local	yes
+Type	                    Scope	Inner
+Static-nested- class	    member	no
+inner-(non static)- class	member	yes
+local-inner-class	        local	yes
 anonymous class	only the  place where it is defined	yes
 
 
-
 Enum type:
-
 An enum type is a type whose fields consists of fixed constants. enum is a java keyword , which is added in java 5.0. enum type is a class type which can have methods and other fields other than constants.  enum type implicitly extends  the class java.lang.Enum and hence it can't extend any other class. Enum is thread safe.
 
 
@@ -698,13 +697,6 @@ The month DEC has 31days
 
 
 
-
-
-Format and printf (of printstream) are used in addition to print and println. All the converters and flags are specified in java.util.Formatter
-
-
-
-
 Number & Strings
 
 java.lang.Number 
@@ -715,8 +707,7 @@ Wrapper classes  are developed for primitive data types. Advantages of wrapper c
 b) to pass them as arguments  to method which accept objects
 c) using methods to  convert one value to value of different primitive types and for conversion between different number systems
 
-format and printf (of printstream) are used  in addition to print and println
-All the converters and flags are specified in java.util.Formatter
+format and printf (of printstream) are used  in addition to print and println. All the converters and flags are specified in java.util.Formatter
 
 difference between Math.random() and java.util.Random
 if  we need one random number Math.random can be used. It generates a random number 0.0>= number <1.0.
@@ -780,14 +771,12 @@ java com.example.test
 another way is  move the classes to classes directory and set the classpath to this directory.
 
 
-->Difference between Math.random() and java.util.Random
-If we need one random number Math.random can be used. It generates a random number 0.0>= number <1.0. If you want to generate a series of random number we have to use java.util.Random
-
 Jvm adds the package path to classpath and executes the class file.
-Struts action classes and jsp variables are not thread safe
+
+-->Struts action classes and jsp variables are not thread safe
 Resources like database or file should be closed properly. Otherwise it will lead to performance and memory issues.
 
-->Difference between compare to and comparator
+->Difference between compareto and comparator
 Comparable interface -> over ride compare to-> used for natural sorting-> used on lists and arrays for sorting
 Comparator interface -> over ride compare -> used to compare objects by different attributes -> tree set, tree map.
 Both methods should be consistent with equals' method	
@@ -809,13 +798,9 @@ Suppose we have public method, which returns an object returning class internal 
 
 -> How do we create daemon threads, what methods are there to create daemon threads?
 Daemon is threads, which run in the background. By calling Thread.setDemon you can make a thread daemon.  When all non-threads are completed, jvm will kill demon threads also.
-	---->
 
 
-
-
-
-XML
+==>XML
 XML is a markup language and used for  information exchange between applications
 ?  used to store information, where as html is used to present data
 ? language and os independent 
@@ -837,7 +822,7 @@ Validating parser validates XML against DTD or XML Schema
 
 Follow this link for ex: http://www.totheriver.com/learn/xml/xmltutorial.html
 
-Struts
+==>Struts
 
 Struts framework  is a standard to develop well architected web designs. It  is based on MVC model. 
 
@@ -862,13 +847,13 @@ Many struts values are stored in xml or property file. This loose coupling allow
 b)	Form Beans
 JSP has properties like jsp:setProperty to automatically populate a java bean component based on the incoming request parameters.. Where as servlet api doesn't has support for this. Form beans allow servlets to access the forms data.
 c)	Bean tags
-Struts provide a set of custom jsp tags that allows to ouput the values of bean components. They are more powerful vaiations of jsp:useBean jsp:getProperty etc.
+Struts provide a set of custom jsp tags that allows to ouput the values of bean components. They are more powerful variations of jsp:useBean jsp:getProperty etc.
 d)	HTML tags
 Struts provides jsp tags to associate form with beans. This form/bean association is useful for
 1)To get initial form field values from java objects
 2)To send the values to java objects when form is submitted
 3) it lets you to redisplay forms with some or all previously entered values
-e)	Form field validation
+e)Form field validation
 Struts has builtin capability to check whether the form values are in required format or not. In case of mismatch, the form is redisplayed with error message while displaying the remaining values as entered previously.
 This validation can be performed on server side (java) or both on server and  client side (java script). Struts uses validation xml for each form for clien side validation
 f)	Struts allows consistence maintenance of MVC framework.
@@ -1024,7 +1009,7 @@ Session ? session-scope, data is lost when the session is expired
 	session.setAttribute(name,value);
 	session.getAttribute(name);
 
-ServletContext ? application scope , data lost when the servle context is destroyed
+ServletContext ? application scope , data lost when the servlet context is destroyed
 	getServletContext.setAttribute(name,value);
 	getServletContext.getAttribute(name);
 
@@ -1081,7 +1066,7 @@ Both the sendRedirect and forward are used for loading a new page/url.
 In case of forward 
 •	Control can be forward to resources available within the server from where the call is made
 
-?	a requestdispatcher works on the server side. Client doesn't about this and sees same old url getRequestDispatcher(string) is defined in ServletContext and ServletRequest 
+?	a requestdispatcher works on the server side. Client doesn't know about this and sees same old url getRequestDispatcher(string) is defined in ServletContext and ServletRequest 
 ?	for ServletRequest.getRequestDispatcher() path can be absolute and relative. if path is relative(with out /) it can't go beyond context root and path is calculated w.r.t location where request is in 
 ?	for ServeltContext.getRequestDispatcher() path should be absoulte (starts with /) and calculated w.r.t. application context root 
 ?	both the request and response objects are avaiable to the new page.
@@ -1307,120 +1292,99 @@ o	if value is empty no roles are applicable
 <description> </description> <distributable> </distributable> <display-name> </display-name> <icon> </icon>
 
 <servlet>
-
-<servlet-name> </servlet-name> <servlet-class> </servlet-class> <init-param>
-
-<param-name></param-name> <param-value> </param-value>
-
-</init-param>
-
+<servlet-name> </servlet-name> <servlet-class> </servlet-class> 
+<init-param><param-name></param-name> <param-value> </param-value></init-param>
 <display-name> </display-name> <description> </description> <load-on-startup> </load-on-startup> <!-- <run-as></run-as>--> <security-role-ref>
-
-<role-name> </role-name> <role-link> </role-link>
-
-</security-role-ref> </servlet>
-
+<role-name> </role-name> 
+<role-link> </role-link>
+</security-role-ref> 
+</servlet>
 <servlet>
-
 <servlet-name> </servlet-name> <jsp-file> </jsp-file> <init-param>
-
 <param-name></param-name> <param-value> </param-value>
+</init-param> 
+</servlet> 
 
-</init-param> </servlet> <servlet-mapping>
-
+<servlet-mapping>
 <servlet-class> </servlet-class> <url-pattern> </url-pattern>
-
-</servlet-mapping> <context-param>
-
-
+</servlet-mapping> 
+<context-param>
 <param-name></param-name> <param-value> </param-value>
-</context-param> <jsp-property-group>
+</context-param> 
 
-<url-pattern> </url-pattern> </jsp-property-group>
+<jsp-property-group>
+<url-pattern> </url-pattern> 
+</jsp-property-group>
 
-<security-constraint> <web-resource-collection>
+<security-constraint> 
+<web-resource-collection>
 <web-resource-name> </web-resource-name> <url-pattern></url-pattern> <url-pattern></url-pattern>
-
-<http-method> </http-method> <http-method> </http-method> </web-resource-collection>
-
+<http-method> </http-method> <http-method> </http-method> 
+</web-resource-collection>
 <auth-constraint></auth-constraint>
 
-<user-data-constraint>
-
-<transport-guarantee> </transport-guarantee> // Integral or Confidential </user-data-constraint>
-
+    <user-data-constraint>
+    <transport-guarantee> </transport-guarantee> // Integral or Confidential 
+    </user-data-constraint>
 </security-constraint>
 
 <login-config>
-
-<auth-method> </auth-method> // BASIC , FORM,CLIENT-CERT <realm-name> </realm-name>
-
-<form-login-config> // use only if auth method is form <form-login-page> </form-login-page> <form-error-page> </form-error-page>
-
-</form-login-config> </login-config>
+    <auth-method> </auth-method> // BASIC , FORM,CLIENT-CERT <realm-name> </realm-name>
+    <form-login-config> // use only if auth method is form 
+        <form-login-page> </form-login-page> 
+        <form-error-page> </form-error-page>
+    </form-login-config> 
+</login-config>
 
 <security-role>
-
-<role-name> </role-name> </security-role>
+    <role-name> </role-name> 
+</security-role>
 
 <filter>
+    <display-name> </display-name> <description> </description> <filter-name> </filter-name> <filter-class> </filter-class> 
+    <init-param><param-name></param-name> <param-value> </param-value></init-param>
+</filter> 
 
-<display-name> </display-name> <description> </description> <filter-name> </filter-name> <filter-class> </filter-class> <init-param>
-
-<param-name></param-name> <param-value> </param-value>
-
-</init-param></filter> <filter-mapping>
-<filter-name> </filter-name> <url-pattern> </url-pattern> <servlet-name> </servlet-name>
-
+<filter-mapping>
+    <filter-name> </filter-name> <url-pattern> </url-pattern> <servlet-name> </servlet-name>
 </filter-mapping>
 
 <listener>
-
-<listener-class> </listener-class> </listener>
+    <listener-class> </listener-class> 
+</listener>
 
 <session-config>
-
-<session-timeout> </session-timeout> <!--- timeout in minutes -1 session do not timeout -->
-
+    <session-timeout> </session-timeout> <!--- timeout in minutes -1 session do not timeout -->
 </session-config>
 
 <mime-mapping>
-
-<extension> </extension> <mime-type> </mime-type>
-
+    <extension> </extension> 
+    <mime-type> </mime-type>
 </mime-mapping>
 
 <welcome-file-list>
-
-<welcome-file> </welcome-file> </welcome-file-list>
+    <welcome-file> </welcome-file> 
+</welcome-file-list>
 
 <error-page>
-
-<exception-type> </exception-type> <!-- class name of Java exception type --> <location> </location>
-
+    <exception-type> </exception-type> <!-- class name of Java exception type --> 
+    <location> </location>
 </error-page>
-
 <error-page>
-
-<error-code> </error-code> <!-- HTTP error code --> <location> </location>
-
+    <error-code> </error-code> <!-- HTTP error code --> 
+    <location> </location>
 </error-page>
 
 <taglib>
-
-<taglib-location> </taglib-location> <taglib-uri> </taglib-uri>
-
+    <taglib-location> </taglib-location> 
+    <taglib-uri> </taglib-uri>
 </taglib>
 
 <env-entry>
-
-<env-entry-name>	</env-entry-name>
-
-<env-entry-value>	</env-entry-value>
-
-<env-entry-type>	</env-entry-type> // type can be one of the values
-
-Integer, Double,Float,String or Boolean </env-entry>
+    <env-entry-name>	</env-entry-name>
+    <env-entry-value>	</env-entry-value>
+    <env-entry-type>	</env-entry-type> // type can be one of the values Integer, Double,Float,String or Boolean 
+</env-entry>
 
 <ejb-ref> 
 	<ejb-ref-name> </ejb-ref-name>
@@ -1432,22 +1396,24 @@ Integer, Double,Float,String or Boolean </env-entry>
 </ejb-ref>
 
 <ejb-local-ref>
-
-<ejb-ref-name> </ejb-ref-name> <ejb-ref-type> </ejb-ref-type> <local-home> </local-home>
-
-<local> </local> <ejb-link> </ejb-link>
-
+    <ejb-ref-name> </ejb-ref-name> 
+    <ejb-ref-type> </ejb-ref-type>  
+    <local-home> </local-home>
+    <local> </local> 
+    <ejb-link> </ejb-link>
 </ejb-local-ref>
 
-<jsp-config> <jsp-property-group>
-<url-pattern> *.jsp</url-pattern> <scripting-invalid>true </scripting-invalid> <el-ignored>true</el-ignored>
-
-</jsp-property-group> </jsp-config>
-
+<jsp-config> 
+    <jsp-property-group>
+    <url-pattern> *.jsp</url-pattern> 
+    <scripting-invalid>true </scripting-invalid> 
+    <el-ignored>true</el-ignored>
+    </jsp-property-group> 
+</jsp-config>
 </web-app> 
+
 JSPS
 MyJsp.jsp --> MyJsp_Jsp.java --> MyJsp_Jsp.class --> MyJsp_jsp servlet (loaded and initialized)
-
 all scriptlet and expression code lands in a service method
 
 In an expression if the method doesn't return anything exception is thrown ex: <%= Count.getCount()%>
@@ -1484,9 +1450,7 @@ ${requestScope.} is used to access attributes that are set in request scope --> 
 
 -->jsp directives
 
-page	<%@ page import %>  <%@ page extends %>  <%@ page language
-
-%>  <%@ page session%>
+page	<%@ page import %>  <%@ page extends %>  <%@ page language%>  <%@ page session%>
 
 <%@ page contentType="text/plain; charset=utf-8" %>
 
@@ -1505,7 +1469,6 @@ page	<%@ page import %>  <%@ page extends %>  <%@ page language
 include <%@ include file="" %>
 
 taglib	<%@ taglib prefix="" uri="" %>
-
 <%@ taglib prefix="" tagdir="" %>
 
 --> Templates
@@ -1517,7 +1480,7 @@ an included page can not change the response code or set headers
 
 we can't pass parameters to a include directive. Only one servlet is executed at run time.
 
-The included page does not need to able to be compiled as a standalone JSP Scriptlet variables declared in the parent page can be accessed in the included page (remember, they are the same page).
+The included page does not need to able to be compiled as a standalone JSP. Scriptlet variables declared in the parent page can be accessed in the included page (remember, they are the same page).
 The included page can also have any extension
 
 Dynamic include of another file  <jsp:include page="" />
@@ -2155,140 +2118,46 @@ Service locator for generic look-ups and EJB home lookups. Business delegate for
 hide the complexity of initial context creation, EJB home object lookup and EJB object re creation 
 
 ?	Multiple clients can reuse the same Service locator to reduce code complexity 
-
 ?	Service locator for generic look ups and EJB home lookups. Business delegate for ejb-specific operations 
-
 ?	Business delegate may use service locator for jndi look ups. Normally struts action classes(presentation layer) invoke business delegate . Session facade , business delegate and service locator are used together. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ?
-
-
-
-
 ----------->transfer object
 Use a transfer object to carry multiple data elements over a tier. A single method call is used to send and retrieve the Transfer object.
 Reduces network traffic
- Transfers more data in fewer remote calls 
+Transfers more data in fewer remote calls 
 Introduces stale transfer objects 
 Increases complexity due to synchronization and version control.
 
-
-?	to encapsulate business data. A single method call is used to send and retrieve the Transfer object. 
-
+?	to encapsulate business data. A single method call is used to send and retrieve the Transfer object.
 ?	when client requests EJB for business data, EJB will create transfer object ,populates values and pass it by value to client 
-
 ?	synchronization is an issue. the data received may not be consistent with the remote data. 
-
 ?	improved network traffic as the number of calls are reduced 
 
-
 -----------> mvc
-
 ?	seperate core business functionality from the presentation and control logic. 
-
 ?	allows multiple views to share same enterprise data model which makes supporting multiple clients easier 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ------------> frontcontroller
 
 ?	initial point of contact for handling a request. manages the handling of request, invoking security services, delegating business 
-
 ?	processing, error handling,managing appropriate view 
-
 ?	instead of duplicating logic in multiple places it can be handled in once centralized place. ex: authentication 
-
 ?	multiple views are used to respond to differnt requests 
 
 struts is a mvc framework and strus-config.xml acts as a front controller.
 
 
-
-
-
 ----------->intercepting filter
-
 ?	for preprocessing and postprocessing of request and response. ex: compress and uncompress data. 
 ?	to process common services in a standard manner without changing core request processing code 
-
 ?	ex: logging & authentication 
 
 ?	transformation of output for a specific client 
-
 ?	checking data encoding scheme 
-
 ?	to verify whether client's Ip is from trusted network 
-
 ?	to verify support of browser 
-
 ?	filters can be added or removed unobtrusively without changing the existing code 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ------------>sessionfacade
 Exposes business components and services to remote clients.
@@ -2300,54 +2169,29 @@ The Session Façade can use a Service Locator to look up other business component
 
 
 ?	to encapsulate the interaction between the business objects in a workflow and provide only required interfaces 
-
 ?	used for session beans and provides coarse-grained service methods 
-
 ?	reduces the number of business objects that are exposed to client across service layer over the network 
  
 -------------->view helper
 
 ?	a view contains formatting code, delegating its processing capabilities to its helper classes. Helper class can be java beans 
-
 ?	or custom tags. 
-
 ?	Helpers also store the view's intermediate data model and serve as business data adapters 
-
 ?	the scripting logic(business logic) in jsp should be moved to helper class i.e java beans or custom tags 
-
 ?	Improves Application Partitioning, Reuse, and Maintainability 
 
 
 
 
-
-
 ------------>dispatcher view
-
 ?	describes the combination of the Front Controller and View Helper patterns with a dispatcher component 
-
 ?	a dispatcher is responsible for view management and navigation and can be encapsulated either in controller or view 
-
 ?	or separate component 
-
-
-
-
-
-
-
-
-
-
-
 
 ------------->composite view
 
 ?	A composite view is a view that is an aggregate of multiple subviews. 
-
-?	Each component of the template may be included dynamically into the whole and the layout of the page may be 
-
-?	managed independently of the content 
+?	Each component of the template may be included dynamically into the whole and the layout of the page may be managed independently of the content 
  
 3.	Linux
 Trap is a unix built in command , which executes commands on receiving some signals.
@@ -2563,7 +2407,6 @@ Quick sort:
 Sorting needs to consider main things runtime, space, and stability. stable sort or unstable sort	
 
 Merge sort best/average/worst O(nlogn)  auxiliary space O(n) best case can be made O(n).. Stable sort. Can use caching/parallel computing.
-
 Quick sort best/average O(nlogn) worst case O(n*n) auxiliary space O(n) can use caching/parallel not a stable sort
 
 

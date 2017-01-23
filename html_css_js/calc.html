@@ -1,0 +1,340 @@
+<html lang="en">
+<head>
+<title>Simple App </title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+body {
+    background-color: #c0b0ab;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar-default {
+    background-color: #5c5553;
+}
+.navbar-default .navbar-nav > li > a{
+    font-size: 16px;
+    color: #9f9694;
+}
+.navbar-default .navbar-nav > li > a:hover{
+    color: #fff;
+    background-color: #35302f;
+}
+
+.hide{
+    display: none;
+}
+
+.active{
+    display: block;
+}
+hr {
+  border:none;
+  border-top:1px dotted #f00;
+  color:#fff;
+  background-color:#fff;
+  height:1px;
+  width:50%;
+}
+</style>
+<script type="text/javascript">
+
+//var myColor = ["#ECD078","#D95B43","#C02942","#542437","#53777A"];
+var myColor = ["#4CAF50","#D95B43"];
+//var myData = [10,20,30,40,60];
+
+function getTotal(data){
+    var myTotal = 0;
+    for (var j = 0; j < data.length; j++) {
+        myTotal += (typeof data[j] == 'number') ? data[j] : 0;
+    }
+    return myTotal;
+}
+
+function plotData(emiData) {
+    var canvas;
+    var ctx;
+    var lastend = 0;
+
+    var myTotal = getTotal(emiData);
+
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    width = canvas.width/2;
+    height = canvas.height/2;
+
+    for (var i = 0; i < emiData.length; i++) {
+        ctx.fillStyle = myColor[i];
+        ctx.beginPath();
+        ctx.moveTo(width,height);
+        ctx.arc(width,height,height,lastend,lastend+ (Math.PI*2*(emiData[i]/myTotal)),false);
+        ctx.lineTo(width,height);
+        ctx.fill();
+        var radius = height/1.5; //use suitable radius
+        var endAngle = lastend + (Math.PI*(emiData[i]/myTotal));
+        var setX = width + Math.cos(endAngle) * radius;
+        var setY = height + Math.sin(endAngle) * radius;
+        ctx.fillStyle = "#ffffff";
+        ctx.font = '14px Calibri';
+        ctx.fillText(emiData[i],setX,setY);
+        lastend += Math.PI*2*(emiData[i]/myTotal);
+    }
+}
+
+    $(function() {
+        $(".nav a").click(function (e){
+             $(".nav").find(".active").removeClass("active");
+             $(this).parent().addClass("active");
+
+             $("section.tabcontent").addClass("hidden");
+             $($(this).attr('href')).removeClass("hidden");
+             return false
+        });
+
+        $("#clear").click(function(){
+            $(this).closest("form").find("input[type=text]").val("");
+            return false;
+         });
+
+        $("#fdcal").click(function() {
+            var deposit = $("#fdamount").val();
+            var time = $("#fdperiod").val();
+            var interest = $("#fdinterest").val();
+            var frequency = $("#fdfrequency").val();
+
+            var n =  12/frequency;  // numnber of times interest is calculated
+            var r =  interest/100;  // interest percentage
+            var t =  time/12;       // time in years
+
+            var mamount =  Math.round(deposit * Math.pow((1 + r/n),t*n));
+            $("#fdmaturity").val(mamount);
+        });
+
+        $("#rdcal").click(function() {
+            var mdeposit = $("#rdamount").val();
+            var time = $("#rdperiod").val();
+            var interest = $("#rdinterest").val();
+            var frequency = $("#rdfrequency").val();
+
+            var n =  12/frequency;  // numnber of times interest is calculated
+            var r =  interest/100;  // interest percentage
+            var t =  time/12;       // time in years
+
+            //alert(mdeposit+","+time+" ,"+interest+" ,"+frequency);
+            //alert(n+" "+r+" "+t);
+            var mamount =  Math.round(mdeposit * ( Math.pow (1 + r/n, t*n) -1 )/ (1 - Math.pow (1+ r/n, -n/12)));
+            $("#rdmaturity").val(mamount);
+        });
+
+        $("#emical").click(function() {
+            var loanamount = $("#loanamount").val();
+            var months = $("#emiperiod").val();
+            var interest = $("#emiinterest").val();
+            //alert(loanamount+" M "+months+" I "+interest);
+            var r = interest/(12*100);
+            var emi = Math.round(loanamount * r * Math.pow( 1+r , months)  / (Math.pow( 1+r , months) -1));
+            var totalinterest = emi*months - loanamount;
+            //alert("EMI:"+emi+" Total interest: "+totalinterest);
+            $("#emiamount").html(emi);
+            $("#totalinterest").html(totalinterest);
+            $("#emitable").append("<thead><th>Month</th><th>Interest</th><th>Principle</th><th>Balance Amount</th><thead");
+
+            var la = loanamount;
+            var count =0;
+
+            var yi = 0;
+            var yp = 0;
+
+            while (count < months) {
+                count = count +1;
+                var mi = la * r;
+                var mp = emi - mi;
+                la = la - mp;
+                $("#emitable").append("<tr><td>"+count+"</td><td>"+mi+"</td><td>"+mp+"</td><td>"+la+"</td></tr>");
+                yi = yi + mi;
+                yp = yp + mp;
+                //alert(count);
+                //alert(count%12);
+                if (count%12 == 0) {
+                    //$("#emitable").append("<tr><td>"+count/12+"</td><td>"+yi+"</td><td>"+yp+"</td><td>"+la+"</td></tr>");
+                    yi = 0;
+                    yp = 0;
+                }
+            }
+            var emiData = [totalinterest,Math.round(loanamount)]
+            plotData(emiData);
+
+        });
+
+
+    });
+</script>
+</head>
+<body>
+<div id ="main">
+<nav class="navbar navbar-default">
+    <div class="container">
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#fd">FD</a></li>
+      <li><a href="#rd">RD</a></li>
+      <li><a href="#emi">EMI</a></li>
+    </ul>
+    </div>
+</nav>
+<section id="fd" class="tabcontent">
+    <div class="container">
+        <form id="fdform" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2" for="fdamount">Deposit (amount)</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="fdamount" placeholder="Enter deposit amount" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="fdperiod" >Time period(Months)</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="fdperiod" placeholder="Number of months" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="fdinterest" >Interest rate</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="fdinterest" placeholder="Interest rate" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="fdfrequency" >Frequency of compounding</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="fdfrequency" placeholder="Frequency" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" id="fdcal" class="btn btn-default">Submit</button>
+                <button type="reset" id="clear"  class="btn btn-default">Clear</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:50px;">
+            <label class="col-sm-2" for="fdmaturity">Maturity Amount</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="fdmaturity" placeholder="">
+            </div>
+        </div>
+        </form>
+    </div>
+</section>
+<section id="rd" class="tabcontent hidden">
+    <div class="container">
+        <form id="rdform" class="form-horizontal">
+        <div class="form-group">
+        <label class="col-sm-2" for="rddeposit">Monthly deposit</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" id="rdamount" placeholder="Enter Monthly Deposit" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="rdperiod" >Time period(Months)</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="rdperiod" placeholder="Number of months" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="rdinterest" >Interest rate</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="rdinterest" placeholder="Interest rate" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="rdfrequency" >Frequency of compounding</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="rdfrequency" placeholder="Frequency" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" id="rdcal" class="btn btn-default">Submit</button>
+                <button type="reset" id="clear"  class="btn btn-default">Clear</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:50px;">
+            <label class="col-sm-2" for="rdmaturity">Maturity Amount</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="rdmaturity" placeholder="">
+            </div>
+        </div>
+        </form>
+    </div>
+</section>
+<section id="emi" class="tabcontent hidden">
+    <div class="container">
+        <form id="emiform" class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2" for="loanamount">Loan Amount</label>
+                <div class="col-sm-4">
+                <input type="text" class="form-control" id="loanamount" placeholder="Enter Loan Amount" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="emiperiod" >Time period(Months)</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="emiperiod" placeholder="Number of months" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2" for="emiinterest" >Interest rate</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="emiinterest" placeholder="Interest rate" required="true">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <button type="submit" id="emical" class="btn btn-default">Submit</button>
+                <button type="reset" id="clear"  class="btn btn-default">Clear</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div id="emiresult" style="margin-top:20px;margin-left:20px;">
+        <div class="row"  style="border-style: dotted; float:auto">
+            <table class="table-bordered">
+                <tr>
+                <td>
+                <canvas id="canvas" width="300" height="300">
+                    This text is displayed if your browser does not support HTML5 Canvas.
+                </canvas>
+                </td>
+            <div class="col-sm-2" style="border-style: dotted;">
+                <div class="row">
+                    <h4 class="text-center">Monthly Emi</h4>
+                    <hr/>
+                </div>
+                <div class="row" style="border-style: dotted;">
+                    <h5 class="text-center"><label id="emiamount"></label></h5>
+                </div>
+                <div class="row" style="border-style: dotted;">
+                    <label>Total Interest:</label>
+                </div>
+                <div class="row" style="border-style: dotted;">
+                    <label id="totalinterest"></label>
+                </div>
+             </div>
+        </div>
+        <div class="table-responsive">
+         <table id="emitable" class="table table-striped">
+         </table>
+        </div>
+
+    </div>
+</section>
+
+</div>
+</body>
+
+</html>

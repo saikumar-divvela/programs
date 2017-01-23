@@ -33,7 +33,7 @@ with open("/home/sai/Downloads/8500610131_PortFolioEqt.csv","rb") as csvfile:
         if row['Stock Symbol'] in stks.keys():
             data[row['Stock Symbol']] = {"qty":row['Qty'],"avg_price":row['Average Cost Price'],"curr_price":row["Current Market Price"]}
 
-x2 = 6000
+x2 = 10000
 print "inv: %s"%(x2)
 for stk in stks.keys():
      n1 = float(data[stk]["qty"])

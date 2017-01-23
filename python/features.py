@@ -4,6 +4,7 @@
 #import this
 
 
+### Program to cover features of python
 # Unpack a list or directory using function arguments as * and **
 def draw_point (x,y):
     print x,y

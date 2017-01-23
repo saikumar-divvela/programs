@@ -1,71 +1,91 @@
 Omsrisairam
-#test
 
-============= Installing particular version of Python =============================
------> remove a version of package
-    sudo apt-get  remove python3
+#### Table of contents  ####
+# Installing Python
+# Python modules
+# Python Basics
+# Language
+  # Basics and data types
+  # File handling
+  # Exception handling
+  # Multi threading
+  # Data structures
+  # DB connectivity
+  # Web development
+  # OOOPs concepts
+  # Others
 
-----> Installing sepcific version of python
+# Python configuration
+# Python vs Java
+# Miscellaneous
 
-sudo apt-get install build-essential checkinstall
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+### Installing particular version of Python
+# Remove a version of package -- sudo apt-get  remove python3
 
-cd ~/Downloads/
-wget http://python.org/ftp/python/2.7.5/Python-2.7.5.tgz
+# Installing sepcific version of python
+    sudo apt-get install build-essential checkinstall
+    sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+    cd ~/Downloads/
+    wget http://python.org/ftp/python/2.7.5/Python-2.7.5.tgz
+    tar -xvf Python-2.7.5.tgz
+    cd Python-2.7.5
 
-tar -xvf Python-2.7.5.tgz
-cd Python-2.7.5
+    ./configure
+    make
+    make install
+    sudo checkinstall
 
-./configure
-make
-make install
-sudo checkinstall
+# How to install github3
+    => Using PIP
+        pip install github3.py==0.9.5  (this will install particular version of package)
 
----->How to install github3
-Using PIP
-pip install github3.py==0.9.5  (this will install particular version of package)
+    => from source
+        wget https://pypi.python.org/packages/source/g/github3.py/github3.py-0.9.5.tar.gz#md5=a20c3af33337633d60e0e0a0ed10398d
+        tar -zxvf github3.py-0.9.5.tar.gz
+        cd github3py*
+        python setup.py install
 
-==>from source
-wget https://pypi.python.org/packages/source/g/github3.py/github3.py-0.9.5.tar.gz#md5=a20c3af33337633d60e0e0a0ed10398d
-tar -zxvf github3.py-0.9.5.tar.gz
-cd github3py*
-python setup.py install
+###  Package/Modules handling
+# Python modules are 3 types. pure python, native, or built-in
+  Searching modules  - Python looks for the packages in sys.path which is populated using PYTHONENV, installation dependent default paths. The sys.path can be manipulated in program.
+
+    import sys
+    print '\n'.join(sys.path)
+    /usr/local/lib/python2.7/dist-packages
+    /usr/lib/python2.7/
+    /usr/lib/python2.7/dist-packages
 
 
-==================Package/Modules handling==========================
------>Python modules are 3 types. pure python, native, or built-in 
--->Module search path - Python looks for the packages in sys.path which is populated using PYTHONENV, installation dependent default paths. The sys.path can be manipulated in program.
 
-import sys
-print '\n'.join(sys.path)
-
--->Python module file location - C modules don't have file attribute as they are statically linked to the interpreter. Ex sys, imp etc.
+ Python module file location - C modules don't have file attribute as they are statically linked to the interpreter. Ex sys, imp etc.
     import jenkinsapi
     jenkinsapi.__file__   #displays location of python module
 
--->Import system - imp module can access entire import system
-  import imp  
-  imp.find_module('jenkinsapi')
-  imp.load_source('module_name',<module_file_path>) 
+# imp module can access entire import system
+    import imp
+    imp.find_module('jenkinsapi')
+    imp.load_source('module_name',<module_file_path>)
 
--->Display each module loaded
-python -v
->>> import jenkinsapi #displays location of jenkinsapi
+# Display each module loaded
+    python -v
+    >>> import jenkinsapi #displays location of jenkinsapi
 
--->site-packages - is a directory where you install 3rd party,additional packages , including your own reusable code. (i.e., not part of the core python distribution). This can have multiple directories.
-import site
-site.getpackages()
+# site-packages - is a directory where you install 3rd party,additional packages , including your own reusable code. (i.e., not part of the core python distribution). This can have multiple directories.
+    import site
+    site.getpackages()
 
--->Ubuntu installs pip packages to /usr/local/lib/python2.7/dist-packages and apt packages to /usr/lib/python2.7/dist-packages
 
------>Installing python modules
+
+## Installing python modules
 Python module can be installed in 3 ways
 
-a) using easy_install  (available by default in latest python versions)
-b) using PIP (available by default in latest python versions)
-c) using source code , download source code and run "python setup.py install"
+    * using easy_install  (available by default in latest python versions)
+    * using PIP (available by default in latest python versions)
+    * using source code , download source code and run "python setup.py install"
 
--->easy_install 
+Ubuntu installs pip packages to /usr/local/lib/python2.7/dist-packages and apt packages to /usr/lib/python2.7/dist-packages
+
+#easy_install
     Easy install is a package manager for python and provides a standard format for ditributing python programs and libraries (based on python egg wrappers)
     Bundled with setuptools and uses egg wrappers
     By default looks in Python Package Index (PyPI) for desired packages
@@ -73,17 +93,18 @@ c) using source code , download source code and run "python setup.py install"
     Drawbacks
     Not a fully fledged package manager. It cannot list local packages nor update them.
 
---> pip
+#pip
     Better than easy_install
     Used to install/remove/update packages written in Python
     Can list local packages and update any package
 
+
     PIP 1.5.4 has issue with security certificate
 
-    apt-get install python-pip 
+    apt-get install python-pip
     (or)
     wget https://pypi.python.org/packages/source/p/pip/pip-7.1.0.tar.gz#md5=d935ee9146074b1d3f26c5f0acfd120e  ## From source
-    
+
     wget  https://pypi.python.org/packages/source/p/pip/pip-1.2.1.tar.gz
     tar xvfz pip-1.2.1.tar.gz
     cd pip-1.2.1
@@ -95,92 +116,90 @@ c) using source code , download source code and run "python setup.py install"
     pip install <package_name>  (or) -U <package_name> # updates package
     pip install <wheel_file>
     pip install -U pip  # This upgrades pip using pip
-    
 
 
---> setuptools
+
+# setuptools
     A python module which is required for easy_install and pip
 
---> Eggs
+# Eggs
     Packaging format for Python. This is not official
     Eggs allows to add additional information with python project, allows dependencies to be checked , allows projects to provide plugins for other projects
     Eggs are to Python as Jars are to Java
 
---> wheel
-    Packaging format for Pythin. Has official PEP
+# wheel
+    Packaging format for Python. Has official PEP
 
     pip install wheel
     python -m wheel install wheel_file.whl
 
---> Egg vs Wheel
+# Egg vs Wheel
     Egg is distribution format and runtime installation format (contains pyc files)
     Wheel is only distribution format (compatible with Python2  and Python3). Creates pyc files as part of installation to match the interpreter used in system
     Wheel is versioned
 
 
-
-================================Basics
+#### Python language
+### Basics
 Python uses interpreter for compiling/running the program. Python gives name __main__ to the module which is called as main program.
 Python is dynamically typed language but also strongly typed language
-data types: int, long,float, complex and boolean
+Data types: int, long,float, complex and boolean
 
-->Buit in object types:
-Lists -> mutable, ordered , mutable, can have different types of data and can have lists in them. [1,2,3]
-Tuples ->immutable. (1,2,3)
-dict -> {key:value}
-set -> unique elements, unordered
-str -> sequence of characters, immutable
-unicode -> sequence of unicode encoded characters
+# Buit in object types:
+    Lists -> mutable, ordered , mutable, can have different types of data and can have lists in them. [1,2,3]
+    Tuples ->immutable. (1,2,3)
+    dict -> {key:value}
+    set -> unique elements, unordered
+    str -> sequence of characters, immutable
+    unicode -> sequence of unicode encoded characters
 
-->BIF 
-int , float, str  converts data types
-id gives memory location of the data type
-enumerate
-isinstance
+# BIF (built in functions)
+    int , float, str  - converts data types
+    id  - gives memory location of the data type
+    enumerate
+    isinstance
+    typeof
 
--> import examples
-from lib import x  # imports single element x from lib. No prefix required
-from lib import x as y # x() y()
-import lib # all elements imported. dot prefix required. no name space conflict. preferred way.
-from lib import * # all functions imported. no dot prefix needed. may have name space conflict.
+# import examples
+    import lib # all elements imported. dot prefix required. no name space conflict. preferred way.
+    from lib import * # all functions imported. no dot prefix needed. may have name space conflict.
+    from lib import x  # imports single element x from lib. No prefix required
+    from lib import x as y # x() y()
 
 Int, float, string , tuples are immutable. i.e. memory location will change after changing the value.
 array,list,dictionary,classes, class instances are not immutable.
 
-->range vs xrange
-range creats a list with elements in memory. xrange is a sequence object and evaluates lazily
-python 3.x range is same as python 2.x xrange
+# range vs xrange
+    range creats a list with elements in memory. xrange is a sequence object and evaluates lazily
+    python 3.x range is same as python 2.x xrange
 
-->Library and modules
-
+# Library and modules
 The tool 2to3.py converts python 2.x programs to 3.x
 
+### OOPs concepts (inheritance, encapsulation)
+
+### Exception handling
+
+### Multi threading
+
+### Data structures
+
+### DB connectivity
+
+### Web development
+
+### Jython
 
 
-================================Exception handling
-
-===>OOPs concepts (inheritance, encapsulation)
-
-===>Multi threading
-
-===>Data structures
-
-===>DB connectivity
-
-===>Web development
-
-===>Jython
+#### Python vs Java
+    similar to stringbuffer in java
 
 
-similar to servlets in python
-similar to stringbuffer in java
+#### Miscellaneous
+# Because of certificate validation error, Verify is assigned to False in package code
+    requests/session.py
 
-
-===>Tweaks
-Because of certificate validation error, Verify is assigned to False in package code
-requests/session.py
-
-~/.netrc  is used to store github parameters
+# ~/.netrc  is used to store github parameters
 
 
 
