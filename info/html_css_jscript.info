@@ -23,7 +23,7 @@ Cascading order
 3) Internal style sheet
 4) Inline style  (highest priority)
 
-selectors
+### selectors
     element
     id
     class
@@ -32,25 +32,37 @@ group selectors
 nested selector
     Possible to apply a style for a selector within selector
 
-background-color
-background-image: url('paper.gif')
-background-repeat: repeat-x | repeat-y | no-repeat
-background-attachment
-background-position
-
-border-style: none | dotted | dashed | solid | double | groove | ridge | inset | outset
-border-width: 10px
-border-color:
-
-text
-    color: #00ff00 | red | rgb (0,255,0)
-text-align: center | right | justify
+### properties
+// text-properties
+color: red // text color can be specified in 3 ways rgb(255,0,0) hex code #ff00000 or red
+text-align: left|right|justify|initial|inherit
 text-decoration: none | overline | line-through | underline | blink
 text-transform : uppercase | lowercase | capitalize
 text-indent:
 letter-spacing:
 word-spacing:
 line-height:
+
+
+// font-properties
+font-family: "Times New Roman", Georgia, Serif;
+font-size: 12px;
+font-weight: normal | bold | 900 (100 to 900)
+font-stretch; condensed | expanded | normal | inherit
+font-style: italic | normal | oblique
+
+//background properties
+background-color
+background-image: url('paper.gif')
+background-repeat: repeat-x | repeat-y | no-repeat
+background-attachment: scroll|fixed|local
+background-position: center|right|left
+
+// border properties
+border-style: none | dotted | dashed | solid | double | groove | ridge | inset | outset
+border-width: 10px | thin | medium | thick
+border-color:
+
 
 
 #### Javascript
