@@ -1,0 +1,103 @@
+<!--
+
+-->
+<html>
+<head>
+<title> css positioning </title>
+<style type="text/css">
+p {
+    background-color:lightgreen;
+}
+
+
+#p1 {
+    width:300px;
+}
+
+#p2{
+    max-width: 900px;
+}
+
+#p3{
+    width:50%;
+}
+
+
+#p4{
+    height:20px;
+    overflow: hidden;
+}
+#p5{
+    min-height:50px;
+}
+
+#p6 {
+    max-height:20px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+
+#div1 {
+    border: 1px solid black;
+    background-color: lightblue;
+    margin: 50px 120px 100px 50px;
+}
+#div2 {
+    width: 300px;
+    border: 1px solid red;
+    margin : auto;
+}
+
+
+</style>
+</head>
+
+<body>
+<div>
+<p> This html covers covers following things
+width:  set the width. when  browser resized, scrollbar is displayed
+max-width:  set the max width initially. when browser resized scrollbar not needed
+height:  sets the height to this
+min-height: sets the minimum height. height increases with content
+max-height: sets the height to content height but limited to max-height. Additional content is overflowed..
+
+overflow: decides what to do with overflowed content.. (visible, auto, hidden)
+margin: auto
+margin-top margin-right margin-bottom margin-left
+</p>
+</div>
+<p>Resize the window to see the effect. when resized width shows scrollbar, max-width adjusts layout </p>
+<p id="p1">(width:300px) Height is same as the content</p>
+<p id="p2">(max-width:400px).Maximum width of content. Height is same as the content</p>
+<p id="p3">(width:50%). width is 50% of parent. i.e body tag</p>
+
+<p id="p4">(height:20px ) Height of this block is 20px. No matter what is the content of this block Additional content is overflowed. </p>
+<p id="p5">(min-height:50px).Minimum height is 50px. If content is more this will increase height.</p>
+<p id="p6">max height:20px
+Overflowing content will be displayed outside of the tag. If overflow is hidden then content is not displayed
+This text is repeated so that the DIV will be large enough for the demonstration.
+Change this DIV's max-height by clicking the radiobuttons on the left.
+
+Overflowing content will be displayed outside of the DIV
+
+This text is repeated so that the DIV will be large enough for the demonstration.
+
+Change this DIV's max-height by clicking the radiobuttons on the left.
+
+Overflowing content will be displayed outside of the DIV
+
+This text is repeated so that the DIV will be large enough for the demonstration.
+</p6>
+
+<div id="div1">
+This div has margin of top 10px right 120px bottom 100px left 50px
+</div>
+<div id ="div2">
+Auto margin. Width 300px
+</div>
+
+
+test
+</body>
+
+</html>

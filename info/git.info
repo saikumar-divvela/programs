@@ -1,0 +1,162 @@
+### Git essentials ###
+
+Git has 3 stages #modified #staged #committed   ( clone/checkout -> (modify -> stage-> commit) -> push)
+untracked -> unmodified -> modified -> staged->commited
+
+Git has 3 directories
+#working directory  -> single checkout of a version. These files are pulled out of compressed from database and placed on disk for use
+#staging directory (index) -> also called index. this is a file residing in git directory and stores info of files that will go in next commit
+# head -> points to last commit you have made
+
+#git repository(.git) -> stores meta data and object database for project
+Git has 2 kinds of files
+    #tracked
+    #untracked
+
+==> Installing Git
+    sudo apt-get install git-all
+
+     git config --global core.editor gedit
+     git config --global user.name "saikumar divvela"
+     git config --global user.email "saikumar.divvela@gmail.com"
+     git config --list
+     git config --global color.ui true
+
+====> Basic operations
+
+==> creating a new  repository
+    git int
+
+==> Checkout a repository
+    git clone /Path/To/Localrepo # clones complete files and history of git project
+    git clone username@host:/path/to/remoterepo (ssh protocol)  http://github.com/project
+
+
+==> Add files to staging
+    git add <fn>  # Adds fn to staging (i.e for commit)
+    git add *     # Adds all modified files to staging
+
+==> status of working directory
+    git status
+    git status -s # short status
+     M README   # modified in the working directory
+    MM Rakefile    # has changes that are staged and not staged
+    A  lib/git.rb   # new file that is staged
+    M  lib/simplegit.rb  # modified and staged
+    ?? LICENSE.txt   # new files that are not tracked
+
+==> Commit files
+    git commit -v | -m "message"  # open editor to enter commit message
+    git commit -a # this flag ignores staging. all changed files are added to staging and committed
+
+==> Push changes
+    git push origin master|<branch_name>
+
+==> working with remotes
+    git remote add <remote_name> <url>
+    git remote add origin <url>
+    git remote -v  # The remote "origin" is created by default by clone commands
+    git remote show origin
+
+==> Creating and pushing branch
+    git checkout -b <newbranch> # creates and switches to newbranch
+    git checkout master # Switch to master
+    git branch -d <newbranch> # Delete newbranch
+    git push origin <newbranch>  # Push the new branch to remote so that it is available for others
+
+==> Update local repo to the newest commit
+    git pull  # This will fetch the remote changes and merge
+
+==> Merge another branch to active branch i.e. master
+    git merge <branch>  # In case of merge conflicts, fix manually and add the file -> git add <fn>
+
+==> Diff between two branches
+    git diff <source_branch> <target_branch>
+
+==> tagging
+    git tag 1.0.0 <10 characters of commit id>
+
+==> Log commit history
+    git log --help | --author=saikumar | --pretty=oneline | --stat | --name-status
+    git log --graph  --oneline --decorate --all
+    git log -p      # shows history with diff
+    git log --stat  # list of modified files, how many files are changed, how many lines modified etc
+    git log --since=2.weeks # or "2008-01-15" --until --after
+    git log --<file1> # limit the commit history related to file. file should be last option
+
+
+==> replace local changes
+    git checkout -- <file>   # replaces the contents in working tree with last content in HEAD.
+
+==> drop all changes , commit and get the code from server
+    git fetch origin # fetches the code but doesn't replace the code in working tree
+    git reset --hard origin/master
+
+==> Ignoring files
+    cat .gitignore
+        *.cat
+        *.[oa]  # all files *.o and *.a
+        *~  # all temporary files
+        !lib.a  # do track lib.a even though you are ignoring *.a
+        /TODO   # only ignore TODO file in local dir
+        build/   # all files in build directory
+        doc/*.txt  # ignore doc/notes.txt, but not doc/server/arch.txt
+        doc/**/*.pdf # ignore all .pdf files in the doc/ directory
+
+==> viewing staged and unstaged changes
+    git diff # see changes that are not staged
+    git diff --staged # see what changes are staged and will go in next commit
+
+
+====> Advanced git operations
+==> Discard changes in working directory
+
+    git reset HEAD <file>    # to unstage file
+    git reset --soft HEAD^   # to uncommit the file (move the file from commit to staging directory)
+
+    git diff # diff of files modified but not staged
+    git diff --stage/--cached # diff of files staged but not committed
+
+    git commit -a -m 'msg' # commit all changed files without staging
+
+
+    rm <file>         | remove untracked file from working directory
+
+    git rm <file>          # to remove file from repository
+    git commit -m 'msg'    #
+     (or)
+    rm <file>
+    git add <file>
+    git commit -m 'msg'
+
+    git rm --cache <file> # To remove the file from staging
+    git rm -f <file>      # Remove the file from staging and local file system
+
+    # Renaming a file
+    git mv <file1> <file2>
+
+        (or)
+
+    mv <file1> <file2>
+    git rm  <file1>
+    git add <file2>
+
+
+    # see the list of files going to be pushed
+    git diff --stat --cached origin/master
+    git diff origin/master
+
+    # git log commands
+
+    # Undoing things
+
+    Try commit again by adding missing files or changing message
+    git commit --amend
+
+    ex:
+    git commit -m 'initial commit'
+    git add missing_file
+    git commit --amend    #This will keep single commit
+
+
+

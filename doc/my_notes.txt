@@ -639,7 +639,7 @@ enum Month {
 public class EnumConstructorDemo {
 	public static void main(String[] args){
 		for (Month m : Month.values()){
-			System.out.print(“ “+m);
+			System.out.print(" "+m);
 		}
 	}
 }
@@ -716,7 +716,7 @@ If you want to generate a series of random number we have to use java.util.Rando
 Strings are immutable objects. Once the object is created its state can't be changed.
 String class has a static function called format which can be used  to reuse the format
 Example:
-String  fs =  String.format(“ The float value is %f and the string is %s”,floatVar,strVar);
+String  fs =  String.format("The float value is %f and the string is %s",floatVar,strVar);
 System.out.println(fs);
 
 Java has two classes StringBuffer and StringBuilder for variable strings. Both the classes are exactly same except that all the methods in StringBuffer are thread safe.
@@ -732,8 +732,6 @@ By default JVM or compiler loads the members from the following packages.
 a)	types which don't have any package
 b)	members of java.lang 
 c)	members of current package
-
-
 
 package members are accessed in the following ways
 a)	by using fully qualified name
@@ -823,19 +821,12 @@ Validating parser validates XML against DTD or XML Schema
 Follow this link for ex: http://www.totheriver.com/learn/xml/xmltutorial.html
 
 ==>Struts
-
 Struts framework  is a standard to develop well architected web designs. It  is based on MVC model. 
 
 Architecture Overview
  
 
 All incoming  requests are handled by the struts servlet controller. It stores the application routing information and request mapping in a single core file struts-config.xml. The controller uses the struts-config.xml
-
-
-
-
- 
-
 
 
 Each form has an action form to store the data. When a request is sent to Action class ,  it can access the form data using action form getter/setter methods.
@@ -3261,7 +3252,6 @@ scripting language support
 performance improvement of platform and swing
 api to choose compiler programatically
 
-
 java 7
 nio2 package
 multiple exceptions can be handled in single catch block
@@ -3270,14 +3260,13 @@ JVM support for non java langauages
 try with resources
 
 java 8
-lambda expresssions
-compact profile
-small vm
-remove the permanent generation
-launch java fx applications
-parallel array sorting
-using balanced tree in hashmap instead of linked list
-
+    lambda expresssions
+    compact profile
+    small vm
+    remove the permanent generation
+    launch java fx applications
+    parallel array sorting
+    using balanced tree in hashmap instead of linked list
 
 ---------------> web services
 SOAP vs REST
@@ -3299,5 +3288,71 @@ REST message should be self contained and should help consumer to decide next co
 when you are publishing complex application program interface to the outside world SOAP is suitable.
 but when something with lower learning curve, light weight and faster results , simple transaction then REST is suitable
  
- SOAP envelop, SO
+SOAP envelop, SO
+
+Interview Preparation
+---------------------
+About Projects and Experience
+    * About current project and past projects
+    * Build Automation
+    * Service oriented architecture
+    * NMS
+    * Application development
+   
+General        
+    * Design Patterns
+    * Data Structures
+    * Scabaility and Performance 
+    * Architecture
+    * Full stock development
+    * How HTTPS work
+    * Threads
+
+Technology
+    * Python
+        Basics
+        Exception Handling
+        Django
+
+    * Core Java
+        Inheritance
+        File handling
+        Exception handling
+        Web services (REST)
+        java 6 vs 7 vs 8
+
+    * JEE
+        Spring
+        JDBC
+        JMS
+        Struts
+        Java mail
+
+    * Web technologies
+        HTML, CSS, Java Script, Jquery, Bootstrap
+
+    * Web servers
+        Apache
+        Jboss
+        Tomcat
+
+    * Database
+        Mysql
+        Oracle
+        Denodo
+
+    * Testing tools
+        Junit
+        Test NG
+        Jmeter
+
+Tools
+    * Git SVN
+    * Gerrit
+    * Jenkin
+    * Docker
+    * RabbitMQ
+    * Rediit
+    * Jmeter
+    * Jprobe
 
