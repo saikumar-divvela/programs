@@ -1,6 +1,10 @@
 #!/home/saikumar/bin/py
 
 import subprocess
+import pdb
+
+
+#pdb.set_trace()
 
 name='saikumar'
 proc = subprocess.Popen(['echo',name],

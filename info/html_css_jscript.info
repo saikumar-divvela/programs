@@ -51,7 +51,7 @@ font-weight: normal | bold | 900 (100 to 900)
 font-stretch; condensed | expanded | normal | inherit
 font-style: italic | normal | oblique
 
-//background properties
+// background properties
 background-color
 background-image: url('paper.gif')
 background-repeat: repeat-x | repeat-y | no-repeat
@@ -63,7 +63,75 @@ border-style: none | dotted | dashed | solid | double | groove | ridge | inset |
 border-width: 10px | thin | medium | thick
 border-color:
 
+// positioning properties
+#Default position is static. top, bottom, left and right are not applicable
+fixed position: Positioned relative to browser window. Removed from normal flow. Can overlap other elements
+relative position: Positioned relative to normal position. Overlaps with other elements. The reserved space for shape is still
+preserved in normal flow.
+absolute: this is relative to first parent whose position is not static. if no such element is found , default is <html>
 
+position: static | fixed | relative | absolute | inherit
+left: 10px; | auto | % | length | inherit
+top: 10px;
+right: 10px;
+bottom: 10px;
+z-index: -1;
+cursor: auto | crosshair | default | pointer | move | e-resize | ne-resize | nw-resize | n-resize | se-resize | sw-resize |
+s-resize | w-resize | text | wait | help
+overflow: auto | hidden | scroll | visible | inherit
+
+// width and height
+width: % px em
+max-width
+height
+max-height
+
+//margin properties
+used to set size of whitespace outside border
+margin: auto -- browser calculates the margin
+margin-top: px pt cm
+margin-right
+margin-bottom
+margin-left
+margin: top right bottom left
+
+// padding properties
+padding-top
+padding-right
+padding-bottom
+padding-left
+
+// float
+# objects can float left or right not top or bottom
+float: left | right | none | inherit;
+clear : left | right | both
+
+// Navigation properties
+Remove the default bullets and margins and padding
+ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+# vertical navigation bar
+a{
+  display:block;
+  width: 60px;
+}
+
+# Horizontal navigation bar
+li {
+  display:inline | float;
+ }
+
+ li {
+ float: left;
+ }
+
+ a{
+ display: block;
+ }
 
 #### Javascript
 
@@ -71,62 +139,96 @@ border-color:
 #### Jquery
 Basic syntax is: $(selector).action()
 
-$(this).hide() - hides the current element.
-$("p").hide() - hides all <p> elements.
-$(".test").hide() - hides all elements with class="test".
-$("#test").hide() - hides the element with id="test".
+# write jquery methods in
+$(document).ready(function(){
+});
+
+or
+$(function(){
+});
 
 ====> selectors
+select an element based on  id, class, tag names, types, attributes and attribute values
+
 $("*")   // selects all elements
 $(this)  // selects the current Html element
+$("p") // selects all <p> elements.
+$(".test") // selects all elements with class="test".
+$("#test") // select an element with id="test".
 
 $("div.test")  // selects all div tags having class test
 $("div#test") // selects a div tag with id test
-$("#id123") // selects the tag which has id id123
-$("img")   // selects all the image tags
+
+
 $("p:first") // selects first p tag
-$("ul li:first")
-$("ul li:child")
+$("ul li:first") // first li element of first ul
+$("ul li:first-child") //
+$("[href]") // select all elements with href attribute
+$("a[target='_blank']") // select all a elements with target is _blank
+$(":button") // select all button elements and input elements whose type is button
+$("tr:even") // select all even rows in table
+$("tr:old") // select all odd rows in table
+
+We can chain multiple actions on same element.
+$("#pg1").css("color","red").slideup(1200).slideDown(1000)
+
 
 ===> Events
-$(selector).click(function)
-$(selector).dblclick(function)
-$(selector).focus(function)
-$(selector).mouseover(function)
+$(selector).click(function)  // triggers click event
+$(selector).dblclick(function) // triggers double click event
+$(selector).focus(function)   // triggers focus event
+$(selector).mouseover(function) // triggers mouse over event
+
 
 ===> effects
-$("p").hide(); $(selector).hide(speed,callback);
+$("p").hide(); $(selector).hide(speed,callback); // speed --> slow fast milliseconds
 $("p").show(); $(selector).show(speed,callback);
-$("p").toggle();  // toggle between hide and show
+$("p").toggle();  //toggle between hide and show
 
-$(selector).fadeIn(speed,callback); // fadeIn a hidden element
+$(selector).fadeIn(speed,callback);  // fadeIn a hidden element
 $(selector).fadeOut(speed,callback); // fadeOut a visible element
-$(selector).fadeToggle(speed,callback);
+$(selector).fadeToggle(speed,callback); // toggles between fadeIn and fadeOut
 $(selector).fadeTo(speed,opacity,callback); // fading  to a given opacity (0 to 1)
 
 $(selector).slideDown(speed,callback);
 $(selector).slideUp(speed,callback);
 $(selector).slideToggle(speed,callback);
 
-$(selector).animate({params},speed,callback);
+===> animation
+$(selector).animate({params},speed,callback);  // property names are camelcase. Ex: paddingLeft instead of padding-left
 $("div").animate({left:'250px'});
+$("button").click(function(){
+  $("div").animate({
+    left:'250px',
+    opacity:'0.5',
+    height:'150px',
+    width:'150
+  });
+});
+
+Multiple animations are queued and run one by one.
+# Stop sliding, fading, animation
+$(selector).stop(stopAll,goToEnd); // stopall - stops all queued animations
 
 
-===>Get content//attribute
-text()
-html()
-val() sets or gets form field
-attr()
+===>Access and manipulate content and attributes
+text() // sets or gets text content of selected elements
+html() // sets or gets html content of selected elements including markup
+val()  // sets or gets the value of form fields
+attr() // sets or gets the attribute of selected element
 
-===>Add new elements/contents
-append()
-prepend()
-after()
-before()
+===>Add new html elements/contents
+append()  // inserts content at the end of selected element
+prepend() // inserts content at the beginning of selected elements
+after()   // inserts content after the selected element
+before()  // inserts content before the selected element
 
 ===> Remove elements/content
 remove() // removes the selected element and child elements
 empty() // removes the child elements from the selected element
+Example:
+  $("#div1").remove() // remove element with id #div1 and all its child elements
+  $("div").remove(".italic") // remove div tags having class "italic"
 
 ===> Manipulating css
 addClass() -- adds one or more classes to selected elements
@@ -147,26 +249,25 @@ callback has
     responseTxt - contains the resulting content if the call succeed
     statusTXT - contains the status of the call
     xhr - contains the XMLHttpRequest object
+
 $.get(URL,callback);
 callback has
     data
     status
 $.post(URL,data,callback);
 callback has
+    data
+    status
 
-
-
-Initialization code
-$(function(){
-     $('img').click ( function() {
-              // handle the click event on any img element in the page
-     });
-});
-
+===> Jquery noconflict
 Following handlers are same
-$(handler)
-$().ready(handler)
-$(document).ready(handler)
+$(handler) // $(function(){ });
+$().ready(handler) // $().ready(function(){ });
+$(document).ready(handler) // $(document).ready(function(){ });
 
-Functions prefixed with $. are utility functions
+jquery uses $ Other frameworks may also use $
+$.noConflict(); // releases hold on $ for jquery
+jQuery(document).ready(function(){ });
+
+Functions prefixed with $. are utility functions. Example $.get() $.post()
 

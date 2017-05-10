@@ -56,8 +56,7 @@ Omsrisairam
     /usr/lib/python2.7/dist-packages
 
 
-
- Python module file location - C modules don't have file attribute as they are statically linked to the interpreter. Ex sys, imp etc.
+Python module file location - C modules don't have file attribute as they are statically linked to the interpreter. Ex sys, imp etc.
     import jenkinsapi
     jenkinsapi.__file__   #displays location of python module
 
@@ -140,6 +139,8 @@ Ubuntu installs pip packages to /usr/local/lib/python2.7/dist-packages and apt p
 
 
 #### Python language
+### Keywords
+
 ### Basics
 Python uses interpreter for compiling/running the program. Python gives name __main__ to the module which is called as main program.
 Python is dynamically typed language but also strongly typed language
@@ -200,6 +201,13 @@ The tool 2to3.py converts python 2.x programs to 3.x
     requests/session.py
 
 # ~/.netrc  is used to store github parameters
+
+------------------
+
+
+
+
+
 
 
 

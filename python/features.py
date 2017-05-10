@@ -6,6 +6,9 @@
 
 ### Program to cover features of python
 # Unpack a list or directory using function arguments as * and **
+
+import pdb
+
 def draw_point (x,y):
     print x,y
 
@@ -68,11 +71,13 @@ def fun4(x=[]):
 fun4()
 fun4()
 
+
 #solution
 def fun5(x=None):
     if x is None:
         x =[]
     x.append(1)
     print x
+pdb.set_trace()
 fun5()
 fun5()

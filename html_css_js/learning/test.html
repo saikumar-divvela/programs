@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Widths and heights</title>
+	<style>
+		body {
+			font-size: 20px;
+			background: #fc0;
+			color: #000;
+		}
+		p {
+			background: white;
+		}
+
+		#p1 {
+			width: 300px;
+		}
+		#p2 {
+			height: 100px;
+		}
+		#p3 {
+			width: 50%;
+		}
+		#p4 {
+			max-width: 500px;
+		}
+		#p5, #p6 {
+			min-height: 100px;
+		}
+
+		#htmldog {
+			background: none;
+		}
+		#htmldog a {
+			display: block;
+			width: 120px;
+			background: white;
+			text-align: center;
+			transition: width .5s;
+		}
+		#htmldog a:hover {
+			width: 100%;
+		}		
+	</style>
+</head>
+<body>
+	<h1>Widths and heights</h1>
+	<p>A bunch o' paragraphs&hellip;</p>
+	<p id="p1"><code>width: 300px; /* and height is just the height of the content */</code></p>
+	<p id="p2"><code>height: 100px; /* and width, on paragraphs like this one at least, is 100% by default */</code></p>
+	<p id="p3"><code>width: 50%; /* 50% of the width of the paragraph's parent, which in this case is the body */</code></p>
+	<p id="p4"><code>max-width: 500px; /* width of 100% (because that's the paragraph's default) but only up to 500 pixels */</code></p>
+	<p id="p5"><code>min-height: 100px; /* At least 100 pixels high  */</code></p>
+	<p id="p6"><code>min-height: 100px; /* This could be higher than 100 pixels. If a paragraph were to waffle on, about this, that, the other, about anything really, like, really, really, really waffle on, about elephants or bubbles or poached eggs or Russian dolls or antidisestablishmentarianism, for example, if, in those cases, in those waffley case, or, if, for (another) example, there wasn't actual waffle but genuine very necessary things to say, like if there was a sentence about elephants and a paragraph didn't in fact talk about bubbles or poached eggs or Russian dolls or antidisestablishmentarianism, or anything else for that matter, if, in that case, the paragraph were to detail tusks or pachyderms or trunks or anything elephant-related, then, although it could well still be waffle, there is also the chance that it could be very relevant and non-waffley but, in either case, the point is that content could go on, and on, and on, and on, and on, and, in such circumstances, a bog standard paragraph, waffle or not, could be rather long and could, quite reasonably, require a greater height than 100 pixels, waffle or not.  */</code></p>
+
+	<!-- Link back to HTML Dog: -->
+	<p id="htmldog"><a href="http://www.htmldog.com/examples/"><img src="http://www.htmldog.com/badge1.gif" alt="HTML Dog"></a></p>
+</body>
+</html>
+
