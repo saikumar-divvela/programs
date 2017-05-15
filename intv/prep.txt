@@ -1,0 +1,83 @@
+omsrisairam
+
+---------------------
+About Projects and Experience
+    * About current project and past projects
+    * Build Automation
+    * Service oriented architecture
+    * NMS
+    * Application development
+
+General        
+    * Data Structures and Alogirthms
+    * Load balancing and Scabaility
+    * Architecture
+        Design Patterns          
+        Micro services
+        Service oriented architecture
+    * Full stack development (Design, development, testing and release)
+    * Continous integration
+    * Unit testing 
+
+
+Technology
+    * Python
+        Basics
+        Exception Handling
+        How to manage packages
+        Jython
+        Python vs Java
+        Django
+
+    * Core Java
+        Inheritance (OOPs concepts)
+        Multi threading
+        File handling
+        Exception handling
+        java 6 vs 7 vs 8
+        Logging and commenting
+
+    * JEE
+        Spring boot
+        Web services (REST)
+        Struts/Spring MVC        
+        Hibernate/JDBC
+        JMS,Java mail
+
+    * Messaging
+        Rabbit MQ
+        
+    * Web technologies
+        HTML, CSS, Ajax, Java Script, Jquery, Bootstrap
+
+    * Web servers
+        Apache
+        Jboss
+        Tomcat
+
+    * Database design and development
+        Normal forms
+        Types of indexes
+        Clusterd databases
+        Mysql vs Oracle vs Denodo
+        In memory data struture/databases Reddit, Mongodb
+
+    * Testing tools
+        Junit
+        Test NG
+        Jmeter
+
+Tools
+    * Git SVN
+    * Gerrit
+    * Jenkin
+    * Docker
+    * RabbitMQ
+    * Redit
+    * Jmeter
+    * Jprobe
+
+HowTo
+   * How HTTPS work
+   * Implement Login mechanism
+   * Single sign on 
