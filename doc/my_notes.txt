@@ -3290,56 +3290,67 @@ but when something with lower learning curve, light weight and faster results , 
  
 SOAP envelop, SO
 
-Interview Preparation
----------------------
+--------------------
 About Projects and Experience
     * About current project and past projects
     * Build Automation
     * Service oriented architecture
     * NMS
     * Application development
-   
+
 General        
-    * Design Patterns
-    * Data Structures
-    * Scabaility and Performance 
+    * Data Structures and Alogirthms
+    * Load balancing and Scabaility
     * Architecture
-    * Full stock development
-    * How HTTPS work
-    * Threads
+        Design Patterns          
+        Micro services
+        Service oriented architecture
+    * Full stack development (Design, development, testing and release)
+    * Continous integration
+    * Unit testing 
+
 
 Technology
     * Python
         Basics
         Exception Handling
+        How to manage packages
+        Jython
+        Python vs Java
         Django
 
     * Core Java
-        Inheritance
+        Inheritance (OOPs concepts)
+        Multi threading
         File handling
         Exception handling
-        Web services (REST)
         java 6 vs 7 vs 8
+        Logging and commenting
 
     * JEE
-        Spring
-        JDBC
-        JMS
-        Struts
-        Java mail
+        Spring boot
+        Web services (REST)
+        Struts/Spring MVC        
+        Hibernate/JDBC
+        JMS,Java mail
 
+    * Messaging
+        Rabbit MQ
+        
     * Web technologies
-        HTML, CSS, Java Script, Jquery, Bootstrap
+        HTML, CSS, Ajax, Java Script, Jquery, Bootstrap
 
     * Web servers
         Apache
         Jboss
         Tomcat
 
-    * Database
-        Mysql
-        Oracle
-        Denodo
+    * Database design and development
+        Normal forms
+        Types of indexes
+        Clusterd databases
+        Mysql vs Oracle vs Denodo
+        In memory data struture/databases Reddit, Mongodb
 
     * Testing tools
         Junit
@@ -3352,7 +3363,5 @@ Tools
     * Jenkin
     * Docker
     * RabbitMQ
-    * Rediit
+    * Redit
     * Jmeter
-    * Jprobe
-
