@@ -4,7 +4,7 @@ msg={}
 msg = MIMEText("hello there")
 msg["Subject"] ="test email"
 msg["From"]="saikumar.divvela@gmail.com"
-msg["To"]="sai.divvela@samsung.com"
+msg["To"]="saikumar.divvela@gmail.com"
 
 smtp_host = "smtp.gmail.com"
 smtp_port = 465
