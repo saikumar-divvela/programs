@@ -9,6 +9,20 @@ public class DefaultExample implements it{
         DefaultExample de = new DefaultExample();
         de.printMsg();
         it.showMsg();
+
+        // Anynonmous impelementation of interface
+        Runnable r = new Runnable(){
+                        public void run(){
+                            System.out.println("Inside runnable");        
+                        }};
+
+        // Example of lambda expression
+        Runnable r1 = ()->System.out.println("Inside runnable r1");        
+
+        //Thread t = new Thread(r);
+        //t.start();
+        (new Thread(r1)).start();
+    
     }
 
     // comment the following method to use the method in interface
