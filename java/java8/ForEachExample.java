@@ -56,10 +56,6 @@ public static void example(){
 }
 
 
-/*
-   2015
-*/
-
 class MyConsumer implements Consumer<Integer>{
     public void accept(Integer t){
         System.out.println("Consumer impl value:"+t);
