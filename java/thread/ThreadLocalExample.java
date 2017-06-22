@@ -1,5 +1,3 @@
-package com.sss.thread;
-
 import java.util.Random;
 
 public class ThreadLocalExample implements Runnable{

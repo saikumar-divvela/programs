@@ -15,11 +15,6 @@ public class TestException {
 }
 
 
-IOT
-Cloud
-App (web & mobile)
-
-
 
 
 

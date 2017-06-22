@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Stack;
 
-public class pc1 {
+public class pc2 {
 	
 	public void change(String str ){
 		str ="Saikumar";
@@ -45,6 +45,20 @@ class Producer1 implements Runnable{
 	private void produce(){
 		int i =1;
 		while(true) {
+            /*
+            while(i<MAX_ITEMS){
+	        	  synchronized(stack) {	
+	        			produce(i);
+	        			i++;
+	        			items.notifyAll();
+	        	  }		
+	        	  try {
+	        		  Thread.sleep(100);
+	        	  } catch(Exception ex){
+			  
+		   }
+		}*/
+
 		synchronized (stack) {
 			while(stack.size() >= MAX_ITEMS){
 				try {

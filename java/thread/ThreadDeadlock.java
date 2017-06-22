@@ -1,5 +1,3 @@
-package com.sss.thread;
-
 public class ThreadDeadlock {
 	public static void main(String[] args) throws InterruptedException{
 		Object obj1 = new Object();

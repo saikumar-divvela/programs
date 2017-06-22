@@ -1,5 +1,3 @@
-package com.sss.thread;
-
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -32,9 +30,9 @@ public class CallableExample {
 
 
 class MyCallable implements Callable<String>{
-	
+	int i = 10;
 	public String call() throws Exception{
 		Thread.sleep(1000);
-		return Thread.currentThread().getName();
+		return i + Thread.currentThread().getName();
 	}
 }

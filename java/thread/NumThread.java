@@ -1,5 +1,3 @@
-package com.sss.thread;
-
 public class NumThread implements Runnable{
 	int num;
 	volatile static int flag=1;

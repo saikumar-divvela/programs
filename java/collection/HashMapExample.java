@@ -1,43 +1,23 @@
-package com.sss.collection;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class HashMapKeyExample {
+public class HashMapExample {
 	public static void main(String args[]) {
 		Map<Student,String> map = new HashMap<Student,String>();
 		Student s1 = new Student(11,"sai");
-		Student s2 = new Student(11,"neeru");
+		Student s2 = new Student(12,"neeru"); // change 12 to 11 and see
+
+   		System.out.println(map.get(null));
 		
 		map.put(s1, "one");
-		s1.id = 14;
-		//s2.id = 14;
-		
 		System.out.println(map.get(s1));
-		System.out.println(map.get(s2));
-		
-		map.put(s2, "two");
-		
+        System.out.println(map.get(s2));
+        map.put(s2, "two");  // 2 different objects can't have same hash code and be equal
 		System.out.println(map.get(s1));
-		System.out.println(map.get(s2));
-		
-		/*
-		System.out.println(1<<30);
-		int h= 198;
-		System.out.println(h >>> 20);
-		System.out.println(h >>> 12);
-		System.out.println((h >>> 20) ^ (h >>> 12));
-		h ^= (h >>> 20) ^ (h >>> 12);
-		 System.out.println(h); 
-		 System.out.println(h >>> 7);
-			System.out.println(h >>> 4);
-			System.out.println((h >>> 7) ^ (h >>> 4));
-		h = h ^ (h >>> 7) ^ (h >>> 4);
-		 System.out.println(h);
-		 System.out.println(h & 100);
-		 */
-		 //1000
-		 //1010
+        System.out.println(map.get(s2));
+        s1.id = 14; // hascode got mutated
+   		System.out.println(map.get(s1));
+        System.out.println(map.get(s2));
 	}
 }
 

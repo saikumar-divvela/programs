@@ -1,19 +1,23 @@
-package com.sss.collection;
-
 import java.util.HashSet;
 import java.util.Set;
 
 public class HashSetExample {
 		public static void main(String args[]) throws Exception {
 			Set<Int> set = new HashSet<Int>();
-			set.add(new Int(27));
-			set.add(new Int(28));
+            Int i1 = new Int(27);
+            Int i2 = new Int(28);  
+			set.add(i1);
+			set.add(i2);
 			System.out.println(set);
+  			System.out.println(set.contains(i1));
+            Int i3 = (Int) i1.clone();
+            System.out.println((i3==i1) + " "+ set.contains(i3));
+   			System.out.println(set);
 		}
 }
 
 
-class Int {
+class Int implements Cloneable {
 	private int x;
 	
 	Int(int x){
@@ -50,6 +54,11 @@ class Int {
 		return "Int [x=" + x + "]";
 	}
 	
+	public void setValue(int x ){
+        this.x = x;
+    }
 	
-	
+    public Int clone() throws CloneNotSupportedException{
+        return (Int) super.clone();
+    }
 }

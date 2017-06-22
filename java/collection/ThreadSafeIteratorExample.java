@@ -1,5 +1,3 @@
-package com.sss.collection;
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +15,7 @@ public class ThreadSafeIteratorExample {
 		list.add ("4");
 		list.add ("5");
 		
-		// iterator works on orginal list even though collection is modified while iterating
+		// iterator works on orginal(cloned) list even though collection is modified while iterating
 		Iterator<String> it = list.iterator();
 		while(it.hasNext()){
 			String value = it.next();
@@ -63,4 +61,6 @@ public class ThreadSafeIteratorExample {
 			System.out.println("Key value "+map.get(key));
 		}
 	}
+
+    //dhfl canfin piramal forcemotors rblbank  capital l&tfinance berger granules ajanta  
 }
