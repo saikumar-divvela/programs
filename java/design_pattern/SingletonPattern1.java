@@ -1,5 +1,3 @@
-package com.sss.patterns;
-
 /*
  used for maintaining one instance of expensive object -> examples Java.lang.Runtime getRuntime() 
  Java.awt.Toolkit
@@ -9,8 +7,9 @@ package com.sss.patterns;
 	Enum singletons are better than Java based singletons
  */
 public class SingletonPattern1 {
-	public static void main(String args[]){
+	public static void main(String args[]) throws Exception{
 		Singleton sing = Singleton.getInstance(); 
+        Object sing1 = sing.clone(); // throws exception
 	}
 }
 
@@ -47,7 +46,9 @@ class Singleton{
 	
 
 	public Object clone() throws CloneNotSupportedException{
-		throw new CloneNotSupportedException();
+		//throw new CloneNotSupportedException();
+        System.out.println("Cloning");
+        return super.clone();
 	}
 	
 	public Object readResolve() throws Exception{
