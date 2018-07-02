@@ -1,0 +1,182 @@
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	
+	<servlet>
+		<servlet-name>downloadServlet</servlet-name>
+		<servlet-class>downloadServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<url-pattern> /download</url-pattern>	
+		<servlet-name> downloadServlet</servlet-name>
+	</servlet-mapping>
+
+	<servlet>
+			<servlet-name>persondetails </servlet-name>
+			<servlet-class>PersonServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<url-pattern>/persondetails</url-pattern>	
+		<servlet-name>persondetails</servlet-name>   <!-- uses friendData.jsp -->
+	</servlet-mapping>
+	
+	<servlet>
+			<servlet-name>infojsp </servlet-name>
+			 <jsp-file> /WEB-INF/jsp/personData.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<url-pattern> /jsp/infojsp</url-pattern>	 	<!-- used by form.jsp -->
+		<servlet-name>infojsp</servlet-name>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>servletinfo</servlet-name>
+		<servlet-class>ServletInfo</servlet-class>
+		<security-role-ref>
+				<role-name>dummy</role-name>
+				<role-link> manager</role-link>
+		</security-role-ref>
+	</servlet>
+
+	<servlet-mapping>
+		<url-pattern>/servletinfo</url-pattern>
+		<servlet-name>servletinfo</servlet-name>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>listener</servlet-name>
+		<servlet-class>TestListener</servlet-class>
+		<init-param>
+			<param-name>emailId</param-name>
+			<param-value>saikumar.divvela@gmail.com</param-value>
+		</init-param>
+		<init-param>
+			<param-name>city</param-name>
+			<param-value>bangalore</param-value>
+		</init-param>
+
+	</servlet>
+	<servlet-mapping>
+		<url-pattern>/sss/testListener </url-pattern>
+		<servlet-name>listener</servlet-name>
+	</servlet-mapping>
+	<context-param>
+		<param-name>databaseType</param-name>
+		<param-value>Mysql</param-value>
+	</context-param>
+	<context-param>
+		<param-name> jndiName</param-name>
+		<param-value>sss</param-value>
+	</context-param>
+	<context-param>
+		<param-name>name</param-name>
+		<param-value>SAI</param-value>
+	</context-param>
+	
+	<!-- begin listener config -->
+	<listener>
+		<listener-class>listener.MyServletRequestAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>listener.MyServletRequestListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class> listener.MyServletContextListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>listener.MyServletContextAttributeListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>listener.MySessionListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>listener.MySessionAttributeListener</listener-class>
+	</listener>
+	
+	<!-- end listener config -->
+	
+	<!-- begin filter config -->
+	<!--
+	<filter>
+		<filter-name>welcomeFilter</filter-name>
+		<filter-class>filter.welcomeFilter</filter-class>
+		<init-param>
+			<param-name>greeting</param-name>
+			<param-value>Hello World</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>welcomeFilter</filter-name>
+		  <servlet-name>persondetails</servlet-name> 
+	</filter-mapping>
+	
+	<filter>
+		<filter-name>statisticsFilter</filter-name>
+		<filter-class>filter.statisticsFilter</filter-class>
+		<init-param>
+			<param-name>name</param-name>
+			<param-value>statisticsFilter</param-value>
+		</init-param>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>statisticsFilter</filter-name>
+		 <url-pattern> /*</url-pattern>
+	</filter-mapping>
+
+	-->
+	
+	<!-- end filter config -->
+
+	<session-config>
+		<session-timeout>20	</session-timeout>  <!-- time in minutes -->
+	</session-config>
+	<!-- begin security config -->
+	<security-role>
+		<role-name>scwcd</role-name>
+		<role-name>symbol</role-name>
+		<role-name>manager</role-name>
+	</security-role>
+	<security-constraint>
+			<web-resource-collection>
+				<web-resource-name>danger zone</web-resource-name>
+				<url-pattern>/servletinfo</url-pattern>
+				<http-method>POST</http-method>
+				<http-method>GET</http-method>
+			</web-resource-collection>
+			<auth-constraint>
+				<role-name>manager</role-name>
+			</auth-constraint>
+			<!--
+			<user-data-constraint>
+				<transport-guarantee>INTEGRAL</transport-guarantee>
+			</user-data-constraint>
+			-->
+	</security-constraint>
+	<login-config>
+				<auth-method>FORM</auth-method>
+				<form-login-config>
+						<form-login-page>/loginPage.html</form-login-page>
+						<form-error-page>/loginError.html</form-error-page>
+				</form-login-config>
+	</login-config>
+	<!-- end security config -->
+
+	<welcome-file-list>
+		<welcome-file>/jsp/welcome/index.jsp</welcome-file>
+		<welcome-file>index.html</welcome-file> 
+	</welcome-file-list>
+<!--
+	<error-page>
+		<error-code> 404</error-code>
+		<location>/jsp/error/pageNotFound.jsp</location>
+	</error-page>
+	-->
+	<!--
+	<error-page>
+		<exception-type> java.lang.Throwable</exception-type>
+		<location>/jsp/error/exception.jsp</location>
+	</error-page>
+	-->
+</web-app>

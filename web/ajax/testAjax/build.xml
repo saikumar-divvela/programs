@@ -1,0 +1,36 @@
+<project name="testAjax" default="build" basedir=".">
+
+<property name="build" location ="build"/>
+<property name="warfile" location ="testAjax.war"/>
+<property name="src" location ="src"/>
+<property name="classes" location ="build/classes"/>
+<property name="tomcathome" location ="C:\apache-tomcat-5.5.23\"/>
+<property name="servletsjar" location ="${tomcathome}\common\lib\servlet-api.jar"/>
+
+<target name="clean">
+	<echo>Deleting the directory ${build} </echo>
+	<delete dir="${build}"/>
+	<delete file="${warfile}"/>
+</target>
+
+<target name="setup">
+	<echo>Creating the directory ${build} </echo>
+	<mkdir dir="${build}"/>
+	<mkdir dir="${classes}"/>
+</target>
+
+<target name="compile">
+	<javac srcdir="${src}" destdir="${classes}" classpath="${servletsjar}"/>
+</target>
+
+<target name="build" depends="clean,setup,compile">
+	<war destfile="${warfile}" webxml="${basedir}\WEB-INF\web.xml">
+		<fileset dir="${basedir}">
+			<include name="*.jsp"/>
+			<include name="*.html"/>
+		</fileset>
+		<classes dir="${classes}"/>
+	</war>
+</target>
+
+</project>

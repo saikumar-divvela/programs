@@ -1,0 +1,27 @@
+<HTML>
+<HEAD>
+<TITLE>Good day</TITLE>
+<SCRIPT type="text/javascript">
+function goodDay(){
+	var date = new Date();
+	var theDay =  date.getDay();
+	switch(theDay){
+		case 5:
+			document.write("<h2>close to weekend </h2>");
+			break;
+		case 6:
+			document.write("<h2>super saturday</h2>");
+			break;
+		case 0:
+			document.write("<h2>sleepy sunday</h2>");
+			break;
+		default:
+			document.write("<h1>long way to go to weeekend</h1>");
+			break;
+	}
+}
+</SCRIPT>
+<BODY onload="goodDay()">
+</BODY>
+</HEAD>
+</HTML>

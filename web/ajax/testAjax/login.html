@@ -1,0 +1,65 @@
+<html>
+	<head>
+	<script type="text/javascript">
+		var xmlObject;
+		if(window.ActiveXObject){
+			xmlObject =  new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		else 
+		{
+			xmlObject = new XMLHttpRequest();
+		}
+		function validateCategory()
+		{
+			var  strCategory =  document.getElementById("category").value;
+			var validationUrl =  "Validator?category="+strCategory;
+			xmlObject.open("POST",validationUrl,true);
+			xmlObject.onreadystatechange = updateBooks;
+			xmlObject.send(null);
+		}
+		function updateBooks()
+		{
+		
+			if(xmlObject.readyState==4)
+			{
+				//alert("status "+ xmlObject.status+" "+xmlObject.responseXML);
+				if(xmlObject.status==200)
+				{
+					var xmlResponse = xmlObject.responseXML;
+					var xmlRoot = xmlResponse.getElementsByTagName("book_response")[0];
+					strSuggestion = xmlRoot.childNodes[0].firstChild.data;
+					var suggestionDiv = document.getElementById("suggestion");
+					suggestionDiv.innerHTML = strSuggestion;
+					var books = document.getElementById("books");
+					var oBooks = xmlRoot.childNodes[1];
+					var strBooks ="";	
+					for(var i=0; i< oBooks.childNodes.length; i++){
+						strBooks = strBooks + ","+oBooks.childNodes[i].firstChild.data;
+					}
+					books.value = strBooks;
+					
+				}
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<form id="loginForm">
+			<table>
+			<tr>
+				<td>
+				Book Category:<input type="text" id="category" onKeyUp="validateCategory()"/> 
+				</td>
+			</tr>
+			<tr>
+				<td> Category Suggestion :</td>
+				<td> <div id="suggestion" style="color:blue;font:bold"></div> </td>
+			</tr>
+			</table>
+			<br/>
+			Books Found
+			<textarea id="books">
+			</textarea>
+		</form>
+	</body>
+</html>

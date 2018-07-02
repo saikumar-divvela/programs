@@ -1,0 +1,19 @@
+<HTML>
+<HEAD>
+<TITLE>Browser Info</TITLE>
+<SCRIPT type="text/javascript">
+<!--
+	function displayBrowserInfo(){
+		document.write("<b>Browser :</b> "+navigator.appName);
+		document.write("<br><b>Version :</b> "+navigator.appVersion);
+		document.write("<br><b>Platform :</b> "+navigator.platform);
+	}
+	function exitPage(){
+		alert ('you are leaving this page');
+	}
+// -->
+</SCRIPT>
+</HEAD>
+<BODY onload="displayBrowserInfo()" onunload="exitPage()">
+</BODY>
+</HTML>

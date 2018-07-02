@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title> A page to experiemnt</title>
+		<script type="text/javascript">
+			var dummy="";
+			alert(dummy);
+			if(dummy == undefined || dummy==""){
+				alert("dummy is undefined");
+			} else {
+				alert("perfect dummy");
+			}
+			function validateForm(){
+				var length = document.form1.processor.length;
+				var selected = false;
+				alert(length);
+				for(i=0;i<length;i++){
+					if(document.form1.processor[i].checked==true){
+						alert('check box '+i+' is selected');
+						selected = true;
+						break;
+					} else {
+						alert('check box '+i+'  is  not selected');
+					}
+				}
+				if(selected==false){
+					alert('please select atleast one box to proceed');
+				} 
+			}
+		</script>
+	</head>
+	<body>
+			<form name="form1" action="">
+			<input type="checkbox"  name="processor" value="intel">intel</input>
+			<br/>
+			<input type="checkbox"  name="processor" value="amd">AMD</input>
+			<br/>
+			<input type="checkbox"  name="processor" value="sss">sss</input>
+			<br/>
+			<input type="button" name="send"  value="SEND" onClick="validateForm();"/>
+			</form>
+	</body>
+</html>

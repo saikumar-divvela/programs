@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="hello.css" type="text/css"?>
+<root>
+<greeting>Hello World</greeting>
+</root>

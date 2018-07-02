@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- Different types of attributes are #REQUIRED #FIXED #IMPLIED -->
+<!-- Different data types are CDATA ID NMTOKEN IDREFS
+ID -> used as a unique identifier
+IDREF -> used as a reference to unique identifier
+IDREFS -> used as to refer multiple unique ids 
+NMTOKEN -> attribute can only contain a value i.e a string item.
+NMTOKENS -> attribute can contain list of values separated by whitespace.
+-->
+
+<!DOCTYPE range[
+	<!ELEMENT range (product,price)+>
+	<!ELEMENT product (#PCDATA)>
+	<!ELEMENT price (#PCDATA)>
+	<!ATTLIST product code ID #REQUIRED>
+	<!ATTLIST price code-ref IDREFS #IMPLIED>
+]>
+<range>
+	<product code="x1">Let Us C</product>
+	<price  code-ref="x1 x2">$2.5</price>
+	<product code="x2">Unix unleashed</product>
+	<price code-ref="x2">$3.0</price>
+</range>

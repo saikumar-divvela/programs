@@ -1,0 +1,277 @@
+21:23:09,954  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Thu Jan 16 21:23:09 IST 2014]; root of context hierarchy
+21:23:10,012  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+21:23:10,124  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+21:23:10,200  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsservice,imsdao,before,after,testProxy]; root of factory hierarchy
+21:23:10,332  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+21:23:10,474  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+17:18:12,238  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 17:18:12 IST 2014]; root of context hierarchy
+17:18:12,300  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+17:18:12,458  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+17:18:12,531  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsservice,imsdao,before,after,testProxy]; root of factory hierarchy
+17:18:12,681  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+17:18:12,816  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+17:19:14,344  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 17:19:14 IST 2014]; root of context hierarchy
+17:19:14,405  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+17:19:14,511  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+17:19:14,585  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource123,helloBean,imsservice,imsdao,before,after,testProxy]; root of factory hierarchy
+17:19:14,707  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+17:19:14,712  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource123,helloBean,imsservice,imsdao,before,after,testProxy]; root of factory hierarchy
+17:21:48,552  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 17:21:48 IST 2014]; root of context hierarchy
+17:21:48,614  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+17:21:48,731  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+17:21:48,806  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource123,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+17:21:48,933  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+17:21:48,939  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource123,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+17:24:00,164  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 17:24:00 IST 2014]; root of context hierarchy
+17:24:00,227  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+17:24:00,344  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+17:24:00,418  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+17:24:00,538  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+17:24:00,682  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+18:03:01,335  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b65ac2e: startup date [Tue Jan 21 18:03:01 IST 2014]; root of context hierarchy
+18:03:01,393  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:03:01,503  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:03:01,580  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13feba51: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:03:01,695  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:03:01,840  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+18:03:06,186  INFO ProcessBeforeMethod:17 - Before method Method name getCustomers
+18:03:09,743  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+18:03:09,777  INFO SQLErrorCodesFactory:120 - SQLErrorCodes loaded: [DB2, HSQL, MS-SQL, MySQL, Oracle, Informix, PostgreSQL, Sybase]
+18:03:44,988  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:03:44 IST 2014]; root of context hierarchy
+18:03:45,047  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:03:45,158  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:03:45,231  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:03:45,352  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:03:45,488  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+18:03:49,536  INFO ProcessBeforeMethod:17 - Before method Method name getCustomers
+18:05:19,947  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:05:19 IST 2014]; root of context hierarchy
+18:05:20,008  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:05:20,122  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:05:20,194  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:05:20,315  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:05:20,454  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+18:05:24,291  INFO ProcessBeforeMethod:17 - Before method Method name getCustomers
+18:06:03,278  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 18:06:03 IST 2014]; root of context hierarchy
+18:06:03,335  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:06:03,443  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:06:03,515  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:06:03,628  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:06:03,765  INFO ProcessBeforeMethod:17 - Before method Method name testDBConnection
+18:06:07,722  INFO ProcessBeforeMethod:17 - Before method Method name getCustomers
+18:08:14,713  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:08:14 IST 2014]; root of context hierarchy
+18:08:14,771  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:08:14,877  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:08:14,949  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:08:15,064  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:08:15,200  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@ff2d89
+18:08:19,010  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@ff2d89
+18:10:43,131  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:10:43 IST 2014]; root of context hierarchy
+18:10:43,191  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:10:43,297  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:10:43,369  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:10:43,490  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:10:43,624  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@6c521576
+18:12:33,055  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@14a1373f: startup date [Tue Jan 21 18:12:33 IST 2014]; root of context hierarchy
+18:12:33,115  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:12:33,221  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:12:33,294  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@142b9cd8: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:12:33,415  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:12:33,553  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@6c521576
+18:13:09,849  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 18:13:09 IST 2014]; root of context hierarchy
+18:13:09,908  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:13:10,017  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:13:10,089  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:13:10,204  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:13:10,339  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@6b1fabf3
+18:16:24,493  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 18:16:24 IST 2014]; root of context hierarchy
+18:16:24,552  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:16:24,661  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:16:24,732  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:16:24,850  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:16:24,992  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@6b1fabf3
+18:18:32,278  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 18:18:32 IST 2014]; root of context hierarchy
+18:18:32,338  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:18:32,445  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:18:32,522  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:18:32,645  INFO DriverManagerDataSource:136 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:18:32,778  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@4fbf7a02
+18:18:36,721  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@4fbf7a02
+18:36:52,007  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@643213ad: startup date [Tue Jan 21 18:36:52 IST 2014]; root of context hierarchy
+18:36:52,067  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:36:52,174  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:36:52,248  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@3b463340: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:36:52,363  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:36:52,499  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@3d553b2f
+18:36:56,844  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@3d553b2f
+18:40:37,059  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b65ac2e: startup date [Tue Jan 21 18:40:37 IST 2014]; root of context hierarchy
+18:40:37,119  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:40:37,228  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:40:37,305  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13feba51: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:40:37,423  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:40:37,564  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:40:41,867  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:40:41,867  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:40:45,355  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:40:45,355  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:41:29,382  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:41:29 IST 2014]; root of context hierarchy
+18:41:29,441  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:41:29,550  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:41:29,625  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:41:29,744  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:41:29,882  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@342c0de
+18:41:33,673  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@342c0de
+18:41:33,674  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@342c0de
+18:41:37,121  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@342c0de
+18:41:37,122  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@342c0de
+18:44:28,577  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:44:28 IST 2014]; root of context hierarchy
+18:44:28,636  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:44:28,748  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:44:28,822  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:44:28,938  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:44:29,076  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:44:32,908  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:44:32,908  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:44:36,385  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:44:36,385  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:44:39,846  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:44:56,845  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b65ac2e: startup date [Tue Jan 21 18:44:56 IST 2014]; root of context hierarchy
+18:44:56,905  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:44:57,012  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:44:57,089  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13feba51: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:44:57,203  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:44:57,343  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:45:01,423  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:45:01,423  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:46:13,669  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b65ac2e: startup date [Tue Jan 21 18:46:13 IST 2014]; root of context hierarchy
+18:46:13,729  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:46:13,836  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:46:13,911  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13feba51: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:46:14,026  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:46:14,168  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:46:18,297  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:46:18,298  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:46:35,828  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 18:46:35 IST 2014]; root of context hierarchy
+18:46:35,888  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:46:36,003  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:46:36,079  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13feba51: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:46:36,201  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:46:36,339  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:46:40,231  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@1384307e
+18:46:40,232  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:46:43,627  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:46:43,628  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:46:46,962  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@1384307e
+18:54:32,585  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b65ac2e: startup date [Tue Jan 21 18:54:32 IST 2014]; root of context hierarchy
+18:54:32,645  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+18:54:32,757  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+18:54:32,835  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@387a2618: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+18:54:32,950  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+18:54:33,087  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@3fcb2499
+18:54:37,564  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@3fcb2499
+18:54:37,564  INFO ProcessBeforeMethod:18 - Before method: addCustomer target:com.sss.myapp.service.IMSService@3fcb2499
+18:54:41,115  INFO ProcessAfterMethod:15 - After method: addCustomer target:com.sss.myapp.service.IMSService@3fcb2499
+18:54:41,115  INFO ProcessBeforeMethod:18 - Before method: getCustomer target:com.sss.myapp.service.IMSService@3fcb2499
+18:54:44,506  INFO ProcessAfterMethod:15 - After method: getCustomer target:com.sss.myapp.service.IMSService@3fcb2499
+19:04:38,012  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@28268948: startup date [Tue Jan 21 19:04:38 IST 2014]; root of context hierarchy
+19:04:38,070  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+19:04:38,179  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+19:04:38,256  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@47f15427: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+19:04:38,373  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+19:04:38,513  INFO ProcessBeforeMethod:18 - Before method: addCustomer target:com.sss.myapp.service.IMSService@282c55f1
+19:04:42,638  INFO ProcessAfterMethod:15 - After method: addCustomer target:com.sss.myapp.service.IMSService@282c55f1
+19:08:14,355  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@13a9f63f: startup date [Tue Jan 21 19:08:14 IST 2014]; root of context hierarchy
+19:08:14,416  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+19:08:14,533  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+19:08:14,615  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7dcecd26: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+19:08:14,738  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+19:08:14,879  INFO ProcessBeforeMethod:18 - Before method: removeCustomer target:com.sss.myapp.service.IMSService@1b1f4efe
+19:08:19,683  INFO ProcessAfterMethod:15 - After method: removeCustomer target:com.sss.myapp.service.IMSService@1b1f4efe
+15:17:04,418  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@2fe85210: startup date [Wed Jan 22 15:17:04 IST 2014]; root of context hierarchy
+15:17:04,481  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-test.xml]
+15:17:04,668  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:17:04,748  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4e800275: defining beans [dataSource,helloBean,imsdao,imsservice,before,after,testProxy]; root of factory hierarchy
+15:17:04,907  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:17:05,062  INFO ProcessBeforeMethod:18 - Before method: getCustomers target:com.sss.myapp.service.IMSService@96b59a6
+15:17:09,418  INFO ProcessAfterMethod:15 - After method: getCustomers target:com.sss.myapp.service.IMSService@96b59a6
+15:25:42,550  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7a3f1f39: startup date [Wed Jan 22 15:25:42 IST 2014]; root of context hierarchy
+15:25:42,616  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:25:42,725  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:25:42,813  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4207c21e: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:25:42,938  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:25:42,954  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4207c21e: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:26:43,792  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@75392356: startup date [Wed Jan 22 15:26:43 IST 2014]; root of context hierarchy
+15:26:43,856  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:26:43,976  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:26:44,069  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:26:44,199  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:26:44,203  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:27:52,611  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b3f3ee0: startup date [Wed Jan 22 15:27:52 IST 2014]; root of context hierarchy
+15:27:52,676  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:27:52,788  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:27:52,874  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4207c21e: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:27:52,993  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:27:53,287  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@4207c21e: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:32:38,755  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@7b3f3ee0: startup date [Wed Jan 22 15:32:38 IST 2014]; root of context hierarchy
+15:32:38,823  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:32:38,936  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:32:39,026  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:32:39,151  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:32:39,485  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:32:43,602  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:36:55,260  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@75392356: startup date [Wed Jan 22 15:36:55 IST 2014]; root of context hierarchy
+15:36:55,326  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:36:55,443  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:36:55,527  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:36:55,646  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:36:55,980  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:36:59,690  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@14fa6144: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:41:52,486  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@1c39cc63: startup date [Wed Jan 22 15:41:52 IST 2014]; root of context hierarchy
+15:41:52,557  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:41:52,679  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:41:52,775  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@190c05e2: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:41:52,904  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:41:53,256  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:41:57,349  INFO ProcessBeforeMethod:18 - Before method: findAll target:com.sss.myapp.service.HibernateCustomerService@b537e3a
+15:42:00,903  INFO ProcessAfterMethod:15 - After method: findAll target:com.sss.myapp.service.HibernateCustomerService@b537e3a
+15:44:55,118  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@69b42301: startup date [Wed Jan 22 15:44:55 IST 2014]; root of context hierarchy
+15:44:55,183  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:44:55,305  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:44:55,396  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2f2f0539: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:44:55,514  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:44:55,851  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:44:59,351  INFO ProcessBeforeMethod:18 - Before method: save target:com.sss.myapp.service.HibernateCustomerService@66c76393
+15:45:02,582  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+15:45:02,623  INFO SQLErrorCodesFactory:128 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+15:45:49,778  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@20713a72: startup date [Wed Jan 22 15:45:49 IST 2014]; root of context hierarchy
+15:45:49,843  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:45:49,955  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:45:50,045  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2f2f0539: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:45:50,164  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:45:50,496  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:45:54,318  INFO ProcessBeforeMethod:18 - Before method: save target:com.sss.myapp.service.HibernateCustomerService@1973f2f4
+15:45:57,436  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+15:45:57,466  INFO SQLErrorCodesFactory:128 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+15:52:05,671  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@20713a72: startup date [Wed Jan 22 15:52:05 IST 2014]; root of context hierarchy
+15:52:05,734  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:52:05,845  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:52:05,939  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e9a867: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:52:06,057  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:52:06,381  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:52:10,308  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e9a867: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:54:50,964  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@69b42301: startup date [Wed Jan 22 15:54:50 IST 2014]; root of context hierarchy
+15:54:51,027  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:54:51,143  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:54:51,239  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e9a867: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:54:51,354  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:54:51,671  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:54:55,071  INFO DefaultListableBeanFactory:422 - Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@5e9a867: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:55:27,849  INFO ClassPathXmlApplicationContext:456 - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@69b42301: startup date [Wed Jan 22 15:55:27 IST 2014]; root of context hierarchy
+15:55:27,916  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-hib.xml]
+15:55:28,040  INFO XmlBeanDefinitionReader:315 - Loading XML bean definitions from class path resource [spring-db.xml]
+15:55:28,129  INFO DefaultListableBeanFactory:555 - Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@2f2f0539: defining beans [dataSource,imsdao,imsservice,sessionFactory,before,after,testProxy]; root of factory hierarchy
+15:55:28,244  INFO DriverManagerDataSource:155 - Loaded JDBC driver: oracle.jdbc.driver.OracleDriver
+15:55:28,571  INFO LocalSessionFactoryBean:777 - Building new Hibernate SessionFactory
+15:55:32,397  INFO ProcessBeforeMethod:18 - Before method: save target:com.sss.myapp.service.HibernateCustomerService@fc84a09
+15:55:36,441  INFO ProcessAfterMethod:15 - After method: save target:com.sss.myapp.service.HibernateCustomerService@fc84a09
+15:55:36,441  INFO ProcessBeforeMethod:18 - Before method: findAll target:com.sss.myapp.service.HibernateCustomerService@fc84a09
+15:55:39,839  INFO ProcessAfterMethod:15 - After method: findAll target:com.sss.myapp.service.HibernateCustomerService@fc84a09

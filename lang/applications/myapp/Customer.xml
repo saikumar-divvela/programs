@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<customer>
+    <contactnumber>123</contactnumber>
+    <customerid>11</customerid>
+    <emailid>test1@abc.com</emailid>
+    <firstname>heheheheh</firstname>
+    <id>1</id>
+    <lastname>test1</lastname>
+</customer>

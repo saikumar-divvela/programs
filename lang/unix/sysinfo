@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# prints logged in user information
+# 
+#clear
+echo "System Information\n"
+uname 
+uname -r
+uname -m
+cat /proc/version
+lsb_release -a
+echo "Username: $USER"
+echo "Date: \c";date
+echo "Login users:\c";who | wc -l
+exit 0

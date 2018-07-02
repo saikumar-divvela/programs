@@ -1,0 +1,11 @@
+<?xml version="1.0" ?>
+<!DOCTYPE fruit[
+	<!ELEMENT fruit (apple)>
+	<!ELEMENT apple (#PCDATA)>
+]>
+<?xml-stylesheet href="apple.css" type="text/css"?>
+<fruit>
+	<apple>Delicious apple</apple> 	
+</fruit>
+
+

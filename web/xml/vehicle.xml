@@ -1,0 +1,7 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE vehicle SYSTEM "C:\Saikumar\programs\xml\vehicle.dtd">
+<?xml-stylesheet href="vehicle.css" type="text/css"?>
+<vehicle>
+	<bike>Pulsar is fastest bike.</bike>
+	<cycle>Cycle is best way of transport for reducing pollution</cycle>
+</vehicle>

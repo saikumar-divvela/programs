@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE>onerror example</TITLE>
+<SCRIPT type="text/javascript">
+onerror = handleerr;
+var txt="";
+function displayMessage(){
+	addalert("hello");
+}
+function handleerr(msg,url,l){
+	txt ="Error:"+msg+"\n\n";
+	txt+="URL:"+url+"\n\n";
+	txt+="line number:"+l+"\n\n";
+	txt+="Do you want to continue";
+	alert(txt);
+	return true;
+}
+</SCRIPT>
+</HEAD>
+<BODY>
+<INPUT type="button" value="show message" onclick="displayMessage()"></INPUT>
+</BODY>
+</HTML>

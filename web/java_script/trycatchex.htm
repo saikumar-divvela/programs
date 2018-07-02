@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>try catch example </title>
+<script type="text/javascript">
+function displayMessage(){
+	try
+	{
+		addalert("hello");		
+	}
+	catch (err)
+	{
+		txt ="There was an error on this page.\n\n";
+		txt+= "Error description: "+err.description+"\n\n";
+		txt+="Click OK to continue or Cancel to close this window \n\n";
+		if(!confirm(txt)){
+			window.close();
+		}
+	}
+}
+function throwExample(){
+	var x = prompt("enter a number between 0 and 10","");
+	try{
+		if(x<0) throw "ERR1";
+		if(x>10) throw "ERR2";
+
+	} catch(er){
+		if(er=="ERR1") alert("number too low");
+		if(er=="ERR2") alert("number too high");
+	}
+}
+</script>
+</head>
+<body onunload="alert('leaving this page');return false">
+<input type="button" value="view message" onClick="displayMessage()"/>
+<input type="button" value="throw example" onClick="throwExample()"/>
+</body>
+</html>

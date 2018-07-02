@@ -1,0 +1,12 @@
+<html>
+<head>
+<script type="text/javascript">
+function sayHello(){
+	alert "helloooooooooooo"; 
+}
+</script>
+</head>
+<body onload="sayHello();"> 
+hehehehe
+</body>
+</html>

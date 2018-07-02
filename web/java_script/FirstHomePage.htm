@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Hello World</title>
+
+<SCRIPT type="text/javascript">
+<!--
+{
+	document.write("<h1> This is a header </h1>");
+	document.write("<div id='testdiv'> this matter is in div tag </div>");
+	document.write ("<p> beginning of paragraph</p>");
+}
+function displayTag(){
+	var tag = document.getElementById('but1');
+	alert(tag.value+" is clicked");
+}
+function displayMessage(){
+	alert (" new version of java script develeopment going on ...... ");
+}
+//-->
+</SCRIPT>
+
+</head>
+<body onload="displayMessage()">
+<script src="xxx.js"> </script>
+<br/>
+<br/>
+<input id ='but1' type='button' value='click me' onclick="javascript:displayTag();"></input>
+</body>
+</html>

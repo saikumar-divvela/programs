@@ -1,0 +1,18 @@
+apple
+{
+	display:block;
+	font: bold italic 10pt;
+	color: green;
+}
+orange
+{
+	display:block;
+	font: italic 10pt;
+	color: red;
+}
+banana
+{
+	display:block;
+	font: bold 10pt;
+	color: black;
+}

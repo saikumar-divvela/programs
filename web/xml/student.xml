@@ -1,0 +1,16 @@
+<?xml version="1.0" standalone="yes"?>
+<!-- +  1 or more times -->
+<!-- *  0 or more times -->
+<!-- ?  0 or just once -->
+<!DOCTYPE student[
+	<!ELEMENT student (#PCDATA|name|tel|id)*>
+	<!ELEMENT name (#PCDATA)>
+	<!ELEMENT tel (#PCDATA)>
+	<!ELEMENT id (#PCDATA)>
+]>	
+<student>You can put text anywhere
+	<name>Raghu Kumar</name>
+	<id>1234</id>
+	<name>Deepak Babu</name>
+	<id>5678</id>
+</student>

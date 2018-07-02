@@ -1,0 +1,12 @@
+car
+{
+	display: block;
+	font: bold 10pt;
+	color: red;
+}
+bike
+{
+	display: block;
+	font: italic 10pt;
+	color: green;
+}

@@ -1,0 +1,1 @@
+testAjax is a simple ajax application developed to learn about ajax

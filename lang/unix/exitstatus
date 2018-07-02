@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+#This scripts prints the built in shell variables
+#
+echo "Number of arguments passed to shell $#"
+echo "Arguments passed to shell $*"
+echo "Option supplied to shell $-"
+echo "PID of shell $$"
+mkdir  abcd
+rm -rf abcd
+echo "Exit status of last command $?"
+rm -f abcd &
+echo "Exit status of last command $?"
+echo "PID of last started background process $!"
+

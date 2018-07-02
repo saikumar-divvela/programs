@@ -1,0 +1,38 @@
+create database testdb;
+insert into mysql.user( host,
+			user,
+			password,
+			select_priv,
+			insert_priv,
+			update_priv,
+			delete_priv,
+			create_priv,
+			drop_priv,
+			reload_priv,
+			shutdown_priv,
+			process_priv,
+			file_priv,
+			grant_priv,
+			references_priv,
+			index_priv,
+			alter_priv)
+		values ( 'localhost',
+		         'test',
+		         PASSWORD('test'),
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y',
+		         'Y' );
+flush privileges;
+grant all on testdb.* to 'test'@'localhost' identified by 'test';
+

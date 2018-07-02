@@ -1,0 +1,160 @@
+<HTML>
+<HEAD><TITLE>java script objects example</TITLE></HEAD>
+<SCRIPT type="text/javascript">
+/*
+	javascript supports different objects like 
+		String
+		Date
+		Boolean
+		Array 
+		Math
+		RegExp
+		Window
+		Navigator
+		Screen
+		History
+		Location
+	Boolean variable  is false if the variable is empty, 0, -0, null, NAN, false
+	true when value is "false","true",true,"sss".
+
+	for more information visit this link http://www.w3schools.com/jsref/jsref_obj_regexp.asp
+*/
+<!--
+	onerror = handleerr;
+	var errTxt = "";
+	/*
+		Search method returns the position of the pattern
+	*/
+	function showStringExamples(){
+		var msg ="Hello World!";
+		var txt = "<p> string length:"+msg.length+"</p>";
+		txt += "<p> Uppercase:"+msg.toUpperCase()+"</p>";
+		txt += "<p> Lowercase:"+msg.toLowerCase()+"</p>";
+		txt += "<p> match with World:"+msg.match("World")+"</p>";
+		txt += "<p> Another usage of match:"+msg.match(/world/gi)+"</p>"; 
+		// g is for pattern and i is for case insensitive
+		txt += "<p> replace World with Iliyana:"+msg.replace(/World/gi,"Iliyana")+"</p>";
+		txt += "<p> Antother usage of replace :"+msg.replace("World","Cathy")+"</p>";
+		txt += "<p> search for the pattern o:"+msg.search('o')+"</p>";
+		txt += "<p> split usage:"+msg.split(" ")+"</p>";
+		var divTag = document.getElementById('test');
+		divTag.innerHTML = txt;
+	}
+
+	function showDateExamples(){
+		var myDate = new Date();
+		var txt ="";
+		txt +="<p>Date:"+myDate+"</P>";
+		myDate.setFullYear(2008,0,10)
+		txt +="<p>Changed Date:"+myDate+"</P>";
+		myDate.setDate(myDate.getDate()+5);
+		txt +="<p>Changed Date:"+myDate+"</P>";
+		var divTag = document.getElementById('test');
+		divTag.innerHTML = txt;
+	}
+
+	function showArrayExamples(){
+		var arr1 = new Array("india","china","japan","singapore");
+		var arr2 = new Array("delhi","beijing","tokyo","singapore");
+		var txt ="";
+		txt +="<p>array1:"+arr1+"</p>";
+		txt +="<p>array2:"+arr2+"</p>";
+		txt +="<p>array1 joined:"+arr1.join(".")+"</p>";
+		txt +="<p>sorted array1:"+arr1.sort()+"</p>";
+		txt +="<p>concatenated array(may not work in ie):"+arr1.concat(arr2)+"</p>";
+		var divTag = document.getElementById('test');
+		divTag.innerHTML = txt;
+	}
+	function handleerr(msg,url,l){
+		errTxt += "Error message:"+msg+"\n\n";
+		errTxt += "URL location:"+url+"\n\n";
+		errTxt += "line number:"+l+"\n\n";
+		alert(errTxt);
+	}
+	function showBooleanExamples(){
+		var b1 = new Boolean();
+		var b2 = new Boolean(0);
+		var b3 = new Boolean(false);
+		var b4 = new Boolean(null);
+		var b5 = new Boolean(1);
+		var b6 = new Boolean(true);
+		var b7 = new Boolean("false");
+		var b8 = new Boolean("sss");
+		var txt ="";
+		txt += "<p> Boolean varible with empty value is "+b1+"</p>";
+		txt += "<p> Boolean varible with value 0 is "+b2+"</p>";
+		txt += "<p> Boolean varible with value false is "+b3+"</p>";
+		txt += "<p> Boolean varible with value null is "+b4+"</p>";
+		txt += "<p> Boolean varible with value 1 is "+b5+"</p>";
+		txt += "<p> Boolean varible with value true is "+b6+"</p>";
+		txt += "<p> Boolean varible with value \"false\" is "+b7+"</p>";
+		txt += "<p> Boolean varible with value \"sss\" is "+b8+"</p>";
+		var divTag = document.getElementById('test');
+		divTag.innerHTML = txt;
+	}
+	function showMathExamples(){
+		var txt = "";
+		txt += "<p>E :"+Math.E+"</p>";
+		txt += "<p>PI :"+Math.PI+"</p>";
+		txt += "<p>Square root  :"+Math.SQRT2+"</p>";
+		txt += "<p>Square root (1/2) :"+Math.SQRT1_2+"</p>";
+		txt += "<p>natural log of 2 :"+Math.LN2+"</p>";
+		txt += "<p>natural log of 10 :"+Math.LN10+"</p>";
+		txt += "<p>log of E with base 2:"+Math.LOG2E+"</p>";
+		txt += "<p>log of E with base 10:"+Math.LOG10E+"</p>";
+		txt += "<p>round of 4.75 :"+Math.round(4.75)+"</p>";
+		txt += "<p>round of 3.49 :"+Math.round(3.49)+"</p>";
+		txt += "<p>floor of 23.51 :"+Math.floor(23.51)+"</p>";
+		txt += "<p>floor of 1.12 :"+Math.floor(1.12)+"</p>";
+		txt += "<p>ceil of 23.51 :"+Math.ceil(23.51)+"</p>";
+		txt += "<p>ceil of 1.12 :"+Math.ceil(1.12)+"</p>";
+		txt += "<p>random value :"+Math.random()+"</p>";
+		var divTag = document.getElementById('test');
+		divTag.innerHTML = txt;
+	}
+
+	/*
+		RegExp is a object used to define a search pattern to search in a string 
+		The function test searches the pattern and returns true or false
+		function exec searches the pattern and returns the string found
+		function compile is used to change the search pattern
+	*/
+	
+	function showRegExpExamples(){
+		var patt1 = new RegExp('e');
+		var divTag = document.getElementById('test');
+		var textString = "The best things in life are free!!";
+		var txt="";
+		txt += "<p>Input String:"+textString+"</p>";
+		txt += "<p>Pattern:\'e\'</p>";
+		txt += "<p>test function:"+patt1.test(textString)+"</p>";
+		txt += "<p>exec function:"+patt1.exec(textString)+"</p>";
+		txt += "<p>All occurrences of pattern and compile output:"
+		patt1.compile('e','g');
+		do
+		{
+			result = patt1.exec(textString);
+			txt += result;
+		}while(result!=null);
+		txt += "</p>";
+		divTag.innerHTML = txt;
+	}
+//-->
+</SCRIPT>
+<BODY>
+<INPUT type="button" value="String examples" onclick="showStringExamples()"></INPUT>
+<INPUT type="button" value="Date examples" onclick="showDateExamples()"></INPUT>
+<br/>
+<br/>
+<INPUT type="button" value="Array examples" onclick="showArrayExamples()"></INPUT>
+<INPUT type="button" value="Boolean examples" onclick="showBooleanExamples()"></INPUT>
+<br/>
+<br/>
+<INPUT type="button" value="Math examples" onclick="showMathExamples()"></INPUT>
+<INPUT type="button" value="RegExp examples" onclick="showRegExpExamples()"></INPUT>
+<br/>
+<br/>
+<div id="test">The best things in life are free!!</div>
+</BODY>
+</HTML>
+

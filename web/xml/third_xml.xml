@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="hello.css" type="text/css"?>
+<root>
+	<title> CDATA example </title>
+	<!-- CDATA is used for preserving the character data in xml -->
+	<![CDATA[
+		<?xml version="1.0"?>
+		<root>
+			<greeting> Hello World </greeting>
+		</root>	
+	]]>	
+	<greeting> Helloooooo </greeting>
+</root>

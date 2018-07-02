@@ -1,0 +1,8 @@
+#!/bin/sh
+
+JENKINS_HOME=/var/lib/jenkins/
+
+DATE=`date +%d_%m_%Y`
+sudo cp $JENKINS_HOME/reports/pkg_spec_fail.html /home/sai/project/obs_tool/package_monitor/reports_backup/pkg_spec_fail_$DATE.html
+sudo cp $JENKINS_HOME/reports/pkg_spec.html /home/sai/project/obs_tool/package_monitor/reports_backup/pkg_spec_$DATE.html
+  

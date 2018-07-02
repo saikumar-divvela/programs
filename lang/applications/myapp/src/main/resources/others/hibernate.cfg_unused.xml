@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+   <session-factory>
+   <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
+   <property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+	<property name="hibernate.connection.url">jdbc:oracle:thin:@ims-dev105.cisco.com:1521:dev105</property>
+   <property name="hibernate.connection.username">ims_appl</property>
+   <property name="hibernate.connection.password">ims_appl</property>
+
+   <!-- List of XML mapping files -->
+   <mapping resource="Customer.hbm.xml"/>
+
+</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,1 @@
+document.write("this text is written by external script");

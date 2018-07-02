@@ -1,0 +1,4 @@
+<!ELEMENT vehicle (car | (bike,cycle))>
+<!ELEMENT car (#PCDATA)>
+<!ELEMENT bike (#PCDATA)>
+<!ELEMENT cycle (#PCDATA)>

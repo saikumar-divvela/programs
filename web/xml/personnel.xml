@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<?xml-stylesheet href="personnel.css" type="text/css"?>
+<personnel>
+	<heading>Company Managers</heading>
+	<entry>
+		<job>Sales &amp; Marketing Manager</job>
+		<name>Raghu Kumar</name>
+		<tel preferred="true">080-25879671</tel>
+		<tel>1234-5678</tel>
+	</entry>
+	<entry>
+		<job>Accounts &amp; Auditing</job>
+		<name>Pratap</name>
+		<tel>123-45678</tel>
+		<!-- Empty tag Normally used to provide meta information through attributes -->
+		<photo fileName="xyz.jpg"/>
+	</entry>
+</personnel>
+	
+			
+
+
